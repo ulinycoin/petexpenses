@@ -16,7 +16,8 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
 
 <!-- Preload hero -->
 <link rel="preload" as="image" href="hero-image.jpg" fetchpriority="high">
@@ -308,6 +309,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 </nav>
 
 <!-- RENDER TARGETS -->
+<main>
 <div id="hero"></div>
 <div id="species-toggle"></div>
 <div id="calculator"></div>
@@ -318,6 +320,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div id="sources"></div>
 <div id="blog"></div>
 <div id="faq"></div>
+</main>
 
 <!-- FOOTER (static) -->
 <footer class="site-footer">
@@ -567,9 +570,6 @@ function render(){
   // Nav active state
   document.getElementById('nav-dog').className=s==='dog'?'active':''
   document.getElementById('nav-cat').className=s==='cat'?'active':''
-
-  // Bind events
-  bindCalcEvents(s,st,bd,acc,isDog)
 }
 
 function renderHero(s,isDog){
@@ -690,74 +690,63 @@ document.getElementById('blog').innerHTML='<section class="blog-section"><div cl
   '</div></section>'
 
 // ==============================================================
-// EVENT BINDING
+// GLOBAL EVENT LISTENERS (registered once, not on every render)
 // ==============================================================
-function bindCalcEvents(s,st,bd,acc,isDog){
-  // Species toggle
-  var stBtns=document.querySelectorAll('[data-action="set-species"]')
-  for(var i=0;i<stBtns.length;i++){(function(btn){
-    btn.addEventListener('click',function(){setSpecies(btn.getAttribute('data-value'))})
-  })(stBtns[i])}
 
-  // Nav species
-  var navDog=document.getElementById('nav-dog')
-  var navCat=document.getElementById('nav-cat')
-  if(navDog) navDog.addEventListener('click',function(){setSpecies('dog')})
-  if(navCat) navCat.addEventListener('click',function(){setSpecies('cat')})
+// Species toggle (nav)
+document.getElementById('nav-dog').addEventListener('click',function(){setSpecies('dog')})
+document.getElementById('nav-cat').addEventListener('click',function(){setSpecies('cat')})
 
-  // Breed search input
-  var breedInput=document.getElementById('breed-input')
-  if(breedInput){
-    breedInput.addEventListener('input',function(){
-      state[state.species].breed=breedInput.value
-      // Re-render with breed search dropdown visible
-      render()
-      // Re-focus the breed input
-      var bi=document.getElementById('breed-input')
-      if(bi){bi.focus();bi.selectionStart=bi.selectionEnd=bi.value.length}
-    })
-    // Breed option clicks via delegation
-    document.addEventListener('click',function(e){
-      var opt=e.target.closest('.breed-opt')
-      if(opt){
-        var name=opt.getAttribute('data-breed')
-        var bd2=getBreed(state.species,name)
-        if(bd2){
-          state[state.species].breed=bd2.name
-          state[state.species].coat=bd2.coat
-          state[state.species].weight=defaultWeight(state.species,bd2.size)
-        }
-        render()
-      }
-    })
-    // Close breed list on outside click
-    document.addEventListener('mousedown',function(e){
-      if(!e.target.closest('.breed-search')){
-        var bl=document.getElementById('breed-list')
-        if(bl) bl.remove()
-      }
-    })
+// All data-action clicks via delegation on body (single listener)
+document.body.addEventListener('click',function(e){
+  // Species toggle buttons
+  var speciesBtn=e.target.closest('[data-action="set-species"]')
+  if(speciesBtn){setSpecies(speciesBtn.getAttribute('data-value'));return}
+
+  // Pill segment buttons
+  var pillBtn=e.target.closest('[data-action]')
+  if(pillBtn){
+    var action=pillBtn.getAttribute('data-action'),val=pillBtn.getAttribute('data-value')
+    if(action==='set-age') setState('age',val)
+    else if(action==='set-activity') setState('activity',val)
+    else if(action==='set-coat') setState('coat',val)
+    return
   }
 
-  // Weight slider
-  var ws=document.getElementById('weight-slider')
-  if(ws){
-    ws.addEventListener('input',function(){setState('weight',Number(ws.value))})
+  // Breed dropdown option
+  var opt=e.target.closest('.breed-opt')
+  if(opt){
+    var name=opt.getAttribute('data-breed')
+    var bd2=getBreed(state.species,name)
+    if(bd2){
+      state[state.species].breed=bd2.name
+      state[state.species].coat=bd2.coat
+      state[state.species].weight=defaultWeight(state.species,bd2.size)
+    }
+    render()
+    return
   }
+})
 
-  // Pill segments (age, activity, coat)
-  var pillBtns=document.querySelectorAll('[data-action]')
-  for(var i=0;i<pillBtns.length;i++){(function(btn){
-    var action=btn.getAttribute('data-action')
-    if(action==='set-species') return // already handled
-    btn.addEventListener('click',function(){
-      var val=btn.getAttribute('data-value')
-      if(action==='set-age') setState('age',val)
-      else if(action==='set-activity') setState('activity',val)
-      else if(action==='set-coat') setState('coat',val)
-    })
-  })(pillBtns[i])}
-}
+// Close breed list on outside click (single listener)
+document.addEventListener('mousedown',function(e){
+  if(!e.target.closest('.breed-search')){
+    var bl=document.getElementById('breed-list')
+    if(bl) bl.remove()
+  }
+})
+
+// Input delegation (single listener for all inputs)
+document.body.addEventListener('input',function(e){
+  if(e.target.id==='weight-slider'){
+    setState('weight',Number(e.target.value))
+  } else if(e.target.id==='breed-input'){
+    state[state.species].breed=e.target.value
+    render()
+    var bi=document.getElementById('breed-input')
+    if(bi){bi.focus();bi.selectionStart=bi.selectionEnd=bi.value.length}
+  }
+})
 
 // ==============================================================
 // INITIAL RENDER
@@ -767,7 +756,10 @@ render()
 // ==============================================================
 // PostHog
 // ==============================================================
-!function(t,e){var o,n,p,r;t.__SSC_URL="https://app.posthog.com";p=e.createElement("script");p.async=!1;p.src="https://us-assets.i.posthog.com/static/array.js";r=e.getElementsByTagName("script")[0];r.parentNode.insertBefore(p,r)}(window,document)
+window.addEventListener('load',function(){
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0)}(document,window.posthog||[]);
+  posthog.init('phc_6iTpA8vFIxlQ8HxmPsoMmtj4sqgCUWiZQMOpfSfyvxe',{api_host:'https://eu.posthog.com'});
+})
 </script>
 </body>
 </html>
