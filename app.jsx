@@ -139,7 +139,7 @@ function Hero({ species }) {
         <div className="hero-right">
           {/* Big rounded photo placeholder */}
           <div className={`hero-photo ${isDog ? 'hero-photo-dog' : 'hero-photo-cat'}`}>
-            <img src="hero-image.png" alt={`${isDog ? 'Dog' : 'Cat'} cost calculator`} className="hero-photo-img" />
+            <img src="hero-image.jpg" alt={`${isDog ? 'Dog' : 'Cat'} cost calculator`} className="hero-photo-img" />
           </div>
 
           {/* Decorative stickers */}
