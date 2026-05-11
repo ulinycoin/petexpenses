@@ -16,3 +16,10 @@
 .env
 .env.local
 *.key
+
+# Node
+node_modules/
+package-lock.json
+
+# Unused bundle artifact
+app.min.js

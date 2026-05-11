@@ -17,6 +17,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://petexpenses.com">
 <meta property="og:locale" content="en_US">
+
+<!-- JSON-LD FAQ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,42 +34,52 @@
 }
 </script>
 
+<!-- Google Fonts: async loading to avoid render-blocking -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
 
-<link rel="preload" href="hero-image.jpg" as="image">
-<link rel="preload" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" as="script" crossorigin="anonymous">
+<!-- Async primary stylesheet -->
 <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+<!-- Critical inline: body background + thin loading bar -->
 <style>
-  /* Critical inline CSS — loads instantly, replaced by styles.css */
-  body { margin:0; background:#FFF7E8; color:#1B1340; }
-  #loading { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:60vh; text-align:center; padding:2rem; }
-  #loading img { width:280px; max-width:80vw; border-radius:24px; opacity:0.9; }
-  #loading p { margin-top:1rem; font-family:system-ui,sans-serif; font-size:0.95rem; color:#7A7396; animation:pulse 1.6s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+body { margin:0; background:#FFF7E8; color:#1B1340; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
+#loader { position:fixed; top:0; left:0; width:100%; height:3px; z-index:9999; overflow:hidden; }
+#loader-fill { display:block; height:100%; width:40%; background:linear-gradient(90deg,#FF5A3C,#FF8FB1,#FFD23F); border-radius:2px; animation:slide 1.2s ease-in-out infinite; }
+@keyframes slide { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
 </style>
-<noscript><style>.nojs-hidden{display:none!important}</style></noscript>
+
+<!-- PostHog -->
 <script>
-  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0)}(document,window.posthog||[]);
-  posthog.init('phc_6iTpA8vFIxlQ8HxmPsoMmtj4sqgCUWiZQMOpfSfyvxe', {api_host: 'https://eu.posthog.com'})
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0)}(document,window.posthog||[]);
+posthog.init('phc_6iTpA8vFIxlQ8HxmPsoMmtj4sqgCUWiZQMOpfSfyvxe', {api_host: 'https://eu.posthog.com'})
 </script>
 </head>
 <body>
 
-<div id="root">
-  <div id="loading">
-    <img src="hero-image.jpg" alt="Pet cost calculator" width="280" height="350" loading="eager" fetchpriority="high">
-    <p>Loading calculator...</p>
-  </div>
-</div>
+<!-- Thin animated loading bar — instant FCP, zero CLS -->
+<div id="loader"><span id="loader-fill"></span></div>
 
+<!-- React app mount — empty, no skeleton, no wasted image loads -->
+<div id="root"></div>
+
+<!-- React + ReactDOM CDN (deferred, loads after HTML parse) -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous" defer></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous" defer></script>
 
+<!-- App bundle (deferred) -->
 <script src="bundle.min.js" defer></script>
+
+<!-- Remove loading bar once React hydrates -->
+<script>
+window.addEventListener('load', function(){
+  var el = document.getElementById('loader');
+  if(el){ el.style.transition='opacity 0.3s'; el.style.opacity='0'; setTimeout(function(){el.remove()},500); }
+});
+</script>
 
 </body>
 </html>
