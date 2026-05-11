@@ -788,15 +788,20 @@ document.body.addEventListener('input',function(e){
 // PARSE SHARED URL PARAMS
 // ==============================================================
 (function(){
-  var p=new URLSearchParams(window.location.search)
-  if(p.has('species')) state.species=p.get('species')
-  if(p.has('breed')){
+  var q=window.location.search
+  if(!q)return
+  var p={}
+  q.replace('?','').split('&').forEach(function(kv){
+    var x=kv.split('='); p[decodeURIComponent(x[0])]=decodeURIComponent(x.slice(1).join('='))
+  })
+  if(p.species) state.species=p.species
+  if(p.breed){
     var st=curState()
-    st.breed=p.get('breed')
-    if(p.has('weight')) st.weight=Number(p.get('weight'))
-    if(p.has('age')) st.age=p.get('age')
-    if(p.has('activity')) st.activity=p.get('activity')
-    if(p.has('coat')) st.coat=p.get('coat')
+    st.breed=p.breed
+    if(p.weight) st.weight=Number(p.weight)
+    if(p.age) st.age=p.age
+    if(p.activity) st.activity=p.activity
+    if(p.coat) st.coat=p.coat
   }
 })()
 
