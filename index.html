@@ -464,14 +464,14 @@ var PET_DATA = (function () {
   var ACT = {low:{food:.9},moderate:{},high:{food:1.2,supplies:1.15}};
   var OFFERS = {
     dog:[
-      {id:'fresh-food',emoji:'🍖',sticker:'FRESH',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Fresh Vet-Made Meals',partner:'Partner #1',bullet1:'Human-grade meat & veggies',bullet2:'Portioned for your pup',bullet3:'50% off first box',priceFrom:'$2/day',ratings:'4.9 ★  ·  200k+ pups',ctaText:'Try Fresh →'},
+      {id:'fresh-food',emoji:'🍖',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Dog Food',partner:'Raw Paws Pet Food',bullet1:'Small-batch frozen raw, made weekly',bullet2:'10% base commission · $160 avg order',bullet3:'Same-day nationwide free shipping',priceFrom:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',ctaText:'Shop Raw Paws →',ctaLink:'https://www.dpbolvw.net/click-101748061-17234885'},
       {id:'insurance',emoji:'🛡️',sticker:'SAFETY',accent:'#A78BFA',accentDark:'#6D49C7',title:'Pet Insurance Comparison',partner:'Partner #2',bullet1:'Compare 10+ plans free',bullet2:'Avg payout 80% of vet bill',bullet3:'Covers accidents & illness',priceFrom:'from $14/mo',ratings:'★★★★★  ·  Top-rated 2026',ctaText:'Get Quotes →'},
-      {id:'treats',emoji:'🎁',sticker:'FUN',accent:'#FFD23F',accentDark:'#C9941E',title:'Toy & Treat Box',partner:'Partner #3',bullet1:'Themed box every month',bullet2:'Sized to your dog',bullet3:'Cancel anytime',priceFrom:'$23/mo',ratings:'4.6 ★  ·  1M+ subscribers',ctaText:'Build My Box →'}
+      {id:'treats',emoji:'📦',sticker:'AUTO-SHIP',accent:'#FFD23F',accentDark:'#C9941E',title:'Raw Food Auto-Ship',partner:'Raw Paws Pet Food',bullet1:'Never run out — delivered on schedule',bullet2:'10% recurring commission',bullet3:'Cancel or pause anytime',priceFrom:'from $0.44/oz',ratings:'10% recurring  ·  $160 avg order',ctaText:'Set up Auto-Ship →',ctaLink:'https://www.anrdoezrs.net/click-101748061-17234936'},
     ],
     cat:[
-      {id:'fresh-food',emoji:'🐟',sticker:'FRESH',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Vet-Formulated Wet Food',partner:'Partner #1',bullet1:'Real fish & poultry, no fillers',bullet2:'Portioned per cat',bullet3:'Free first 2 weeks',priceFrom:'$1.50/day',ratings:'4.8 ★  ·  120k+ cats',ctaText:'Try Fresh →'},
+      {id:'fresh-food',emoji:'🐟',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Cat Food',partner:'Raw Paws Pet Food',bullet1:'Small-batch frozen raw, made weekly',bullet2:'10% base commission · $160 avg order',bullet3:'Same-day nationwide free shipping',priceFrom:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',ctaText:'Shop Raw Paws →',ctaLink:'https://www.dpbolvw.net/click-101748061-17234885'},
       {id:'insurance',emoji:'🛡️',sticker:'SAFETY',accent:'#A78BFA',accentDark:'#6D49C7',title:'Cat Insurance Comparison',partner:'Partner #2',bullet1:'Compare 10+ plans free',bullet2:'Avg payout 80% of vet bill',bullet3:'Dental + chronic covered',priceFrom:'from $11/mo',ratings:'★★★★★  ·  Top-rated 2026',ctaText:'Get Quotes →'},
-      {id:'treats',emoji:'🎁',sticker:'FUN',accent:'#FFD23F',accentDark:'#C9941E',title:'Cat Toy & Treat Box',partner:'Partner #3',bullet1:'Themed enrichment box',bullet2:'Catnip + crinkle toys',bullet3:'Cancel anytime',priceFrom:'$18/mo',ratings:'4.5 ★  ·  280k+ subs',ctaText:'Build My Box →'}
+      {id:'treats',emoji:'📦',sticker:'AUTO-SHIP',accent:'#FFD23F',accentDark:'#C9941E',title:'Raw Food Auto-Ship',partner:'Raw Paws Pet Food',bullet1:'Never run out — delivered on schedule',bullet2:'10% recurring commission',bullet3:'Cancel or pause anytime',priceFrom:'from $0.44/oz',ratings:'10% recurring  ·  $160 avg order',ctaText:'Set up Auto-Ship →',ctaLink:'https://www.anrdoezrs.net/click-101748061-17234936'},
     ]
   };
   var SOURCES = [{name:'APPA',full:'2026 State of the Industry Report'},{name:'AVMA',full:'Pet Ownership & Demographics 2026'},{name:'NAPHIA',full:'Pet Health Insurance Report 2026'},{name:'BLS',full:'Veterinary Services CPI · Feb 2026'},{name:'MarketWatch',full:'Annual cost of pet ownership'}];
@@ -672,9 +672,9 @@ function renderOffers(s,costs){
         (o.id==='fresh-food'?'<div class="offer-context">You currently spend ~<strong>$'+monthlyFood+'/mo</strong> on food.</div>':'')+
         (o.id==='insurance'?'<div class="offer-context">Your vet budget is ~<strong>$'+monthlyVet+'/mo</strong>. One emergency = $3–10k.</div>':'')+
         (o.id==='treats'?'<div class="offer-context">Replace random toy-store runs with a curated monthly drop.</div>':'')+
-        '<a class="offer-cta" href="#">'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
+        '<a class="offer-cta" href="'+(o.ctaLink||'#')+'"'+(o.ctaLink?' target="_blank" rel="noopener"':'')+'>'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
     }).join('')+
-  '</div><p class="offers-disclosure">Disclosure: links above are placeholders. In production they\'re affiliate links — we may earn a commission at no cost to you.</p></section>'
+  '</div><p class="offers-disclosure">Disclosure: some links above are affiliate links — we may earn a commission at no cost to you.</p></section>'
 }
 
 function renderFAQ(s){
