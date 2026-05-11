@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+*.swp
+*.swo
+
+# Cloudflare Wrangler
+.wrangler/
+
+# IDE / Editor
+.claude/
+.idea/
+.vscode/
+*.sublime-*
+
+# Environment / secrets (if any)
+.env
+.env.local
+*.key

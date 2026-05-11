@@ -1,0 +1,11 @@
+# PetExpenses.com
+
+Pet cost calculator for dogs and cats. Get personalized annual expense breakdowns — food, vet, insurance, grooming, supplies, and smart savings tips.
+
+## Pages
+
+- [Dog & Cat Cost Calculator](https://petexpenses.com/) — Calculate your pet's annual expenses by breed, size, and age. Powered by React with PostHog analytics.
+
+## About
+
+Single-page interactive tool built from 2026 US averages (APPA, AVMA, NAPHIA, BLS). No signup, no paywall.
