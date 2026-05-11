@@ -241,7 +241,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .proof-who strong{color:var(--ink);font-weight:700}
 .press-strip{max-width:1100px;margin:36px auto 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 28px;padding:18px 24px;background:rgba(27,19,64,.04);border-radius:var(--radius-pill)}
 .press-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
-.press-label-small{font-family:var(--mono);font-size:10px;color:var(--ink-mute);opacity:.6}
+.press-label-small{font-family:var(--mono);font-size:10px;color:var(--ink-mute)}
 .press-logo{font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em;color:var(--ink-soft);opacity:.6}
 .sources-section{padding:8px 24px 64px}
 .sources-card{max-width:1160px;margin:0 auto;background:var(--ink);color:var(--cream);border-radius:var(--radius-xl);padding:44px 48px;display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:center;position:relative;overflow:hidden;border:2.5px solid var(--ink);box-shadow:6px 6px 0 var(--sun)}
@@ -300,8 +300,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <span>petexpenses<span class="brand-dot">.</span>com</span>
   </a>
   <div class="site-nav-mid">
-    <a id="nav-dog" class="active">🐕 Dogs</a>
-    <a id="nav-cat">🐈 Cats</a>
+    <a id="nav-dog" href="#calculator" class="active">🐕 Dogs</a>
+    <a id="nav-cat" href="#calculator">🐈 Cats</a>
     <a href="#sources">Data</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -549,12 +549,8 @@ var state={
   cat:{breed:'Maine Coon',weight:16,age:'adult',activity:'moderate',coat:'long'}
 };
 function curState(){return state[state.species]}
-function setState(field,val){state[state.species][field]=val; render()}
-function setSpecies(s){state.species=s; render()}
 
-// ==============================================================
-// RENDER FUNCTIONS
-// ==============================================================
+// Full re-render (species switch, breed change, coat/age/activity change)
 function render(){
   var s=state.species,st=curState(),isDog=s==='dog',acc=isDog?'#FF5A3C':'#FF8FB1'
   var bd=getBreed(s,st.breed)
@@ -567,13 +563,36 @@ function render(){
   document.getElementById('offers').innerHTML=renderOffers(s,costs)
   document.getElementById('faq').innerHTML=renderFAQ(s)
 
-  // Nav active state
   document.getElementById('nav-dog').className=s==='dog'?'active':''
   document.getElementById('nav-cat').className=s==='cat'?'active':''
 }
 
+// Lightweight update: only recalculate result when weight slider moves
+function renderWeight(weight){
+  var s=state.species,st=curState(),isDog=s==='dog',acc=isDog?'#FF5A3C':'#FF8FB1'
+  st.weight=weight
+  var bd=getBreed(s,st.breed)
+  var costs=calcCosts(s,weight,st.age,st.activity,st.coat,bd)
+  // Update slider value display inline (no innerHTML swap)
+  var valEl=document.querySelector('.bigslider-value')
+  if(valEl) valEl.textContent=weight+' lb'
+  // Update slider track fill via CSS var
+  var ws=document.getElementById('weight-slider')
+  var wMin=isDog?4:4,wMax=isDog?160:25
+  if(ws) ws.style.setProperty('--pct',((weight-wMin)/(wMax-wMin)*100)+'%')
+  // Only re-render result + offers (skip hero, calc, toggle, faq)
+  document.getElementById('result').innerHTML=renderResult(s,costs,bd,st,isDog,acc)
+  document.getElementById('offers').innerHTML=renderOffers(s,costs)
+}
+
+function setState(field,val){
+  state[state.species][field]=val
+  render()
+}
+function setSpecies(s){state.species=s; render()}
+
 function renderHero(s,isDog){
-  return '<section class="hero"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div><div class="hero-grid"><div class="hero-left"><div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div><h1 class="hero-h1">How much does<br>your <span class="'+(isDog?'h1-accent-orange':'h1-accent-pink')+'">'+(isDog?'dog':'cat')+'</span> <span class="h1-stamp">really</span><br>cost a year?</h1><p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p><div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div></div><div class="hero-right"><div class="hero-photo'+(isDog?'':' hero-photo-cat')+'"><img src="hero-image.jpg" alt="'+(isDog?'Dog':'Cat')+' cost calculator" class="hero-photo-img"></div><div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div><div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px">'+
+  return '<section class="hero"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div><div class="hero-grid"><div class="hero-left"><div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div><h1 class="hero-h1">How much does<br>your <span class="'+(isDog?'h1-accent-orange':'h1-accent-pink')+'">'+(isDog?'dog':'cat')+'</span> <span class="h1-stamp">really</span><br>cost a year?</h1><p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p><div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div></div><div class="hero-right"><div class="hero-photo'+(isDog?'':' hero-photo-cat')+'"><img src="hero-image.jpg" alt="'+(isDog?'Dog':'Cat')+' cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div><div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div><div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px">'+
   '<svg viewBox="0 0 40 40" width="16" height="16" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg>'+
   '<span>save up to <strong>$840/yr</strong></span></div><div class="deco-sticker deco-rating" style="transform:rotate(-4deg);bottom:-10px;left:20px"><span class="deco-stars">★★★★★</span><span>"finally a calculator that<br>doesn\'t want my email"</span></div></div></div></section>'
 }
@@ -612,7 +631,7 @@ function renderCalculator(s,st,bd,acc,isDog){
 
   return '<section class="calc-wrap" id="calculator"><div class="calc-card"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.04) 1.4px,transparent 1.6px);background-size:16px 16px;pointer-events:none" aria-hidden="true"></div><div class="calc-card-inner"><div class="calc-header"><div class="calc-title-sticker sticker" style="transform:rotate(-3deg);display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream)"><span>About your '+s+'</span><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFF7E8"/><circle cx="8" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="32" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="14" cy="5" r="3.6" fill="#FFF7E8"/><circle cx="26" cy="5" r="3.6" fill="#FFF7E8"/></svg></div><p class="calc-sub">Slide it around. Numbers update live as you go.</p></div><div class="calc-grid"><div class="calc-field full"><label class="calc-label">Breed<span class="calc-label-hint">type to auto-fill size &amp; coat</span></label><div class="breed-search"><input class="breed-input" id="breed-input" value="'+br.replace(/"/g,'&quot;')+'" placeholder="'+(isDog?'e.g. Labrador, French Bulldog…':'e.g. Maine Coon, Ragdoll…')+'" autocomplete="off">'+matchHtml+'</div>'+
     (bd?'<div class="breed-note" style="border-left-color:'+acc+'"><svg viewBox="0 0 40 40" width="14" height="14" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="'+acc+'"/><circle cx="8" cy="14" r="4.5" fill="'+acc+'"/><circle cx="32" cy="14" r="4.5" fill="'+acc+'"/><circle cx="14" cy="5" r="3.6" fill="'+acc+'"/><circle cx="26" cy="5" r="3.6" fill="'+acc+'"/></svg> <strong>'+bd.name+'</strong> · '+bd.note+'</div>':'')+
-    '</div><div class="calc-field full"><div class="bigslider"><div class="bigslider-head"><div class="bigslider-label">Weight (lb)</div><div class="bigslider-value" style="color:'+acc+'">'+w+' lb</div></div><div class="bigslider-track-wrap"><input type="range" class="bigslider-input" id="weight-slider" min="'+wMin+'" max="'+wMax+'" step="'+wStep+'" value="'+w+'" style="--pct:'+pct+'%;--accent:'+acc+'"></div><div class="bigslider-ticks">'+wTicks.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div></div>'+
+    '</div><div class="calc-field full"><div class="bigslider"><div class="bigslider-head"><div class="bigslider-label">Weight (lb)</div><div class="bigslider-value" style="color:'+acc+'">'+w+' lb</div></div><div class="bigslider-track-wrap"><input type="range" class="bigslider-input" id="weight-slider" aria-label="Weight in pounds" min="'+wMin+'" max="'+wMax+'" step="'+wStep+'" value="'+w+'" style="--pct:'+pct+'%;--accent:'+acc+'"></div><div class="bigslider-ticks">'+wTicks.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div></div>'+
     '<div class="calc-field"><label class="calc-label">Life stage</label><div class="pill-seg">'+ageOpts.map(function(o){return'<button class="pill-seg-btn'+(age===o.v?' active':'')+'" data-action="set-age" data-value="'+o.v+'"'+(age===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
     '<div class="calc-field"><label class="calc-label">Activity</label><div class="pill-seg">'+[{v:'low',l:'Chill'},{v:'moderate',l:'Normal'},{v:'high',l:'Bouncy'}].map(function(o){return'<button class="pill-seg-btn'+(act===o.v?' active':'')+'" data-action="set-activity" data-value="'+o.v+'"'+(act===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
     '<div class="calc-field full"><label class="calc-label">Coat</label><div class="pill-seg">'+coatOpts.map(function(o){return'<button class="pill-seg-btn'+(coat===o.v?' active':'')+'" data-action="set-coat" data-value="'+o.v+'"'+(coat===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
@@ -739,7 +758,7 @@ document.addEventListener('mousedown',function(e){
 // Input delegation (single listener for all inputs)
 document.body.addEventListener('input',function(e){
   if(e.target.id==='weight-slider'){
-    setState('weight',Number(e.target.value))
+    renderWeight(Number(e.target.value))
   } else if(e.target.id==='breed-input'){
     state[state.species].breed=e.target.value
     render()
