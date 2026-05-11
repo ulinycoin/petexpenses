@@ -1,0 +1,15 @@
+# Cloudflare Pages configuration
+# Auto-generated for petexpenses.com
+# After connecting the repo in Cloudflare Dashboard, every push → main auto-deploys
+
+name = "pet-expenses"
+compatibility_date = "2026-05-11"
+
+[build]
+  command = "echo 'static site — no build step'"
+  output_dir = "/"
+
+[[redirects]]
+  from = "/cat-cost.html"
+  to = "/"
+  status = 301
