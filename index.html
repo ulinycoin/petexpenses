@@ -717,6 +717,7 @@ document.getElementById('nav-dog').addEventListener('click',function(){setSpecie
 document.getElementById('nav-cat').addEventListener('click',function(){setSpecies('cat')})
 
 // All data-action clicks via delegation on body (single listener)
+if(document.body){
 document.body.addEventListener('click',function(e){
   // Species toggle buttons
   var speciesBtn=e.target.closest('[data-action="set-species"]')
@@ -763,6 +764,7 @@ document.body.addEventListener('click',function(e){
     return
   }
 })
+}
 
 // Close breed list on outside click (single listener)
 document.addEventListener('mousedown',function(e){
@@ -773,6 +775,7 @@ document.addEventListener('mousedown',function(e){
 })
 
 // Input delegation (single listener for all inputs)
+if(document.body){
 document.body.addEventListener('input',function(e){
   if(e.target.id==='weight-slider'){
     renderWeight(Number(e.target.value))
@@ -783,6 +786,7 @@ document.body.addEventListener('input',function(e){
     if(bi){bi.focus();bi.selectionStart=bi.selectionEnd=bi.value.length}
   }
 })
+}
 
 // ==============================================================
 // PARSE SHARED URL PARAMS
