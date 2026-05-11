@@ -21,5 +21,19 @@
 node_modules/
 package-lock.json
 
-# Unused bundle artifact
+# Old React/bundle artifacts (no longer used — vanilla JS inline)
+app.js
 app.min.js
+components.js
+bundle.js
+bundle.min.js
+data.js
+react.production.min.js
+react-dom.production.min.js
+styles.css
+cat-cost.html
+app.jsx
+components.jsx
+
+# Old hero-png (replaced by optimized jpg)
+hero-image.png

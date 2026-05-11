@@ -13,3 +13,6 @@ compatibility_date = "2026-05-11"
   from = "/cat-cost.html"
   to = "/"
   status = 301
+
+[env.production]
+  # No build step needed — single index.html with inline CSS/JS

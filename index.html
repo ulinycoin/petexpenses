@@ -5,89 +5,769 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>petexpenses.com — How much does your dog (or cat) really cost?</title>
 <meta name="description" content="Free pet cost calculator. Honest 2026 US averages for dogs and cats — by breed, weight, age & activity. No signup, cited data, shareable result.">
-<meta name="fo-verify" content="cdda9a3e-15bb-40c6-a9a7-8b13844d5e3e">
-<meta name='impact-site-verification' value='fc5750a2-ef0a-40e4-aeb5-b22ea9bff073'>
-<meta property="og:title" content="Pet Cost Calculator — How Much Does Your Dog or Cat Really Cost?">
-<meta property="og:description" content="Free pet cost calculator. Get a personalized annual expense breakdown for your dog or cat — by breed, size, and age: food, vet, insurance, grooming, and smart savings tips.">
+
+<!-- OG -->
+<meta property="og:title" content="petexpenses.com — Pet Cost Calculator">
+<meta property="og:description" content="Free pet cost calculator. 2026 US averages by breed, weight, age & activity. No signup.">
 <meta property="og:image" content="https://petexpenses.com/og-dog.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://petexpenses.com">
-<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://petexpenses.com">
-<meta property="og:locale" content="en_US">
 
-<!-- JSON-LD FAQ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"How much does a dog cost per year?","acceptedAnswer":{"@type":"Answer","text":"In 2026, the average annual cost of owning a dog in the US is $1,500–$3,500 depending on size, breed, age, and location. Small dogs cost less per year but live longer; large dogs cost more annually but have shorter lifespans."}},
-    {"@type":"Question","name":"How much does a cat cost per year?","acceptedAnswer":{"@type":"Answer","text":"In 2026, the average annual cost of owning a cat in the US is $900–$2,000 depending on breed, age, and location. Indoor cats generally cost less than outdoor cats; purebred cats cost more than mixed-breed rescues."}},
-    {"@type":"Question","name":"What's the most expensive part of owning a pet?","acceptedAnswer":{"@type":"Answer","text":"Food and veterinary care are the two largest expenses. For dogs, food accounts for $360–$2,000/year and vet care ranges from $200 to $1,500+ per year. For cats, food accounts for $240–$720/year and vet care ranges from $180 to $650+ per year."}},
-    {"@type":"Question","name":"Should I get pet insurance for my pet?","acceptedAnswer":{"@type":"Answer","text":"Pet insurance is most valuable for brachycephalic breeds, high-cancer-risk breeds, and senior pets. Average monthly premiums are $30–$90 for dogs and $15–$40 for cats. One emergency surgery can cost $3,000–$10,000."}},
-    {"@type":"Question","name":"Which dog breeds are cheapest to own?","acceptedAnswer":{"@type":"Answer","text":"Small, healthy breeds cost the least: Rat Terriers, Jack Russell Terriers, Papillons, and Italian Greyhounds have the lowest vet costs and eat less."}},
-    {"@type":"Question","name":"Which cat breeds are cheapest to own?","acceptedAnswer":{"@type":"Answer","text":"Mixed-breed domestic shorthairs are the most economical. Among purebreds, American Shorthairs and Russian Blues generally have lower health risks and vet costs."}}
-  ]
-}
-</script>
-
-<!-- Preload LCP image -->
-<link rel="preload" as="image" href="hero-image.jpg" fetchpriority="high">
-
-<!-- Preconnect to third-party origins -->
-<link rel="preconnect" href="https://eu.posthog.com">
-
-<!-- Google Fonts: async loading to avoid render-blocking -->
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Async primary stylesheet -->
-<link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="styles.css"></noscript>
+<!-- Preload hero -->
+<link rel="preload" as="image" href="hero-image.jpg" fetchpriority="high">
 
-<!-- Critical inline: body background + thin loading bar -->
+<!-- ALL STYLES INLINE -->
 <style>
-body { margin:0; background:#FFF7E8; color:#1B1340; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
-#loader { position:fixed; top:0; left:0; width:100%; height:3px; z-index:9999; overflow:hidden; }
-#loader-fill { display:block; height:100%; width:40%; background:linear-gradient(90deg,#FF5A3C,#FF8FB1,#FFD23F); border-radius:2px; animation:slide 1.2s ease-in-out infinite; }
-@keyframes slide { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
+:root {
+  --ink:       #1B1340;
+  --ink-soft:  #4A3F6F;
+  --ink-mute:  #6B6490;
+  --coral:     #FF5A3C;
+  --coral-dk:  #E03812;
+  --coral-soft:#FFE3DA;
+  --pink:      #FF8FB1;
+  --pink-dk:   #E55E89;
+  --pink-soft: #FFE2EC;
+  --sun:       #FFD23F;
+  --sun-dk:    #C9941E;
+  --sun-soft:  #FFF1B8;
+  --mint:      #6EE7B7;
+  --mint-dk:   #0E9F6E;
+  --mint-soft: #C7F4DD;
+  --lavender:  #A78BFA;
+  --lav-dk:    #6D49C7;
+  --lav-soft:  #E6DCFF;
+  --cream:     #FFF7E8;
+  --cream-2:   #FBEFD6;
+  --paper:     #FFFFFF;
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius:    14px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 0 rgba(27,19,64,0.05), 0 1px 3px rgba(27,19,64,0.06);
+  --shadow:    0 2px 0 rgba(27,19,64,0.06), 0 8px 22px -8px rgba(27,19,64,0.18);
+  --shadow-lg: 0 4px 0 rgba(27,19,64,0.10), 0 22px 50px -16px rgba(27,19,64,0.30);
+  --sticker-shadow: 4px 4px 0 rgba(27,19,64,0.10), 0 12px 30px -10px rgba(27,19,64,0.18);
+  --sticker-shadow-strong: 6px 6px 0 var(--ink);
+  --display: 'Bricolage Grotesque','Geist',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --body:    'Geist',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:    'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.section-head{max-width:1160px;margin:0 auto;padding:56px 24px 28px;text-align:center}
+.section-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding:6px 14px;background:rgba(255,255,255,.7);border:1.5px solid rgba(27,19,64,.1);border-radius:var(--radius-pill);margin-bottom:18px}
+.section-eyebrow.light{color:var(--sun-soft);background:rgba(255,255,255,.08);border-color:rgba(255,247,232,.2)}
+.section-h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.025em;font-variation-settings:"wdth" 95}
+.h2-accent{color:var(--coral-dk)}
+.section-sub{margin-top:12px;font-size:1.05rem;color:var(--ink-soft);max-width:640px;margin-left:auto;margin-right:auto;text-wrap:pretty}
+.site-nav{display:flex;align-items:center;gap:24px;padding:16px 32px;position:sticky;top:0;z-index:100;background:rgba(255,247,232,.85);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(27,19,64,.07)}
+.site-brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;white-space:nowrap}
+.brand-dot{color:var(--coral)}
+.site-nav-mid{display:flex;align-items:center;gap:6px;margin:0 auto}
+.site-nav-mid a{padding:8px 14px;border-radius:var(--radius-pill);font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:background .15s,color .15s;cursor:pointer}
+.site-nav-mid a:hover{background:rgba(27,19,64,.05);color:var(--ink)}
+.site-nav-mid a.active{background:var(--ink);color:var(--cream)}
+.site-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;font-size:.92rem;transition:transform .15s,background .15s;white-space:nowrap}
+.site-cta:hover{background:var(--coral);transform:translateY(-1px)}
+@media(max-width:800px){.site-nav-mid{display:none}.site-cta{padding:8px 14px;font-size:.85rem}}
+.hero{position:relative;padding:56px 24px 80px;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,210,63,.32),transparent 60%),radial-gradient(ellipse 70% 55% at 10% 90%,rgba(255,143,177,.22),transparent 60%),var(--cream)}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;position:relative}
+.hero-left{position:relative;z-index:2}
+.hero-pretitle{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding:6px 14px;background:rgba(255,255,255,.85);border:1.5px solid rgba(27,19,64,.1);border-radius:var(--radius-pill);margin-bottom:20px}
+.hero-h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6.3vw,5.6rem);line-height:.95;letter-spacing:-.04em;font-variation-settings:"wdth" 90;color:var(--ink)}
+.h1-accent-orange{color:var(--coral)}
+.h1-accent-pink{color:var(--pink-dk)}
+.h1-stamp{display:inline-block;background:var(--sun);padding:0 12px;border-radius:8px;transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink);font-style:italic}
+.hero-sub{margin-top:24px;font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--ink-soft);max-width:540px;text-wrap:pretty}
+.hero-sub strong{color:var(--ink);font-weight:600}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.hbadge{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--paper);border:1.5px solid rgba(27,19,64,.1);border-radius:var(--radius-pill);font-size:.86rem;font-weight:500;color:var(--ink);box-shadow:var(--shadow-sm)}
+.hero-right{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center}
+.hero-photo{position:relative;width:100%;max-width:460px;aspect-ratio:4/5;border-radius:240px 240px 60px 60px/220px 220px 80px 80px;background:radial-gradient(ellipse at 50% 30%,rgba(255,210,63,.6),transparent 70%),repeating-linear-gradient(45deg,rgba(27,19,64,.06) 0 2px,transparent 2px 14px),var(--coral-soft);border:3px solid var(--ink);box-shadow:var(--sticker-shadow-strong);overflow:hidden;transform:rotate(-3deg)}
+.hero-photo-cat{background:radial-gradient(ellipse at 50% 30%,rgba(255,210,63,.6),transparent 70%),repeating-linear-gradient(45deg,rgba(27,19,64,.06) 0 2px,transparent 2px 14px),var(--pink-soft)}
+.hero-photo-img{width:100%;height:100%;object-fit:contain;display:block}
+.deco-sticker{position:absolute}
+.deco-paid{top:10px;left:-20px;background:var(--ink);color:var(--cream);padding:14px 18px;border-radius:18px;text-align:center}
+.deco-paid-amount{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--sun);letter-spacing:-.02em;line-height:1}
+.deco-paid-cap{font-size:11px;margin-top:4px;color:var(--cream);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+.deco-paid-src{font-size:9px;margin-top:6px;color:rgba(255,247,232,.85);font-family:var(--mono)}
+.deco-savings{bottom:60px;right:-10px;background:var(--mint);color:var(--ink);padding:12px 18px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem}
+.deco-savings strong{font-family:var(--display);font-size:1.1rem}
+.deco-rating{bottom:-10px;left:20px;background:var(--paper);padding:14px 18px;border-radius:14px;display:flex;flex-direction:column;gap:4px;font-size:.86rem;color:var(--ink);max-width:240px}
+.deco-stars{color:var(--sun-dk);letter-spacing:1px}
+@media(max-width:900px){.hero{padding:36px 16px 48px}.hero-grid{grid-template-columns:1fr;gap:24px}.hero-right{min-height:360px}.hero-photo{max-width:340px;aspect-ratio:5/6}.deco-paid{top:-10px;left:-10px;padding:10px 14px}.deco-paid-amount{font-size:1.5rem}.deco-savings{bottom:40px;right:-10px}.deco-rating{display:none}}
+.sticker{display:inline-block;background:var(--paper);border:2.5px solid var(--ink);border-radius:14px;padding:10px 14px;box-shadow:var(--sticker-shadow-strong);transition:transform .18s ease}
+.sticker:hover{transform:rotate(0deg) translateY(-2px)!important}
+.species-toggle-wrap{display:flex;justify-content:center;padding:24px 24px 0;position:relative;z-index:5;margin-top:-32px}
+.species-toggle{display:inline-flex;background:var(--ink);padding:6px;border-radius:var(--radius-pill);gap:4px;box-shadow:var(--shadow-lg)}
+.st-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:var(--radius-pill);font-weight:600;font-size:1rem;color:rgba(255,247,232,.65);transition:all .18s;white-space:nowrap}
+.st-btn:hover{color:var(--cream)}
+.st-emoji{font-size:1.3rem}
+.st-btn.active{background:var(--coral);color:var(--cream)}
+.st-btn.st-cat.active{background:var(--pink);color:var(--ink)}
+@media(max-width:540px){.st-label{display:none}.st-btn{padding:12px 16px}}
+.calc-wrap{padding:40px 24px 0;display:flex;justify-content:center}
+.calc-card{position:relative;width:100%;max-width:1160px;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:0;box-shadow:6px 6px 0 var(--ink),0 24px 50px -20px rgba(27,19,64,.28);overflow:hidden}
+.calc-card-inner{position:relative;padding:44px 48px 48px}
+.calc-header{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.calc-title-sticker{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);font-family:var(--display);font-weight:800;font-size:1.4rem;padding:12px 20px}
+.calc-sub{color:var(--ink-soft);font-size:1rem}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.calc-field{display:flex;flex-direction:column;gap:10px}
+.calc-field.full{grid-column:1/-1}
+.calc-label{font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:flex;align-items:baseline;gap:8px}
+.calc-label-hint{text-transform:none;letter-spacing:0;font-family:var(--body);font-size:11px;color:var(--ink-mute);font-weight:400}
+@media(max-width:700px){.calc-card-inner{padding:28px 22px 32px}.calc-grid{grid-template-columns:1fr;gap:22px}.calc-header{gap:12px;margin-bottom:22px}.calc-title-sticker{font-size:1.15rem;padding:10px 16px}}
+.breed-search{position:relative}
+.breed-input{width:100%;padding:14px 16px;background:var(--cream);border:2px solid var(--ink);border-radius:var(--radius);font:inherit;font-size:1.05rem;color:var(--ink);transition:box-shadow .18s}
+.breed-input:focus{outline:none;box-shadow:4px 4px 0 var(--coral)}
+.breed-input::placeholder{color:var(--ink-mute)}
+.breed-list{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:50;list-style:none;background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:6px;max-height:280px;overflow-y:auto;box-shadow:4px 4px 0 var(--ink)}
+.breed-list li{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:.95rem}
+.breed-list li:hover,.breed-list li.active{background:var(--coral-soft)}
+.bl-name{font-weight:600}
+.bl-meta{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-mute)}
+.breed-note{display:flex;align-items:center;gap:8px;margin-top:8px;padding:10px 14px;background:var(--cream-2);border-left:4px solid var(--coral);border-radius:8px;font-size:.88rem;color:var(--ink)}
+.bigslider{background:var(--cream);border:2px solid var(--ink);border-radius:var(--radius);padding:18px 22px}
+.bigslider-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.bigslider-label{font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.bigslider-value{font-family:var(--display);font-weight:800;font-size:1.8rem;letter-spacing:-.02em}
+.bigslider-input{appearance:none;-webkit-appearance:none;width:100%;height:10px;background:linear-gradient(to right,var(--accent,#FF5A3C) 0%,var(--accent,#FF5A3C) var(--pct,0%),rgba(27,19,64,.1) var(--pct,0%),rgba(27,19,64,.1) 100%);border-radius:var(--radius-pill);outline:none}
+.bigslider-input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);box-shadow:2px 2px 0 var(--ink);cursor:grab;transition:transform .15s}
+.bigslider-input::-webkit-slider-thumb:active{transform:scale(1.1);cursor:grabbing}
+.bigslider-input::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);box-shadow:2px 2px 0 var(--ink);cursor:grab}
+.bigslider-ticks{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-mute);text-transform:uppercase}
+.pill-seg{display:inline-flex;background:var(--cream);border:2px solid var(--ink);border-radius:var(--radius-pill);padding:4px;gap:2px;width:100%}
+.pill-seg-btn{flex:1;padding:11px 14px;border-radius:var(--radius-pill);font-weight:600;font-size:.92rem;color:var(--ink-soft);transition:background .15s,color .15s,transform .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.pill-seg-btn:hover{color:var(--ink)}
+.pill-seg-btn.active{color:var(--cream);box-shadow:2px 2px 0 var(--ink)}
+.result-section{padding:56px 24px 32px}
+.result-stage{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:24px}
+@media(max-width:900px){.result-stage{grid-template-columns:1fr}}
+.rcard{position:relative;border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:32px;overflow:hidden}
+.rcard-total{background:var(--ink);color:var(--cream);box-shadow:6px 6px 0 var(--accent,var(--coral))}
+.rcard-total-inner{position:relative;z-index:2}
+.rcard-total-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px}
+.rcard-stamp{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;background:var(--ink);color:var(--cream);padding:5px 10px;border-radius:6px;font-weight:700}
+.rcard-stamp.dark{background:var(--ink);color:var(--cream)}
+.rcard-breed{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,247,232,.65);padding-top:6px}
+.rcard-total-num{display:flex;align-items:baseline;gap:8px;margin:6px 0 22px}
+.rcard-total-amount{font-family:var(--display);font-weight:800;font-size:clamp(3.6rem,8vw,6.4rem);line-height:1;letter-spacing:-.04em;font-variation-settings:"wdth" 88;color:var(--sun)}
+.rcard-total-unit{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,247,232,.65)}
+.rcard-total-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:16px 0;border-top:1px dashed rgba(255,247,232,.2);border-bottom:1px dashed rgba(255,247,232,.2);margin-bottom:22px}
+.rcard-mini{display:flex;flex-direction:column;gap:4px}
+.rcard-mini-label{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,247,232,.6)}
+.rcard-mini-val{font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;color:var(--cream)}
+.rcard-mini-vs{color:var(--mint)}
+.rcard-share-row{display:flex;flex-wrap:wrap;gap:10px}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;background:rgba(255,247,232,.1);border:1.5px solid rgba(255,247,232,.25);border-radius:var(--radius-pill);color:var(--cream);font-weight:600;font-size:.9rem;transition:background .15s,transform .15s}
+.share-btn:hover{background:rgba(255,247,232,.18);transform:translateY(-1px)}
+.share-btn-primary{background:var(--sun);color:var(--ink);border-color:var(--sun)}
+.share-btn-primary:hover{background:var(--sun-soft)}
+.rcard-share-note{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,247,232,.5)}
+.rcard-breakdown{background:var(--paper);box-shadow:6px 6px 0 var(--ink)}
+.rcard-breakdown-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:24px}
+.rcard-breakdown-title{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;margin-top:8px}
+.breakdown-sticker{display:inline-flex;align-items:center;gap:6px;background:var(--coral);color:var(--cream);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:8px}
+.rcard-breakdown-body{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:center}
+.donut-wrap{position:relative;width:220px;height:220px;justify-self:center}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.donut-center-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
+.donut-center-num{font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:-.02em;color:var(--ink)}
+.rcard-line-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.line-item{display:grid;grid-template-columns:12px 22px 1fr 80px auto auto;align-items:center;gap:10px;font-size:.94rem}
+.line-dot{width:12px;height:12px;border-radius:3px}
+.line-emoji{font-size:1rem}
+.line-label{font-weight:600}
+.line-bar{position:relative;height:8px;background:rgba(27,19,64,.07);border-radius:var(--radius-pill);overflow:hidden}
+.line-bar-fill{display:block;height:100%;transition:width .5s ease}
+.line-amount{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--ink);text-align:right}
+.line-pct{font-family:var(--mono);font-size:11px;color:var(--ink-mute);min-width:30px;text-align:right}
+.rcard-footnote{margin-top:20px;font-size:.82rem;color:var(--ink-mute);text-wrap:pretty}
+.rcard-footnote a{color:var(--coral);font-weight:600}
+.rcard-footnote a:hover{text-decoration:underline}
+@media(max-width:700px){.rcard{padding:24px 22px}.rcard-breakdown-body{grid-template-columns:1fr;gap:18px}.rcard-total-meta{grid-template-columns:1fr 1fr 1fr;gap:8px}.rcard-mini-val{font-size:1.15rem}.line-item{grid-template-columns:10px 20px 1fr auto auto}.line-bar{display:none}}
+.offers-section{padding:0 24px 56px}
+.offers-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.offers-grid{grid-template-columns:1fr}}
+.offer-card{position:relative;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:24px;display:flex;flex-direction:column;box-shadow:4px 4px 0 var(--ink);transition:transform .18s,box-shadow .18s}
+.offer-card:hover{transform:translateY(-4px);box-shadow:6px 8px 0 var(--ink)}
+.offer-sticker-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.offer-sticker{display:inline-flex;align-items:center;gap:8px;background:var(--oa,var(--coral));color:var(--ink);font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;padding:6px 12px;border-radius:6px;border:2.5px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.offer-sticker-emoji{font-size:1.1rem}
+.offer-from{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-soft);background:var(--cream-2);padding:5px 10px;border-radius:var(--radius-pill);font-weight:600}
+.offer-title{font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:4px}
+.offer-partner{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-mute);margin-bottom:14px}
+.offer-bullets{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:14px;font-size:.92rem;color:var(--ink)}
+.offer-context{background:var(--cream);border-radius:10px;padding:10px 12px;font-size:.85rem;color:var(--ink-soft);margin-bottom:18px}
+.offer-context strong{color:var(--ink)}
+.offer-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--cream);padding:14px 20px;border-radius:var(--radius-pill);font-weight:700;font-size:.98rem;margin-top:auto;transition:background .15s,transform .15s}
+.offer-cta:hover{background:var(--oad,var(--coral-dk));transform:translateY(-1px)}
+.offer-ratings{margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.04em;text-align:center}
+.offers-disclosure{max-width:720px;margin:28px auto 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--ink-mute)}
+.hiw-section{padding:0 24px 64px}
+.hiw-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:800px){.hiw-grid{grid-template-columns:1fr}}
+.hiw-step{background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:28px 26px;position:relative;box-shadow:4px 4px 0 var(--ink)}
+.hiw-num{font-family:var(--display);font-weight:800;font-size:3.6rem;line-height:1;letter-spacing:-.04em;color:var(--coral);font-variation-settings:"wdth" 85}
+.hiw-title{font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-.02em;margin:14px 0 8px}
+.hiw-body{color:var(--ink-soft);font-size:.96rem;text-wrap:pretty}
+.hiw-step:nth-child(2) .hiw-num{color:var(--lav-dk)}
+.hiw-step:nth-child(3) .hiw-num{color:var(--mint-dk)}
+.proof-section{padding:0 24px 64px;position:relative}
+.proof-head{padding-bottom:36px}
+.proof-wall{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media(max-width:960px){.proof-wall{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.proof-wall{grid-template-columns:1fr}}
+.proof-card{padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;text-align:left;border-radius:12px;background:var(--paper)}
+.proof-card:nth-child(4n+1){background:var(--cream-2)}
+.proof-card:nth-child(4n+2){background:var(--mint-soft)}
+.proof-card:nth-child(4n+3){background:var(--pink-soft)}
+.proof-card:nth-child(4n){background:var(--sun-soft)}
+.proof-stars{color:var(--sun-dk);letter-spacing:1px;font-size:.95rem}
+.proof-quote{font-size:.96rem;line-height:1.45;color:var(--ink);text-wrap:pretty}
+.proof-who{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-soft);margin-top:4px;display:flex;gap:6px;flex-wrap:wrap}
+.proof-who strong{color:var(--ink);font-weight:700}
+.press-strip{max-width:1100px;margin:36px auto 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 28px;padding:18px 24px;background:rgba(27,19,64,.04);border-radius:var(--radius-pill)}
+.press-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
+.press-label-small{font-family:var(--mono);font-size:10px;color:var(--ink-mute);opacity:.6}
+.press-logo{font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em;color:var(--ink-soft);opacity:.6}
+.sources-section{padding:8px 24px 64px}
+.sources-card{max-width:1160px;margin:0 auto;background:var(--ink);color:var(--cream);border-radius:var(--radius-xl);padding:44px 48px;display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:center;position:relative;overflow:hidden;border:2.5px solid var(--ink);box-shadow:6px 6px 0 var(--sun)}
+.sources-card::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,210,63,.07) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none}
+.sources-h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,3.5vw,2.8rem);letter-spacing:-.03em;line-height:1.05;margin-top:14px}
+.sources-sub{margin-top:12px;color:rgba(255,247,232,.7);font-size:.98rem;text-wrap:pretty}
+.sources-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative}
+.sources-list li{background:rgba(255,247,232,.06);border:1.5px solid rgba(255,247,232,.12);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.sources-list strong{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--sun)}
+.sources-list span{font-size:.82rem;color:rgba(255,247,232,.7)}
+@media(max-width:800px){.sources-card{grid-template-columns:1fr;padding:32px 24px}.sources-list{grid-template-columns:1fr}}
+.blog-section{padding:0 24px 64px}
+.blog-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}
+.blog-card{display:flex;flex-direction:column;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);overflow:hidden;transition:transform .18s,box-shadow .18s;box-shadow:4px 4px 0 var(--ink)}
+.blog-card:hover{transform:translateY(-4px);box-shadow:6px 8px 0 var(--ink)}
+.blog-thumb{position:relative;aspect-ratio:16/9;background:var(--ba,var(--coral));border-bottom:2.5px solid var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.blog-thumb-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(27,19,64,.1) 0 6px,transparent 6px 18px)}
+.blog-thumb-glyph{position:relative;font-family:var(--display);font-weight:800;font-size:7rem;color:var(--ink);line-height:1;transform:rotate(-8deg)}
+.blog-body{padding:22px 24px 26px;flex:1;display:flex;flex-direction:column}
+.blog-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);background:var(--cream-2);padding:4px 10px;border-radius:6px;margin-bottom:12px;align-self:flex-start}
+.blog-title{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;line-height:1.15;margin-bottom:8px;text-wrap:balance}
+.blog-excerpt{color:var(--ink-soft);font-size:.94rem;text-wrap:pretty;margin-bottom:14px}
+.blog-meta{margin-top:auto;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#C53000;font-weight:600}
+.faq-section{padding:0 24px 64px}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius-lg);overflow:hidden}
+.faq-item[open]{box-shadow:4px 4px 0 var(--coral)}
+.faq-item summary{list-style:none;cursor:pointer;padding:18px 22px;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;position:relative;padding-right:48px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:22px;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--coral);line-height:1;transition:transform .18s}
+.faq-item[open] summary::after{content:'–'}
+.faq-a{padding:0 22px 20px;color:var(--ink-soft);font-size:.96rem;line-height:1.6;text-wrap:pretty}
+.site-footer{background:var(--ink);color:var(--cream);padding:56px 24px 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,210,63,.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none}
+.footer-top{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:48px;position:relative;padding-bottom:32px;border-bottom:1px dashed rgba(255,247,232,.2)}
+@media(max-width:800px){.footer-top{grid-template-columns:1fr;gap:28px}}
+.footer-mark{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+.footer-tagline{margin-top:12px;color:rgba(255,247,232,.6);font-size:.92rem;text-wrap:pretty}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:540px){.footer-cols{grid-template-columns:1fr 1fr}}
+.footer-col-title{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun);margin-bottom:14px;font-weight:700}
+.footer-cols a{display:block;padding:4px 0;font-size:.92rem;color:rgba(255,247,232,.75);transition:color .15s}
+.footer-cols a:hover{color:var(--cream)}
+.footer-bottom{max-width:1160px;margin:24px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,247,232,.45);position:relative}
+.footer-disclosure{max-width:700px;text-align:right}
+@media(max-width:700px){.footer-disclosure{text-align:left}}
 </style>
-
-<!-- PostHog: deferred until after page load to avoid blocking main thread -->
-<script>
-window.addEventListener('load', function() {
-  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0)}(document,window.posthog||[]);
-  posthog.init('phc_6iTpA8vFIxlQ8HxmPsoMmtj4sqgCUWiZQMOpfSfyvxe', {api_host: 'https://eu.posthog.com'});
-});
-</script>
 </head>
 <body>
 
-<!-- Thin animated loading bar — instant FCP, zero CLS -->
-<div id="loader"><span id="loader-fill"></span></div>
+<!-- NAV (static) -->
+<nav class="site-nav">
+  <a class="site-brand" href="#">
+    <svg viewBox="0 0 40 40" width="26" height="26" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg>
+    <span>petexpenses<span class="brand-dot">.</span>com</span>
+  </a>
+  <div class="site-nav-mid">
+    <a id="nav-dog" class="active">🐕 Dogs</a>
+    <a id="nav-cat">🐈 Cats</a>
+    <a href="#sources">Data</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#calculator" class="site-cta">Run the math →</a>
+</nav>
 
-<!-- React app mount -->
-<main><div id="root"></div></main>
+<!-- RENDER TARGETS -->
+<div id="hero"></div>
+<div id="species-toggle"></div>
+<div id="calculator"></div>
+<div id="result"></div>
+<div id="offers"></div>
+<div id="how-it-works"></div>
+<div id="social-proof"></div>
+<div id="sources"></div>
+<div id="blog"></div>
+<div id="faq"></div>
 
-<!-- React + ReactDOM local (avoids unpkg DNS/latency) -->
-<script src="react.production.min.js" defer></script>
-<script src="react-dom.production.min.js" defer></script>
+<!-- FOOTER (static) -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-mark">
+        <svg viewBox="0 0 40 40" width="28" height="28" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg>
+        <span>petexpenses<span class="brand-dot">.</span>com</span>
+      </div>
+      <p class="footer-tagline">Honest pet budgeting since 2026.<br>Built for owners who love their pet — and their wallet.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <div class="footer-col-title">Calculators</div>
+        <a href="#calculator">Dog</a>
+        <a href="#calculator">Cat</a>
+        <a href="#">Insurance compare</a>
+        <a href="#">Food cost</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Read</div>
+        <a href="#">Blog</a>
+        <a href="#sources">Data sources</a>
+        <a href="#faq">FAQ</a>
+        <a href="#">Methodology</a>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <a href="#">Who we are</a>
+        <a href="#">Contact</a>
+        <a href="#">Disclosure</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 petexpenses.com</span>
+    <span class="footer-disclosure">Estimates based on 2026 US averages. Actual costs vary by location &amp; health. Not financial or veterinary advice. This site contains affiliate-link placeholders.</span>
+  </div>
+</footer>
 
-<!-- App bundle (deferred) -->
-<script src="bundle.min.js" defer></script>
-
-<!-- Remove loading bar once React hydrates -->
+<!-- ALL JAVASCRIPT (vanilla, no React) -->
 <script>
-window.addEventListener('load', function(){
-  var el = document.getElementById('loader');
-  if(el){ el.style.transition='opacity 0.3s'; el.style.opacity='0'; setTimeout(function(){el.remove()},500); }
-});
-</script>
+// ==============================================================
+// PET DATA
+// ==============================================================
+var PET_DATA = (function () {
+  var DB = {
+    'Chihuahua':['small','short',1.1,1.1,.9,1,'Dental issues common'],
+    'Yorkshire Terrier':['small','long',1.15,1.15,.9,1.4,'Prone to dental & tracheal issues'],
+    'Dachshund':['small','short',1.3,1.3,.95,1,'High risk of back (IVDD) problems'],
+    'Shih Tzu':['small','long',1.2,1.2,.95,1.5,'Brachycephalic; lots of grooming'],
+    'Pomeranian':['small','long',1.1,1.1,.9,1.3,'Dental & luxating patella risk'],
+    'Maltese':['small','long',1.1,1.1,.9,1.4,'Dental & skin issues'],
+    'Cavalier King Charles Spaniel':['small','long',1.5,1.5,1,1.2,'High cardiac & neurological risk'],
+    'Pug':['small','short',1.6,1.6,1,.9,'Brachycephalic syndrome'],
+    'French Bulldog':['small','short',1.7,1.7,1,.9,'Breathing & spine issues'],
+    'Boston Terrier':['small','short',1.4,1.4,1,.9,'Eye & joint issues'],
+    'Miniature Schnauzer':['small','wire',1.15,1.15,1,1.3,'Pancreatitis & bladder stones'],
+    'Jack Russell Terrier':['small','short',1.1,1.1,1,1,'Very healthy; high energy'],
+    'Beagle':['small','short',1.2,1.2,1.1,1,'Obesity & epilepsy risk'],
+    'Cocker Spaniel':['medium','long',1.25,1.25,1,1.4,'Ear & eye issues'],
+    'Miniature Poodle':['small','wire',1.1,1.1,1,1.4,'Healthy; needs grooming'],
+    'Havanese':['small','long',1.1,1.1,.95,1.3,'Joint & eye issues'],
+    'Papillon':['small','long',1.05,1.05,.9,1.1,'Long-lived, healthy'],
+    'Bichon Frise':['small','wire',1.15,1.15,.95,1.4,'Skin allergies; needs grooming'],
+    'Italian Greyhound':['small','short',1.15,1.15,.9,.8,'Fragile bones; dental'],
+    'Lhasa Apso':['small','long',1.15,1.15,.95,1.4,'Kidney & eye issues'],
+    'Rat Terrier':['small','short',1,1,.95,.8,'Very hardy'],
+    'Cockapoo':['small','wire',1.1,1.1,.95,1.4,'Ear infections; grooming'],
+    'Cavapoo':['small','wire',1.15,1.15,.95,1.4,'Possible MVD heart risk'],
+    'Labrador Retriever':['large','short',1.2,1.2,1.1,1,'Hip dysplasia & obesity risk'],
+    'Golden Retriever':['large','long',1.25,1.3,1.1,1.2,'High cancer risk'],
+    'German Shepherd':['large','long',1.3,1.3,1.1,1.1,'Hip dysplasia common'],
+    'Bulldog':['medium','short',1.8,1.8,1,.9,'Very high lifetime vet costs'],
+    'Poodle':['medium','wire',1.1,1.1,1,1.5,"Addison's disease risk"],
+    'Boxer':['large','short',1.4,1.4,1.1,.9,'Heart issues & cancer rate'],
+    'Siberian Husky':['medium','long',1.1,1.1,1.2,1.2,'Eye & hip issues'],
+    'Australian Shepherd':['medium','long',1.15,1.15,1.1,1.2,'MDR1 mutation; epilepsy'],
+    'Border Collie':['medium','long',1.1,1.1,1.1,1.2,'Epilepsy & CEA risk'],
+    'Shiba Inu':['medium','long',1.1,1.1,1,1.1,'Allergies & hip risk'],
+    'Corgi (Pembroke)':['small','long',1.2,1.2,1.05,1.1,'Back & hip; obesity'],
+    'Whippet':['medium','short',1.05,1.05,1,.8,'Very healthy'],
+    'Vizsla':['medium','short',1.1,1.1,1.1,.8,'Epilepsy & hip risk'],
+    'Weimaraner':['large','short',1.2,1.2,1.1,.9,'Bloat & hip risk'],
+    'Samoyed':['medium','long',1.2,1.2,1.1,1.5,'Diabetes & heart issues'],
+    'Chow Chow':['medium','long',1.3,1.3,1,1.4,'Hip & eye issues'],
+    'Akita':['large','long',1.25,1.25,1.1,1.1,'Autoimmune & kidney'],
+    'Rottweiler':['large','short',1.35,1.35,1.1,.9,'Hip & high cancer rate'],
+    'Doberman Pinscher':['large','short',1.3,1.3,1.1,.9,'Cardiomyopathy risk'],
+    'Bernese Mountain Dog':['large','long',1.5,1.6,1.1,1.3,'Short lifespan ~7–8 yrs'],
+    'Dalmatian':['medium','short',1.2,1.2,1,.9,'Deafness & urinary stones'],
+    'Bernedoodle':['large','wire',1.2,1.25,1.1,1.5,'High grooming needs'],
+    'Great Dane':['giant','short',1.4,1.5,1.1,.9,'Bloat; lifespan 7–10 yrs'],
+    'Saint Bernard':['giant','long',1.3,1.4,1.2,1.2,'Hip & heart issues'],
+    'Mastiff':['giant','short',1.3,1.4,1.15,.9,'Hip dysplasia; bloat'],
+    'Newfoundland':['giant','long',1.3,1.35,1.2,1.3,'Heart disease (SAS)'],
+    'Standard Poodle':['large','wire',1.1,1.1,1.05,1.5,"Addison's; bloat risk"],
+    'Cane Corso':['giant','short',1.2,1.3,1.15,.9,'Hip; cherry eye risk']
+  };
+  var CB = {
+    'Domestic Shorthair':['medium','short',1,1,1,.8,'The classic — generally healthy'],
+    'Domestic Longhair':['medium','long',1.05,1.05,1,1.3,'Brushing 2–3× per week'],
+    'Maine Coon':['large','long',1.25,1.3,1.2,1.4,'HCM heart condition risk'],
+    'Ragdoll':['large','long',1.2,1.25,1.1,1.3,'HCM & UTI risk; very affectionate'],
+    'Persian':['medium','long',1.4,1.4,1,1.6,'Brachycephalic; daily grooming'],
+    'Siamese':['medium','short',1.15,1.15,1,.8,'Dental & respiratory issues'],
+    'British Shorthair':['medium','short',1.15,1.2,1,.9,'HCM risk; placid'],
+    'Bengal':['medium','short',1.15,1.15,1.1,.9,'High energy; HCM risk'],
+    'Sphynx':['medium','short',1.4,1.4,1.05,1.2,'Skin care + weekly bathing'],
+    'Scottish Fold':['medium','short',1.5,1.5,1,1,'Osteochondrodysplasia (joint pain)'],
+    'Russian Blue':['medium','short',1,1,1,.9,'Very healthy, low-maintenance'],
+    'Abyssinian':['medium','short',1.15,1.15,1,.8,'Renal amyloidosis risk'],
+    'Norwegian Forest Cat':['large','long',1.2,1.2,1.15,1.4,'HCM & hip dysplasia'],
+    'American Shorthair':['medium','short',1.05,1.05,1,.8,'Generally hardy'],
+    'Exotic Shorthair':['medium','short',1.35,1.35,1,1,'Brachycephalic like Persian'],
+    'Burmese':['medium','short',1.2,1.2,1,.8,'Diabetes & cranial issues'],
+    'Birman':['medium','long',1.1,1.1,1,1.2,'Generally healthy'],
+    'Oriental Shorthair':['medium','short',1.1,1.1,1,.8,'Dental & cardiac risk'],
+    'Devon Rex':['small','short',1.15,1.15,.95,.9,'Patellar luxation'],
+    'Cornish Rex':['small','short',1.15,1.15,.95,.9,'HCM & hypotrichosis'],
+    'Savannah':['large','short',1.2,1.25,1.2,.9,'High energy; pricey vet'],
+    'Manx':['medium','short',1.3,1.3,1,.9,'Manx syndrome (spine)'],
+    'Tonkinese':['medium','short',1.1,1.1,1,.8,'Generally healthy']
+  };
+  var DC = {
+    food:{small:[360,600],medium:[600,1000],large:[900,1500],giant:[1200,2000]},
+    vet:{small:[200,500],medium:[300,700],large:[400,1000],giant:[500,1200]},
+    insurance:{small:[240,480],medium:[360,720],large:[480,960],giant:[600,1200]},
+    grooming:{short:{small:[100,200],medium:[150,300],large:[200,400],giant:[250,500]},long:{small:[200,400],medium:[300,500],large:[400,800],giant:[500,1000]},wire:{small:[180,350],medium:[250,450],large:[350,700],giant:[450,900]}},
+    supplies:{small:[150,300],medium:[200,400],large:[250,500],giant:[300,600]}
+  };
+  var CC = {
+    food:{small:[240,420],medium:[300,600],large:[420,720]},
+    vet:{small:[180,400],medium:[220,500],large:[300,650]},
+    insurance:{small:[180,360],medium:[240,480],large:[300,540]},
+    grooming:{short:{small:[40,120],medium:[60,150],large:[80,180]},long:{small:[120,300],medium:[180,400],large:[240,500]}},
+    supplies:{small:[120,240],medium:[150,300],large:[200,380]}
+  };
+  var AGE = {puppy:{vet:1.3,supplies:1.4},adult:{},senior:{vet:1.6,insurance:1.4}};
+  var ACT = {low:{food:.9},moderate:{},high:{food:1.2,supplies:1.15}};
+  var OFFERS = {
+    dog:[
+      {id:'fresh-food',emoji:'🍖',sticker:'FRESH',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Fresh Vet-Made Meals',partner:'Partner #1',bullet1:'Human-grade meat & veggies',bullet2:'Portioned for your pup',bullet3:'50% off first box',priceFrom:'$2/day',ratings:'4.9 ★  ·  200k+ pups',ctaText:'Try Fresh →'},
+      {id:'insurance',emoji:'🛡️',sticker:'SAFETY',accent:'#A78BFA',accentDark:'#6D49C7',title:'Pet Insurance Comparison',partner:'Partner #2',bullet1:'Compare 10+ plans free',bullet2:'Avg payout 80% of vet bill',bullet3:'Covers accidents & illness',priceFrom:'from $14/mo',ratings:'★★★★★  ·  Top-rated 2026',ctaText:'Get Quotes →'},
+      {id:'treats',emoji:'🎁',sticker:'FUN',accent:'#FFD23F',accentDark:'#C9941E',title:'Toy & Treat Box',partner:'Partner #3',bullet1:'Themed box every month',bullet2:'Sized to your dog',bullet3:'Cancel anytime',priceFrom:'$23/mo',ratings:'4.6 ★  ·  1M+ subscribers',ctaText:'Build My Box →'}
+    ],
+    cat:[
+      {id:'fresh-food',emoji:'🐟',sticker:'FRESH',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Vet-Formulated Wet Food',partner:'Partner #1',bullet1:'Real fish & poultry, no fillers',bullet2:'Portioned per cat',bullet3:'Free first 2 weeks',priceFrom:'$1.50/day',ratings:'4.8 ★  ·  120k+ cats',ctaText:'Try Fresh →'},
+      {id:'insurance',emoji:'🛡️',sticker:'SAFETY',accent:'#A78BFA',accentDark:'#6D49C7',title:'Cat Insurance Comparison',partner:'Partner #2',bullet1:'Compare 10+ plans free',bullet2:'Avg payout 80% of vet bill',bullet3:'Dental + chronic covered',priceFrom:'from $11/mo',ratings:'★★★★★  ·  Top-rated 2026',ctaText:'Get Quotes →'},
+      {id:'treats',emoji:'🎁',sticker:'FUN',accent:'#FFD23F',accentDark:'#C9941E',title:'Cat Toy & Treat Box',partner:'Partner #3',bullet1:'Themed enrichment box',bullet2:'Catnip + crinkle toys',bullet3:'Cancel anytime',priceFrom:'$18/mo',ratings:'4.5 ★  ·  280k+ subs',ctaText:'Build My Box →'}
+    ]
+  };
+  var SOURCES = [{name:'APPA',full:'2026 State of the Industry Report'},{name:'AVMA',full:'Pet Ownership & Demographics 2026'},{name:'NAPHIA',full:'Pet Health Insurance Report 2026'},{name:'BLS',full:'Veterinary Services CPI · Feb 2026'},{name:'MarketWatch',full:'Annual cost of pet ownership'}];
+  var BLOG = [
+    {tag:'NEW · MAY 2026',title:'The $4,272 question: where does it all go?',body:'A line-by-line look at the average American pet budget — and the three categories most owners underestimate.',mins:6,accent:'#FF5A3C'},
+    {tag:'INSURANCE',title:'Is pet insurance worth it? We ran the math on 12 breeds.',body:'For French Bulldogs and Goldens it pays for itself by year three. For others, a high-yield savings account wins.',mins:9,accent:'#A78BFA'},
+    {tag:'FOOD',title:'Kibble vs fresh vs raw: a real cost comparison',body:'We costed out a year of feeding a 50 lb dog across 8 popular brands. The cheapest option will surprise you.',mins:7,accent:'#6EE7B7'}
+  ];
+  var TESTIMONIALS = [
+    {who:'Sara · Brooklyn',pet:'French Bulldog, 3 yrs',quote:'"I had no idea Frenchies cost this much. The insurance suggestion saved me a $4k vet bill."',rotate:-2},
+    {who:'Mike · Austin',pet:'Labrador, 1 yr',quote:'"Bookmarked. Sent to my partner. Now we agree on the food budget."',rotate:1.5},
+    {who:'Priya · Chicago',pet:'Maine Coon, 5 yrs',quote:"Honest answer about my cat's yearly bill. No paywall, no email-grab.",rotate:-1},
+    {who:'Diego · Los Angeles',pet:'Rescue mutt, 7 yrs',quote:"Calculator caught a vet category I'd been ignoring for years.",rotate:2.5}
+  ];
+  return {DOG_BREEDS:DB,CAT_BREEDS:CB,DOG_COSTS:DC,CAT_COSTS:CC,AGE_MULT:AGE,ACTIVITY_MULT:ACT,OFFERS,SOURCES,BLOG,TESTIMONIALS};
+})();
 
+// ==============================================================
+// HELPERS
+// ==============================================================
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function lerpInRange(r,t){return Math.round(r[0]+(r[1]-r[0])*t)}
+
+function sizeFromWeight(s,w){
+  if(s==='dog'){
+    if(w<20) return 'small'; if(w<50) return 'medium'; if(w<80) return 'large'; return 'giant'
+  } else {
+    if(w<8) return 'small'; if(w<14) return 'medium'; return 'large'
+  }
+}
+
+function intraT(s,w){
+  if(s==='dog'){
+    if(w<20) return clamp((w-4)/16,0,1); if(w<50) return clamp((w-20)/30,0,1); if(w<80) return clamp((w-50)/30,0,1); return clamp((w-80)/80,0,1)
+  } else {
+    if(w<8) return clamp((w-4)/4,0,1); if(w<14) return clamp((w-8)/6,0,1); return clamp((w-14)/11,0,1)
+  }
+}
+
+function calcCosts(spec,weight,age,activity,coat,breedData){
+  var size=sizeFromWeight(spec,weight); var t=intraT(spec,weight)
+  var tbl=spec==='dog'?PET_DATA.DOG_COSTS:PET_DATA.CAT_COSTS
+  var bm=breedData||{vetMult:1,insMult:1,foodMult:1,groomMult:1}
+  var food=Math.round(lerpInRange(tbl.food[size],t)*(bm.foodMult??1))
+  var vet=Math.round(lerpInRange(tbl.vet[size],t)*(bm.vetMult??1))
+  var insurance=Math.round(lerpInRange(tbl.insurance[size],t)*(bm.insMult??1))
+  var gT=tbl.grooming[coat]||tbl.grooming.short
+  var grooming=Math.round(lerpInRange(gT[size],t)*(bm.groomMult??1))
+  var supplies=Math.round(lerpInRange(tbl.supplies[size],t))
+  var am=PET_DATA.AGE_MULT[age]||{}; if(am.vet) vet=Math.round(vet*am.vet); if(am.insurance) insurance=Math.round(insurance*am.insurance); if(am.supplies) supplies=Math.round(supplies*am.supplies)
+  var acm=PET_DATA.ACTIVITY_MULT[activity]||{}; if(acm.food) food=Math.round(food*acm.food); if(acm.supplies) supplies=Math.round(supplies*acm.supplies)
+  return{food,vet,insurance,grooming,supplies,total:food+vet+insurance+grooming+supplies,size}
+}
+
+function getBreed(s,n){
+  if(!n) return null; var map=s==='dog'?PET_DATA.DOG_BREEDS:PET_DATA.CAT_BREEDS
+  var key=Object.keys(map).find(function(k){return k.toLowerCase()===n.toLowerCase()})
+  if(!key) return null; var d=map[key]; return{name:key,size:d[0],coat:d[1],vetMult:d[2],insMult:d[3],foodMult:d[4],groomMult:d[5],note:d[6]}
+}
+
+function defaultWeight(s,size){
+  if(s==='dog') return {small:12,medium:35,large:65,giant:110}[size]||35
+  return {small:6,medium:11,large:18}[size]||11
+}
+
+var LINE_META={food:{emoji:'🍖',label:'Food',color:'#FF5A3C'},vet:{emoji:'🩺',label:'Vet care',color:'#A78BFA'},insurance:{emoji:'🛡️',label:'Insurance',color:'#0E9F6E'},grooming:{emoji:'✂️',label:'Grooming',color:'#FFD23F'},supplies:{emoji:'🎾',label:'Supplies',color:'#1B1340'}}
+function getMeta(s){var m=Object.assign({},LINE_META); m.food=Object.assign({},m.food); m.food.emoji=s==='cat'?'🐟':'🍖'; return m}
+
+// ==============================================================
+// STATE
+// ==============================================================
+var state={
+  species:'dog',
+  dog:{breed:'Labrador Retriever',weight:65,age:'adult',activity:'moderate',coat:'short'},
+  cat:{breed:'Maine Coon',weight:16,age:'adult',activity:'moderate',coat:'long'}
+};
+function curState(){return state[state.species]}
+function setState(field,val){state[state.species][field]=val; render()}
+function setSpecies(s){state.species=s; render()}
+
+// ==============================================================
+// RENDER FUNCTIONS
+// ==============================================================
+function render(){
+  var s=state.species,st=curState(),isDog=s==='dog',acc=isDog?'#FF5A3C':'#FF8FB1'
+  var bd=getBreed(s,st.breed)
+  var costs=calcCosts(s,st.weight,st.age,st.activity,st.coat,bd)
+
+  document.getElementById('hero').innerHTML=renderHero(s,isDog)
+  document.getElementById('species-toggle').innerHTML=renderSpeciesToggle(s,isDog)
+  document.getElementById('calculator').innerHTML=renderCalculator(s,st,bd,acc,isDog)
+  document.getElementById('result').innerHTML=renderResult(s,costs,bd,st,isDog,acc)
+  document.getElementById('offers').innerHTML=renderOffers(s,costs)
+  document.getElementById('faq').innerHTML=renderFAQ(s)
+
+  // Nav active state
+  document.getElementById('nav-dog').className=s==='dog'?'active':''
+  document.getElementById('nav-cat').className=s==='cat'?'active':''
+
+  // Bind events
+  bindCalcEvents(s,st,bd,acc,isDog)
+}
+
+function renderHero(s,isDog){
+  return '<section class="hero"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div><div class="hero-grid"><div class="hero-left"><div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div><h1 class="hero-h1">How much does<br>your <span class="'+(isDog?'h1-accent-orange':'h1-accent-pink')+'">'+(isDog?'dog':'cat')+'</span> <span class="h1-stamp">really</span><br>cost a year?</h1><p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p><div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div></div><div class="hero-right"><div class="hero-photo'+(isDog?'':' hero-photo-cat')+'"><img src="hero-image.jpg" alt="'+(isDog?'Dog':'Cat')+' cost calculator" class="hero-photo-img"></div><div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div><div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px">'+
+  '<svg viewBox="0 0 40 40" width="16" height="16" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg>'+
+  '<span>save up to <strong>$840/yr</strong></span></div><div class="deco-sticker deco-rating" style="transform:rotate(-4deg);bottom:-10px;left:20px"><span class="deco-stars">★★★★★</span><span>"finally a calculator that<br>doesn\'t want my email"</span></div></div></div></section>'
+}
+
+function renderSpeciesToggle(s,isDog){
+  return '<div class="species-toggle-wrap"><div class="species-toggle"><button class="st-btn st-dog'+(s==='dog'?' active':'')+'" data-action="set-species" data-value="dog"><span class="st-emoji">🐕</span><span class="st-label">Dog calculator</span></button><button class="st-btn st-cat'+(s==='cat'?' active':'')+'" data-action="set-species" data-value="cat"><span class="st-emoji">🐈</span><span class="st-label">Cat calculator</span></button></div></div>'
+}
+
+function renderCalculator(s,st,bd,acc,isDog){
+  var w=st.weight,br=st.breed||'',age=st.age,act=st.activity,coat=st.coat
+  var wMin=isDog?4:4,wMax=isDog?160:25,wStep=isDog?1:.5
+  var pct=((w-wMin)/(wMax-wMin))*100
+  var wTicks=isDog?['4 lb','small','medium','large','giant','160+']:['4 lb','small','medium','large','25+']
+  var ageOpts=[{v:'puppy',l:isDog?'Puppy':'Kitten'},{v:'adult',l:'Adult'},{v:'senior',l:'Senior'}]
+  var coatOpts=s==='dog'?[{v:'short',l:'Short / Smooth'},{v:'long',l:'Long / Double'},{v:'wire',l:'Curly / Wire'}]:[{v:'short',l:'Shorthair'},{v:'long',l:'Longhair'}]
+
+  // Breed sorted names for search
+  var breedMap=s==='dog'?PET_DATA.DOG_BREEDS:PET_DATA.CAT_BREEDS
+  var breedNames=Object.keys(breedMap).sort()
+
+  // Breed dropdown HTML (hidden by default, shown by JS)
+  var matchHtml=''
+  var q=(br||'').toLowerCase().trim()
+  if(q){
+    var matches=breedNames.filter(function(n){return n.toLowerCase().includes(q)}).slice(0,7)
+    if(matches.length){
+      var sizeMap={small:'Small',medium:'Medium',large:'Large',giant:'Giant'},coatMap={short:'Short',long:'Long',wire:'Curly/Wire'}
+      matchHtml='<ul class="breed-list" role="listbox" id="breed-list">'
+      for(var i=0;i<matches.length;i++){
+        var d=breedMap[matches[i]]
+        matchHtml+='<li data-breed="'+matches[i].replace(/'/g,"\\'")+'" class="breed-opt'+(i===0?' active':'')+'"><span class="bl-name">'+matches[i]+'</span><span class="bl-meta">'+(sizeMap[d[0]]||'')+' · '+(coatMap[d[1]]||'')+'</span></li>'
+      }
+      matchHtml+='</ul>'
+    }
+  }
+
+  return '<section class="calc-wrap" id="calculator"><div class="calc-card"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.04) 1.4px,transparent 1.6px);background-size:16px 16px;pointer-events:none" aria-hidden="true"></div><div class="calc-card-inner"><div class="calc-header"><div class="calc-title-sticker sticker" style="transform:rotate(-3deg);display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream)"><span>About your '+s+'</span><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFF7E8"/><circle cx="8" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="32" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="14" cy="5" r="3.6" fill="#FFF7E8"/><circle cx="26" cy="5" r="3.6" fill="#FFF7E8"/></svg></div><p class="calc-sub">Slide it around. Numbers update live as you go.</p></div><div class="calc-grid"><div class="calc-field full"><label class="calc-label">Breed<span class="calc-label-hint">type to auto-fill size &amp; coat</span></label><div class="breed-search"><input class="breed-input" id="breed-input" value="'+br.replace(/"/g,'&quot;')+'" placeholder="'+(isDog?'e.g. Labrador, French Bulldog…':'e.g. Maine Coon, Ragdoll…')+'" autocomplete="off">'+matchHtml+'</div>'+
+    (bd?'<div class="breed-note" style="border-left-color:'+acc+'"><svg viewBox="0 0 40 40" width="14" height="14" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="'+acc+'"/><circle cx="8" cy="14" r="4.5" fill="'+acc+'"/><circle cx="32" cy="14" r="4.5" fill="'+acc+'"/><circle cx="14" cy="5" r="3.6" fill="'+acc+'"/><circle cx="26" cy="5" r="3.6" fill="'+acc+'"/></svg> <strong>'+bd.name+'</strong> · '+bd.note+'</div>':'')+
+    '</div><div class="calc-field full"><div class="bigslider"><div class="bigslider-head"><div class="bigslider-label">Weight (lb)</div><div class="bigslider-value" style="color:'+acc+'">'+w+' lb</div></div><div class="bigslider-track-wrap"><input type="range" class="bigslider-input" id="weight-slider" min="'+wMin+'" max="'+wMax+'" step="'+wStep+'" value="'+w+'" style="--pct:'+pct+'%;--accent:'+acc+'"></div><div class="bigslider-ticks">'+wTicks.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div></div>'+
+    '<div class="calc-field"><label class="calc-label">Life stage</label><div class="pill-seg">'+ageOpts.map(function(o){return'<button class="pill-seg-btn'+(age===o.v?' active':'')+'" data-action="set-age" data-value="'+o.v+'"'+(age===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
+    '<div class="calc-field"><label class="calc-label">Activity</label><div class="pill-seg">'+[{v:'low',l:'Chill'},{v:'moderate',l:'Normal'},{v:'high',l:'Bouncy'}].map(function(o){return'<button class="pill-seg-btn'+(act===o.v?' active':'')+'" data-action="set-activity" data-value="'+o.v+'"'+(act===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
+    '<div class="calc-field full"><label class="calc-label">Coat</label><div class="pill-seg">'+coatOpts.map(function(o){return'<button class="pill-seg-btn'+(coat===o.v?' active':'')+'" data-action="set-coat" data-value="'+o.v+'"'+(coat===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
+  '</div></div></div></section>'
+}
+
+function renderResult(s,costs,bd,st,isDog,acc){
+  var meta=getMeta(s)
+  var items=['food','vet','insurance','grooming','supplies'].map(function(k){return{key:k,label:meta[k].label,emoji:meta[k].emoji,color:meta[k].color,amount:costs[k]}})
+  var monthly=Math.round(costs.total/12),life=Math.round(costs.total*(isDog?12:14))
+  var natAvg=isDog?2800:1450,diff=costs.total-natAvg,diffPct=Math.round((diff/natAvg)*100)
+  var sorted=items.slice().sort(function(a,b){return b.amount-a.amount})
+
+  // Donut SVG
+  var size=220,stroke=36,r=(size-stroke)/2,c=2*Math.PI*r,offset=0
+  var segs='<circle cx="110" cy="110" r="'+r+'" fill="none" stroke="rgba(27,19,64,0.08)" stroke-width="'+stroke+'"/>'
+  for(var i=0;i<items.length;i++){
+    var frac=items[i].amount/costs.total,dash=frac*c
+    segs+='<circle cx="110" cy="110" r="'+r+'" fill="none" stroke="'+items[i].color+'" stroke-width="'+stroke+'" stroke-dasharray="'+dash+' '+(c-dash)+'" stroke-dashoffset="'+(-offset)+'" transform="rotate(-90 110 110)" stroke-linecap="butt"/>'
+    offset+=dash
+  }
+
+  return '<section class="result-section" id="result"><div class="result-stage"><div class="rcard rcard-total" style="--accent:'+acc+'"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.18) 1.4px,transparent 1.6px);background-size:14px 14px;pointer-events:none" aria-hidden="true"></div><div class="rcard-total-inner"><div class="rcard-total-top"><div class="rcard-stamp">YOUR '+s.toUpperCase()+' COSTS</div>'+(bd?'<div class="rcard-breed">'+bd.name+'</div>':'')+'</div><div class="rcard-total-num"><span class="rcard-total-amount" id="total-amount">$'+costs.total.toLocaleString()+'</span><span class="rcard-total-unit">/ year</span></div><div class="rcard-total-meta"><div class="rcard-mini"><div class="rcard-mini-label">/ month</div><div class="rcard-mini-val" id="monthly-val">$'+monthly.toLocaleString()+'</div></div><div class="rcard-mini"><div class="rcard-mini-label">lifetime ('+(isDog?'~12':'~14')+' yrs)</div><div class="rcard-mini-val" id="life-val">$'+life.toLocaleString()+'</div></div><div class="rcard-mini"><div class="rcard-mini-label">vs US average</div><div class="rcard-mini-val rcard-mini-vs">'+(diff>=0?'+':'')+diffPct+'%</div></div></div><div class="rcard-share-row"><button class="share-btn share-btn-primary"><span>📸</span> Save as image</button><button class="share-btn"><span>🔗</span> Copy link</button><button class="share-btn"><span>𝕏</span> Share on X</button></div><div class="rcard-share-note">Shareable card · personal data stays in your browser</div></div></div><div class="rcard rcard-breakdown"><div class="rcard-breakdown-head"><div><div class="rcard-stamp dark">WHERE IT GOES</div><div class="rcard-breakdown-title">The breakdown</div></div><div class="breakdown-sticker">'+
+    '<svg viewBox="0 0 40 40" width="14" height="14" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFF7E8"/><circle cx="8" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="32" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="14" cy="5" r="3.6" fill="#FFF7E8"/><circle cx="26" cy="5" r="3.6" fill="#FFF7E8"/></svg><span>2026 data</span></div></div><div class="rcard-breakdown-body"><div class="donut-wrap"><svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+segs+'</svg><div class="donut-center"><div class="donut-center-label">total / year</div><div class="donut-center-num">$'+costs.total.toLocaleString()+'</div></div></div><ul class="rcard-line-list">'+
+    sorted.map(function(it){
+      var pct=Math.round((it.amount/costs.total)*100)
+      return '<li class="line-item"><span class="line-dot" style="background:'+it.color+'"></span><span class="line-emoji">'+it.emoji+'</span><span class="line-label">'+it.label+'</span><span class="line-bar"><span class="line-bar-fill" style="width:'+pct+'%;background:'+it.color+'"></span></span><span class="line-amount">$'+it.amount.toLocaleString()+'</span><span class="line-pct">'+pct+'%</span></li>'
+    }).join('')+
+  '</ul></div><div class="rcard-footnote">Based on 2026 US averages from <a href="#sources">APPA, AVMA, NAPHIA</a> &amp; BLS Feb 2026 CPI · adjusted for breed, weight, age &amp; activity.</div></div></div></section>'
+}
+
+function renderOffers(s,costs){
+  var offers=PET_DATA.OFFERS[s],monthlyFood=Math.round(costs.food/12),monthlyVet=Math.round(costs.vet/12)
+  return '<section class="offers-section"><div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> WAYS TO SPEND LESS</div><h2 class="section-h2">Three picks for your <span class="h2-accent">'+s+'</span></h2><p class="section-sub">Affiliate placeholders — replace with your tracked links. Each is shown only when it makes sense for the result above.</p></div><div class="offers-grid">'+
+    offers.map(function(o,i){
+      return '<article class="offer-card" style="--oa:'+o.accent+';--oad:'+o.accentDark+'"><div class="offer-sticker-row"><div class="offer-sticker" style="background:'+o.accent+'"><span class="offer-sticker-emoji">'+o.emoji+'</span><span class="offer-sticker-text">'+o.sticker+'</span></div><span class="offer-from">'+o.priceFrom+'</span></div><h3 class="offer-title">'+o.title+'</h3><div class="offer-partner">— '+o.partner+'</div><ul class="offer-bullets">'+
+        '<li>✓ '+o.bullet1+'</li><li>✓ '+o.bullet2+'</li><li>✓ '+o.bullet3+'</li></ul>'+
+        (o.id==='fresh-food'?'<div class="offer-context">You currently spend ~<strong>$'+monthlyFood+'/mo</strong> on food.</div>':'')+
+        (o.id==='insurance'?'<div class="offer-context">Your vet budget is ~<strong>$'+monthlyVet+'/mo</strong>. One emergency = $3–10k.</div>':'')+
+        (o.id==='treats'?'<div class="offer-context">Replace random toy-store runs with a curated monthly drop.</div>':'')+
+        '<a class="offer-cta" href="#">'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
+    }).join('')+
+  '</div><p class="offers-disclosure">Disclosure: links above are placeholders. In production they\'re affiliate links — we may earn a commission at no cost to you.</p></section>'
+}
+
+function renderFAQ(s){
+  var items=[
+    {q:'How much does a '+s+' cost per year in the US?',a:'In 2026, the average annual cost is '+(s==='dog'?'$1,500–$3,500':'$900–$2,000')+', depending on size, breed, age and location. Small '+s+'s cost less per year but live longer; larger ones cost more annually but have shorter lifespans.'},
+    {q:"What's the most expensive part of owning a "+s+'?',a:'Food and veterinary care are consistently the two largest expenses. Food: $'+(s==='dog'?'360–2,000':'240–720')+'/yr depending on size and diet. Vet care: $'+(s==='dog'?'200–1,500+':'180–650+')+'/yr including routine care. Pet insurance can offset emergency costs.'},
+    {q:'Is pet insurance worth it?',a:'Pet insurance is most valuable for '+(s==='dog'?'brachycephalic breeds (Frenchies, Pugs, Bulldogs), high-cancer-risk breeds (Goldens, Berners), and senior dogs':'breeds prone to HCM (Maine Coon, Ragdoll), brachycephalic cats (Persian, Exotic Shorthair) and senior cats')+'. Compare quotes from 3+ providers — one emergency surgery can cost $3,000–$10,000.'},
+    {q:'Is fresh food worth the cost?',a:'Fresh-meal services run $'+(s==='dog'?'60–360':'40–180')+'/month. While more expensive than kibble, owners often report fewer digestive issues, allergies and weight problems over time — which can offset vet costs. Most services have a discounted starter box so you can try risk-free.'},
+    {q:'Which '+s+' breeds are cheapest to own?',a:s==='dog'?'Small, healthy breeds cost the least: Rat Terriers, Jack Russells, Papillons, Italian Greyhounds. Avoid brachycephalic (French Bulldog, Pug, Bulldog) and giant breeds (Great Dane, Mastiff) if minimizing cost is a priority.':'Domestic Shorthair and Russian Blue are among the lowest-cost cats — they\'re hardy, low-grooming and rarely have inherited conditions. Persians, Sphynx and Scottish Folds tend to be the most expensive over a lifetime.'},
+    {q:'Where do your numbers come from?',a:'We pull annual averages from the APPA 2026 State of the Industry Report, AVMA Pet Ownership stats, NAPHIA insurance data, BLS veterinary CPI (Feb 2026), and PetCareBooker grooming. Adjusted for breed, weight, age and activity. We update the model twice a year.'}
+  ]
+  return '<section class="faq-section" id="faq"><div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg> ❓ QUESTIONS WE GET</div><h2 class="section-h2">FAQ</h2></div><div class="faq-list">'+
+    items.map(function(it,i){return '<details class="faq-item"'+(i===0?' open':'')+'><summary>'+it.q+'</summary><div class="faq-a">'+it.a+'</div></details>'}).join('')+
+  '</div></section>'
+}
+
+// ==============================================================
+// STATIC SECTIONS (rendered once)
+// ==============================================================
+document.getElementById('how-it-works').innerHTML='<section class="hiw-section"><div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg> HOW IT WORKS</div><h2 class="section-h2">No paywall. No email. <span class="h2-accent">No nonsense.</span></h2></div><div class="hiw-grid"><div class="hiw-step"><div class="hiw-num">01</div><h3 class="hiw-title">Tell us about your pet</h3><p class="hiw-body">Breed, weight, age, activity. Sliders only — no signup, no email.</p></div><div class="hiw-step"><div class="hiw-num">02</div><h3 class="hiw-title">We crunch the numbers</h3><p class="hiw-body">Five categories. 70+ breeds. Adjusted for 2026 US prices. Math in plain sight.</p></div><div class="hiw-step"><div class="hiw-num">03</div><h3 class="hiw-title">Save it or share it</h3><p class="hiw-body">Download a card for IG, copy a link, or just bookmark. Your data never leaves your browser.</p></div></div></section>'
+
+document.getElementById('social-proof').innerHTML='<section class="proof-section"><div class="section-head proof-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> WHAT OWNERS SAID</div><h2 class="section-h2">2.4M calculations and counting</h2><p class="section-sub">(That\'s a placeholder. But the warm reception is real.)</p></div><div class="proof-wall">'+
+  PET_DATA.TESTIMONIALS.map(function(t){return '<div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">'+t.quote+'</p><div class="proof-who"><strong>'+t.who+'</strong><span>· '+t.pet+'</span></div></div>'}).join('')+
+  '</div><div class="press-strip"><span class="press-label">As seen referenced in:</span><span class="press-logo">NYT-Wirecutter*</span><span class="press-logo">MarketWatch*</span><span class="press-logo">Reddit r/dogs*</span><span class="press-logo">PetMD*</span><span class="press-label-small">* placeholders</span></div></section>'
+
+document.getElementById('sources').innerHTML='<section class="sources-section" id="sources"><div class="sources-card"><div class="sources-left"><div class="section-eyebrow light"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFD23F"/><circle cx="8" cy="14" r="4.5" fill="#FFD23F"/><circle cx="32" cy="14" r="4.5" fill="#FFD23F"/><circle cx="14" cy="5" r="3.6" fill="#FFD23F"/><circle cx="26" cy="5" r="3.6" fill="#FFD23F"/></svg> RECEIPTS</div><h2 class="sources-h2">Cited, not vibed.</h2><p class="sources-sub">Every dollar in our model traces back to one of these sources. We update twice a year.</p></div><ul class="sources-list">'+
+  PET_DATA.SOURCES.map(function(s){return '<li><strong>'+s.name+'</strong><span>'+s.full+'</span></li>'}).join('')+
+  '</ul></div></section>'
+
+document.getElementById('blog').innerHTML='<section class="blog-section"><div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> FROM THE BLOG</div><h2 class="section-h2">Read more, spend less</h2></div><div class="blog-grid">'+
+  PET_DATA.BLOG.map(function(b){return '<a class="blog-card" href="#" style="--ba:'+b.accent+'"><div class="blog-thumb"><div class="blog-thumb-pattern"></div><div class="blog-thumb-glyph">¶</div></div><div class="blog-body"><div class="blog-tag">'+b.tag+'</div><h3 class="blog-title">'+b.title+'</h3><p class="blog-excerpt">'+b.body+'</p><div class="blog-meta">'+b.mins+' min read →</div></div></a>'}).join('')+
+  '</div></section>'
+
+// ==============================================================
+// EVENT BINDING
+// ==============================================================
+function bindCalcEvents(s,st,bd,acc,isDog){
+  // Species toggle
+  var stBtns=document.querySelectorAll('[data-action="set-species"]')
+  for(var i=0;i<stBtns.length;i++){(function(btn){
+    btn.addEventListener('click',function(){setSpecies(btn.getAttribute('data-value'))})
+  })(stBtns[i])}
+
+  // Nav species
+  var navDog=document.getElementById('nav-dog')
+  var navCat=document.getElementById('nav-cat')
+  if(navDog) navDog.addEventListener('click',function(){setSpecies('dog')})
+  if(navCat) navCat.addEventListener('click',function(){setSpecies('cat')})
+
+  // Breed search input
+  var breedInput=document.getElementById('breed-input')
+  if(breedInput){
+    breedInput.addEventListener('input',function(){
+      state[state.species].breed=breedInput.value
+      // Re-render with breed search dropdown visible
+      render()
+      // Re-focus the breed input
+      var bi=document.getElementById('breed-input')
+      if(bi){bi.focus();bi.selectionStart=bi.selectionEnd=bi.value.length}
+    })
+    // Breed option clicks via delegation
+    document.addEventListener('click',function(e){
+      var opt=e.target.closest('.breed-opt')
+      if(opt){
+        var name=opt.getAttribute('data-breed')
+        var bd2=getBreed(state.species,name)
+        if(bd2){
+          state[state.species].breed=bd2.name
+          state[state.species].coat=bd2.coat
+          state[state.species].weight=defaultWeight(state.species,bd2.size)
+        }
+        render()
+      }
+    })
+    // Close breed list on outside click
+    document.addEventListener('mousedown',function(e){
+      if(!e.target.closest('.breed-search')){
+        var bl=document.getElementById('breed-list')
+        if(bl) bl.remove()
+      }
+    })
+  }
+
+  // Weight slider
+  var ws=document.getElementById('weight-slider')
+  if(ws){
+    ws.addEventListener('input',function(){setState('weight',Number(ws.value))})
+  }
+
+  // Pill segments (age, activity, coat)
+  var pillBtns=document.querySelectorAll('[data-action]')
+  for(var i=0;i<pillBtns.length;i++){(function(btn){
+    var action=btn.getAttribute('data-action')
+    if(action==='set-species') return // already handled
+    btn.addEventListener('click',function(){
+      var val=btn.getAttribute('data-value')
+      if(action==='set-age') setState('age',val)
+      else if(action==='set-activity') setState('activity',val)
+      else if(action==='set-coat') setState('coat',val)
+    })
+  })(pillBtns[i])}
+}
+
+// ==============================================================
+// INITIAL RENDER
+// ==============================================================
+render()
+
+// ==============================================================
+// PostHog
+// ==============================================================
+!function(t,e){var o,n,p,r;t.__SSC_URL="https://app.posthog.com";p=e.createElement("script");p.async=!1;p.src="https://us-assets.i.posthog.com/static/array.js";r=e.getElementsByTagName("script")[0];r.parentNode.insertBefore(p,r)}(window,document)
+</script>
 </body>
 </html>
