@@ -15,4 +15,4 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy . --project-name=pet-expenses --branch=main --exclude app.min.js --exclude node_modules --exclude package.json --exclude package-lock.json
+          command: pages deploy . --project-name=pet-expenses --branch=main
