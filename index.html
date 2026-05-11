@@ -151,7 +151,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pill-seg{display:inline-flex;background:var(--cream);border:2px solid var(--ink);border-radius:var(--radius-pill);padding:4px;gap:2px;width:100%}
 .pill-seg-btn{flex:1;padding:11px 14px;border-radius:var(--radius-pill);font-weight:600;font-size:.92rem;color:var(--ink-soft);transition:background .15s,color .15s,transform .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
 .pill-seg-btn:hover{color:var(--ink)}
-.pill-seg-btn.active{color:var(--cream);box-shadow:2px 2px 0 var(--ink)}
+.pill-seg-btn.active{color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
 .result-section{padding:56px 24px 32px}
 .result-stage{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:24px}
 @media(max-width:900px){.result-stage{grid-template-columns:1fr}}
@@ -620,10 +620,10 @@ function renderCalculator(s,st,bd,acc,isDog){
     var matches=breedNames.filter(function(n){return n.toLowerCase().includes(q)}).slice(0,7)
     if(matches.length){
       var sizeMap={small:'Small',medium:'Medium',large:'Large',giant:'Giant'},coatMap={short:'Short',long:'Long',wire:'Curly/Wire'}
-      matchHtml='<ul class="breed-list" role="listbox" id="breed-list">'
+      matchHtml='<ul class="breed-list" role="listbox" id="breed-list" aria-label="Breed suggestions">'
       for(var i=0;i<matches.length;i++){
         var d=breedMap[matches[i]]
-        matchHtml+='<li data-breed="'+matches[i].replace(/'/g,"\\'")+'" class="breed-opt'+(i===0?' active':'')+'"><span class="bl-name">'+matches[i]+'</span><span class="bl-meta">'+(sizeMap[d[0]]||'')+' · '+(coatMap[d[1]]||'')+'</span></li>'
+        matchHtml+='<li role="option" aria-selected="'+(i===0?'true':'false')+'" data-breed="'+matches[i].replace(/'/g,"\\'")+'" class="breed-opt'+(i===0?' active':'')+'"><span class="bl-name">'+matches[i]+'</span><span class="bl-meta">'+(sizeMap[d[0]]||'')+' · '+(coatMap[d[1]]||'')+'</span></li>'
       }
       matchHtml+='</ul>'
     }
@@ -631,10 +631,10 @@ function renderCalculator(s,st,bd,acc,isDog){
 
   return '<section class="calc-wrap" id="calculator"><div class="calc-card"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.04) 1.4px,transparent 1.6px);background-size:16px 16px;pointer-events:none" aria-hidden="true"></div><div class="calc-card-inner"><div class="calc-header"><div class="calc-title-sticker sticker" style="transform:rotate(-3deg);display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream)"><span>About your '+s+'</span><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFF7E8"/><circle cx="8" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="32" cy="14" r="4.5" fill="#FFF7E8"/><circle cx="14" cy="5" r="3.6" fill="#FFF7E8"/><circle cx="26" cy="5" r="3.6" fill="#FFF7E8"/></svg></div><p class="calc-sub">Slide it around. Numbers update live as you go.</p></div><div class="calc-grid"><div class="calc-field full"><label class="calc-label">Breed<span class="calc-label-hint">type to auto-fill size &amp; coat</span></label><div class="breed-search"><input class="breed-input" id="breed-input" value="'+br.replace(/"/g,'&quot;')+'" placeholder="'+(isDog?'e.g. Labrador, French Bulldog…':'e.g. Maine Coon, Ragdoll…')+'" autocomplete="off">'+matchHtml+'</div>'+
     (bd?'<div class="breed-note" style="border-left-color:'+acc+'"><svg viewBox="0 0 40 40" width="14" height="14" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="'+acc+'"/><circle cx="8" cy="14" r="4.5" fill="'+acc+'"/><circle cx="32" cy="14" r="4.5" fill="'+acc+'"/><circle cx="14" cy="5" r="3.6" fill="'+acc+'"/><circle cx="26" cy="5" r="3.6" fill="'+acc+'"/></svg> <strong>'+bd.name+'</strong> · '+bd.note+'</div>':'')+
-    '</div><div class="calc-field full"><div class="bigslider"><div class="bigslider-head"><div class="bigslider-label">Weight (lb)</div><div class="bigslider-value" style="color:'+acc+'">'+w+' lb</div></div><div class="bigslider-track-wrap"><input type="range" class="bigslider-input" id="weight-slider" aria-label="Weight in pounds" min="'+wMin+'" max="'+wMax+'" step="'+wStep+'" value="'+w+'" style="--pct:'+pct+'%;--accent:'+acc+'"></div><div class="bigslider-ticks">'+wTicks.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div></div>'+
-    '<div class="calc-field"><label class="calc-label">Life stage</label><div class="pill-seg">'+ageOpts.map(function(o){return'<button class="pill-seg-btn'+(age===o.v?' active':'')+'" data-action="set-age" data-value="'+o.v+'"'+(age===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
-    '<div class="calc-field"><label class="calc-label">Activity</label><div class="pill-seg">'+[{v:'low',l:'Chill'},{v:'moderate',l:'Normal'},{v:'high',l:'Bouncy'}].map(function(o){return'<button class="pill-seg-btn'+(act===o.v?' active':'')+'" data-action="set-activity" data-value="'+o.v+'"'+(act===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
-    '<div class="calc-field full"><label class="calc-label">Coat</label><div class="pill-seg">'+coatOpts.map(function(o){return'<button class="pill-seg-btn'+(coat===o.v?' active':'')+'" data-action="set-coat" data-value="'+o.v+'"'+(coat===o.v?' style="background:'+acc+';color:#fff"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
+    '</div><div class="calc-field full"><div class="bigslider"><div class="bigslider-head"><div class="bigslider-label">Weight (lb)</div><div class="bigslider-value" style="color:'+(acc==='#FF5A3C'?'#E03812':'#E55E89')+'">'+w+' lb</div></div><div class="bigslider-track-wrap"><input type="range" class="bigslider-input" id="weight-slider" aria-label="Weight in pounds" min="'+wMin+'" max="'+wMax+'" step="'+wStep+'" value="'+w+'" style="--pct:'+pct+'%;--accent:'+acc+'"></div><div class="bigslider-ticks">'+wTicks.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div></div>'+
+    '<div class="calc-field"><label class="calc-label">Life stage</label><div class="pill-seg">'+ageOpts.map(function(o){return'<button class="pill-seg-btn'+(age===o.v?' active':'')+'" data-action="set-age" data-value="'+o.v+'"'+(age===o.v?' style="background:'+acc+';color:#1B1340"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
+    '<div class="calc-field"><label class="calc-label">Activity</label><div class="pill-seg">'+[{v:'low',l:'Chill'},{v:'moderate',l:'Normal'},{v:'high',l:'Bouncy'}].map(function(o){return'<button class="pill-seg-btn'+(act===o.v?' active':'')+'" data-action="set-activity" data-value="'+o.v+'"'+(act===o.v?' style="background:'+acc+';color:#1B1340"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
+    '<div class="calc-field full"><label class="calc-label">Coat</label><div class="pill-seg">'+coatOpts.map(function(o){return'<button class="pill-seg-btn'+(coat===o.v?' active':'')+'" data-action="set-coat" data-value="'+o.v+'"'+(coat===o.v?' style="background:'+acc+';color:#1B1340"':'')+'>'+o.l+'</button>'}).join('')+'</div></div>'+
   '</div></div></div></section>'
 }
 
