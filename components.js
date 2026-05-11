@@ -43,7 +43,8 @@ function BigSlider({ label, value, onChange, min, max, step = 1, format = (v) =>
       value,
       onChange: (e) => onChange(Number(e.target.value)),
       className: "bigslider-input",
-      style: { "--pct": pct + "%", "--accent": accent }
+      style: { "--pct": pct + "%", "--accent": accent },
+      "aria-label": label
     }
   )), ticks && /* @__PURE__ */ React.createElement("div", { className: "bigslider-ticks" }, ticks.map((t, i) => /* @__PURE__ */ React.createElement("span", { key: i }, t))));
 }

@@ -7,7 +7,7 @@
 :root {
   --ink:       #1B1340;          /* deep navy ink */
   --ink-soft:  #4A3F6F;
-  --ink-mute:  #7A7396;
+  --ink-mute:  #6B6490;
 
   --coral:     #FF5A3C;
   --coral-dk:  #E03812;
@@ -97,7 +97,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   letter-spacing: -0.025em;
   font-variation-settings: "wdth" 95;
 }
-.h2-accent { color: var(--coral); }
+.h2-accent { color: var(--coral-dk); }
 .section-sub {
   margin-top: 12px;
   font-size: 1.05rem;
@@ -315,7 +315,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .deco-paid-src {
   font-size: 9px; margin-top: 6px;
-  color: rgba(255,247,232,0.55);
+  color: rgba(255,247,232,0.85);
   font-family: var(--mono);
 }
 
@@ -621,7 +621,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: inline-block;
   font-family: var(--mono);
   font-size: 11px; letter-spacing: 0.16em;
-  background: var(--accent, var(--coral));
+  background: var(--ink);
   color: var(--cream);
   padding: 5px 10px;
   border-radius: 6px;
@@ -1187,7 +1187,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.04em;
-  color: var(--coral);
+  color: #C53000;
   font-weight: 600;
 }
 

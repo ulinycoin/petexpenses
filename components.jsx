@@ -64,6 +64,7 @@ function BigSlider({ label, value, onChange, min, max, step = 1, format = (v) =>
           onChange={(e) => onChange(Number(e.target.value))}
           className="bigslider-input"
           style={{ '--pct': pct + '%', '--accent': accent }}
+          aria-label={label}
         />
       </div>
       {ticks && (
