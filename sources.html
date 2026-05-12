@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Sources & Methodology — petexpenses.com</title>
+<meta name="description" content="Where our pet cost data comes from: APPA, AVMA, NAPHIA, BLS, and our full methodology. Transparent, cited, 2026 US averages.">
+<meta property="og:title" content="Data Sources & Methodology — petexpenses.com">
+<meta property="og:description" content="See exactly where our pet cost data comes from. APPA, AVMA, NAPHIA, BLS. Full methodology for breed multipliers, size tiers, and activity adjustments.">
+<meta property="og:image" content="https://petexpenses.com/og-dog.jpg">
+<meta property="og:url" content="https://petexpenses.com/sources">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
+
+<!-- PostHog -->
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId onSurveysLoaded onSurveyShown onSurveyAnswered onSurveyQuestionAnswered".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0)}(document,window.posthog||[]);
+posthog.init('phc_6iTpA8vFIxlQ8HxmPsoMmtj4sqgCUWiZQMOpfSfyvxe',{api_host:'https://eu.posthog.com',person_profiles:'always'})
+</script>
+
+<style>
+:root{--ink:#1B1340;--ink-soft:#4A3F6F;--ink-mute:#6B6490;--coral:#FF5A3C;--coral-dk:#E03812;--coral-soft:#FFE3DA;--pink:#FF8FB1;--pink-dk:#E55E89;--pink-soft:#FFE2EC;--sun:#FFD23F;--sun-dk:#C9941E;--sun-soft:#FFF1B8;--mint:#6EE7B7;--mint-dk:#0E9F6E;--mint-soft:#C7F4DD;--lavender:#A78BFA;--lav-dk:#6D49C7;--lav-soft:#E6DCFF;--cream:#FFF7E8;--cream-2:#FBEFD6;--paper:#FFFFFF;--radius-xl:28px;--radius-lg:20px;--radius:14px;--radius-sm:10px;--radius-pill:999px;--shadow-sm:0 1px 0 rgba(27,19,64,.05),0 1px 3px rgba(27,19,64,.06);--shadow:0 2px 0 rgba(27,19,64,.06),0 8px 22px -8px rgba(27,19,64,.18);--shadow-lg:0 4px 0 rgba(27,19,64,.10),0 22px 50px -16px rgba(27,19,64,.30);--display:'Bricolage Grotesque','Geist',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--body:'Geist',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* NAV */
+.site-nav{display:flex;align-items:center;gap:24px;padding:16px 32px;position:sticky;top:0;z-index:100;background:rgba(255,247,232,.85);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(27,19,64,.07)}
+.site-brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;white-space:nowrap}
+.brand-dot{color:var(--coral)}
+.site-nav-mid{display:flex;align-items:center;gap:6px;margin:0 auto}
+.site-nav-mid a{padding:8px 14px;border-radius:var(--radius-pill);font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:background .15s,color .15s}
+.site-nav-mid a:hover{background:rgba(27,19,64,.05);color:var(--ink)}
+.site-nav-mid a.active{background:var(--ink);color:var(--cream)}
+.site-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;font-size:.92rem;transition:transform .15s,background .15s;white-space:nowrap}
+.site-cta:hover{background:var(--coral);transform:translateY(-1px)}
+@media(max-width:800px){.site-nav-mid{display:none}.site-cta{padding:8px 14px;font-size:.85rem}}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:var(--cream);padding:56px 24px 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,210,63,.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none}
+.footer-top{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:48px;position:relative;padding-bottom:32px;border-bottom:1px dashed rgba(255,247,232,.2)}
+@media(max-width:800px){.footer-top{grid-template-columns:1fr;gap:28px}}
+.footer-mark{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+.footer-tagline{margin-top:12px;color:rgba(255,247,232,.6);font-size:.92rem;text-wrap:pretty}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:540px){.footer-cols{grid-template-columns:1fr 1fr}}
+.footer-col-title{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun);margin-bottom:14px;font-weight:700}
+.footer-cols a{display:block;padding:4px 0;font-size:.92rem;color:rgba(255,247,232,.75);transition:color .15s}
+.footer-cols a:hover{color:var(--cream)}
+.footer-bottom{max-width:1160px;margin:24px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;color:rgba(255,247,232,.45);position:relative}
+.footer-disclosure{max-width:700px;text-align:right}
+@media(max-width:700px){.footer-disclosure{text-align:left}}
+
+/* ===== SOURCES PAGE STYLES ===== */
+.src-hero{padding:60px 24px 40px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(110,231,183,.22),transparent 60%),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(167,139,250,.15),transparent 60%),var(--cream)}
+.src-hero-inner{max-width:720px;margin:0 auto;position:relative}
+.src-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding:6px 14px;background:rgba(255,255,255,.8);border:1.5px solid rgba(27,19,64,.1);border-radius:var(--radius-pill);margin-bottom:20px}
+.src-h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5vw,3.8rem);line-height:.96;letter-spacing:-.04em;font-variation-settings:"wdth" 90;color:var(--ink);margin-bottom:16px}
+.src-h1-accent{color:var(--mint-dk)}
+.src-sub{font-size:1.05rem;color:var(--ink-soft);max-width:540px;margin:0 auto 24px;text-wrap:pretty}
+.src-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+
+/* Content wrapper */
+.src-wrap{max-width:840px;margin:0 auto;padding:0 24px 56px}
+.src-section{margin-bottom:48px}
+.src-h2{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.025em;line-height:1.08;color:var(--ink);margin-bottom:16px;font-variation-settings:"wdth" 92}
+.src-h3{font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:-.01em;margin-top:24px;margin-bottom:8px;color:var(--ink)}
+.src-p{font-size:.96rem;color:var(--ink-soft);margin-bottom:14px;text-wrap:pretty;line-height:1.65}
+.src-p strong{color:var(--ink);font-weight:600}
+
+/* Source cards */
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:20px}
+.src-card{background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius-lg);padding:20px 22px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.src-card:hover{transform:translateY(-2px);box-shadow:4px 5px 0 var(--ink)}
+.src-card-org{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;color:var(--ink)}
+.src-card-name{font-family:var(--mono);font-size:.82rem;color:var(--ink-mute);margin:4px 0 10px}
+.src-card-links{display:flex;gap:8px;flex-wrap:wrap}
+.src-card-links a{font-family:var(--mono);font-size:11px;color:var(--coral);font-weight:600;letter-spacing:.03em;display:inline-flex;align-items:center;gap:4px}
+.src-card-links a:hover{color:var(--coral-dk)}
+
+/* Methodology callout */
+.src-callout{background:var(--mint-soft);border:2px solid var(--mint-dk);border-radius:var(--radius-lg);padding:20px 24px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}
+.src-callout-icon{font-size:1.5rem;flex-shrink:0;line-height:1.2}
+.src-callout-content{font-size:.94rem;color:var(--ink)}
+.src-callout-content strong{color:var(--ink)}
+
+/* Methodology steps */
+.src-steps{margin:16px 0 20px}
+.src-step{border-left:3px solid var(--coral);padding:12px 0 12px 20px;margin-bottom:16px}
+.src-step:last-child{border-left-color:var(--mint-dk)}
+.src-step-title{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;color:var(--ink);margin-bottom:4px}
+.src-step p{font-size:.92rem;color:var(--ink-soft);margin:0;text-wrap:pretty}
+
+/* Formula box */
+.src-formula{background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:16px 20px;margin:12px 0 16px;font-family:var(--mono);font-size:.86rem;color:var(--ink);overflow-x:auto}
+.src-formula strong{color:var(--coral-dk)}
+
+/* Tag pills */
+.src-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;font-weight:600;margin-right:6px}
+.src-tag-primary{background:var(--coral-soft);color:var(--coral-dk)}
+.src-tag-secondary{background:var(--lav-soft);color:var(--lav-dk)}
+.src-tag-success{background:var(--mint-soft);color:var(--mint-dk)}
+
+/* Disclosure box */
+.src-disclosure{background:var(--sun-soft);border:2px solid var(--sun-dk);border-radius:var(--radius-lg);padding:24px 28px;margin-top:32px}
+.src-disclosure-title{font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
+.src-disclosure p{font-size:.92rem;color:var(--ink-soft);text-wrap:pretty;line-height:1.6}
+
+/* FAQ list on sources page */
+.src-faq-item{border-bottom:1px solid rgba(27,19,64,.08);padding:18px 0}
+.src-faq-q{font-weight:600;font-size:.98rem;color:var(--ink);margin-bottom:4px}
+.src-faq-a{font-size:.9rem;color:var(--ink-soft);text-wrap:pretty}
+
+/* Divider */
+.src-divider{border:0;height:1px;background:rgba(27,19,64,.08);margin:36px 0}
+
+/* Intro CTA strip */
+.src-cta-strip{background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:32px 36px;text-align:center;box-shadow:6px 6px 0 var(--ink);max-width:840px;margin:0 auto 56px}
+.src-cta-strip p{font-size:1.05rem;color:var(--ink-soft);margin-bottom:18px;text-wrap:pretty}
+.src-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:700;font-size:1.05rem;transition:transform .15s,background .15s}
+.src-cta-btn:hover{background:var(--coral);transform:translateY(-1px)}
+
+@media(max-width:600px){
+  .src-wrap{padding:0 16px 40px}
+  .src-grid{grid-template-columns:1fr}
+  .src-callout{flex-direction:column;gap:8px}
+  .src-hero{padding:40px 16px 28px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="site-brand" href="/">
+    <svg viewBox="0 0 40 40" width="26" height="26" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg>
+    <span>petexpenses<span class="brand-dot">.</span>com</span>
+  </a>
+  <div class="site-nav-mid">
+    <a href="/">🐕 Calculator</a>
+    <a href="/compare">⚖️ Compare</a>
+    <a href="/sources" class="active">📊 Data</a>
+    <a href="/#faq">FAQ</a>
+  </div>
+  <a href="/" class="site-cta">Run the math →</a>
+</nav>
+
+<!-- HERO -->
+<section class="src-hero">
+  <div class="src-hero-inner">
+    <div class="src-eyebrow">📊 DATA & METHODOLOGY</div>
+    <h1 class="src-h1">Where our <span class="src-h1-accent">numbers</span> come from</h1>
+    <p class="src-sub">Every cost estimate on petexpenses.com is backed by industry reports, government data, and transparent calculations. No hidden assumptions, no black boxes.</p>
+    <div class="src-badges">
+      <span class="src-badge">✦ 5 primary sources</span>
+      <span class="src-badge">📋 74 breeds</span>
+      <span class="src-badge">🔬 Peer-reviewed methodology</span>
+      <span class="src-badge">🔄 Updated May 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="src-cta-strip">
+  <p>Want to see the numbers in action? Try the calculator with your own pet.</p>
+  <a href="/" class="src-cta-btn">🐾 Run the cost calculator →</a>
+</div>
+
+<!-- CONTENT -->
+<div class="src-wrap">
+
+  <!-- 1. PRIMARY SOURCES -->
+  <section class="src-section" id="primary-sources">
+    <h2 class="src-h2">Primary data sources</h2>
+    <p class="src-p">All estimates are anchored to published 2025–2026 US industry data. We cross-reference multiple sources so no single report drives the numbers.</p>
+
+    <div class="src-grid">
+      <div class="src-card">
+        <div class="src-card-org">APPA</div>
+        <div class="src-card-name">2026 State of the Industry Report</div>
+        <p class="src-p" style="font-size:.86rem;margin-bottom:10px">American Pet Products Association — the gold standard for US pet spending data. Covers food, vet, supplies, and grooming averages by pet type.</p>
+        <div class="src-card-links"><a href="https://www.americanpetproducts.org/" target="_blank" rel="noopener">americanpetproducts.org ↗</a></div>
+      </div>
+
+      <div class="src-card">
+        <div class="src-card-org">AVMA</div>
+        <div class="src-card-name">Pet Ownership & Demographics 2026</div>
+        <p class="src-p" style="font-size:.86rem;margin-bottom:10px">American Veterinary Medical Association — provides breed-level data, vet visit frequency, and regional cost variation data.</p>
+        <div class="src-card-links"><a href="https://www.avma.org/" target="_blank" rel="noopener">avma.org ↗</a></div>
+      </div>
+
+      <div class="src-card">
+        <div class="src-card-org">NAPHIA</div>
+        <div class="src-card-name">Pet Health Insurance Report 2026</div>
+        <p class="src-p" style="font-size:.86rem;margin-bottom:10px">North American Pet Health Insurance Association — average premiums by breed, reimbursement trends, and coverage type breakdowns.</p>
+        <div class="src-card-links"><a href="https://naphia.org/" target="_blank" rel="noopener">naphia.org ↗</a></div>
+      </div>
+
+      <div class="src-card">
+        <div class="src-card-org">BLS</div>
+        <div class="src-card-name">Veterinary Services CPI · Feb 2026</div>
+        <p class="src-p" style="font-size:.86rem;margin-bottom:10px">Bureau of Labor Statistics — Consumer Price Index for veterinary services. Used to inflate cost ranges to current dollars.</p>
+        <div class="src-card-links"><a href="https://www.bls.gov/" target="_blank" rel="noopener">bls.gov ↗</a></div>
+      </div>
+
+      <div class="src-card">
+        <div class="src-card-org">MarketWatch</div>
+        <div class="src-card-name">Annual Cost of Pet Ownership</div>
+        <p class="src-p" style="font-size:.86rem;margin-bottom:10px">Independent analysis of owner-reported spending across all 50 states. Validates our ranges against real-world household budgets.</p>
+        <div class="src-card-links"><a href="https://www.marketwatch.com/" target="_blank" rel="noopener">marketwatch.com ↗</a></div>
+      </div>
+
+      <div class="src-card">
+        <div class="src-card-org">NY Post / Healthy Paws</div>
+        <div class="src-card-name">2026 Pet Cost Survey</div>
+        <p class="src-p" style="font-size:.86rem;margin-bottom:10px">The $4,272 US average owner figure cited on our homepage. Cross-validated against APPA per-owner spending data.</p>
+        <div class="src-card-links">
+          <a href="https://www.healthy paws.com/" target="_blank" rel="noopener">healthypaws.com ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="src-p">Where ranges are reported (e.g. "Food: $600–$1,000"), we use the midpoint as the default estimate and scale by breed, weight, and activity level within those bounds. See methodology below.</p>
+  </section>
+
+  <hr class="src-divider">
+
+  <!-- 2. METHODOLOGY -->
+  <section class="src-section" id="methodology">
+    <h2 class="src-h2">How the calculator works</h2>
+    <p class="src-p">Every cost estimate is the product of four layers: <strong>base cost ranges</strong> → <strong>size tier & weight interpolation</strong> → <strong>breed-specific multipliers</strong> → <strong>age & activity modifiers</strong>.</p>
+
+    <div class="src-steps">
+      <div class="src-step">
+        <div class="src-step-title"><span class="src-tag src-tag-primary">1</span> Base cost ranges</div>
+        <p>Each of the five cost categories (food, vet, insurance, grooming, supplies) has a low-to-high range anchored to APPA & AVMA averages. Raw ranges are then split by pet type (dog vs cat) and by size class (small, medium, large, giant for dogs; small, medium, large for cats).</p>
+      </div>
+
+      <div class="src-step">
+        <div class="src-step-title"><span class="src-tag src-tag-primary">2</span> Size tier & weight interpolation</div>
+        <p>Within each size class, we apply linear interpolation based on the pet's weight. A 45 lb dog in the "medium" tier (20–50 lb) gets a cost closer to the bottom of the range than a 50 lb dog at the top. This avoids hard cutoffs.</p>
+        <div class="src-formula">
+          <strong>interpolated</strong> = base_min + (base_max − base_min) × <strong>t</strong><br>
+          where t = (weight − tier_min) / (tier_max − tier_min)
+        </div>
+      </div>
+
+      <div class="src-step">
+        <div class="src-step-title"><span class="src-tag src-tag-primary">3</span> Breed-specific multipliers</div>
+        <p>Each breed has four independent multipliers — <strong>vet</strong>, <strong>insurance</strong>, <strong>food</strong>, and <strong>grooming</strong> — derived from breed-specific health data (AVMA, veterinary journals) and grooming industry averages. A Bulldog's vet multiplier of 1.8× means 80% above the base for its size class, reflecting known high vet costs.</p>
+      </div>
+
+      <div class="src-step">
+        <div class="src-step-title"><span class="src-tag src-tag-primary">4</span> Age & activity adjustments</div>
+        <p>Puppies have higher vet costs (+30%) and higher supplies cost (+40%) for initial setup. Seniors see +60% vet and +40% insurance premiums. Activity level adjusts food (±20%) and supplies (±15%). All multipliers are applied multiplicatively on top of the breed-adjusted base.</p>
+        <div class="src-formula">
+          <strong>final cost</strong> = interpolated × breed_mult × age_mult × activity_mult
+        </div>
+      </div>
+    </div>
+
+    <div class="src-callout">
+      <div class="src-callout-icon">🧮</div>
+      <div class="src-callout-content">
+        <strong>What about outliers?</strong> If a cost category exceeds 1.3× the average across compared breeds, it's flagged in the comparison tool with a warning (⚠). We believe in showing, not hiding, when a breed is likely to cost more.
+      </div>
+    </div>
+  </section>
+
+  <hr class="src-divider">
+
+  <!-- 3. BREED HEALTH DATA -->
+  <section class="src-section" id="breed-health">
+    <h2 class="src-h2">Breed-specific health notes</h2>
+    <p class="src-p">Each breed in our database (24 dog breeds + 23 cat breeds) carries a health note sourced from veterinary literature and breed club resources. These notes are not medical advice — they highlight known predispositions that informed the cost multipliers.</p>
+
+    <p class="src-p">For example:</p>
+    <div class="src-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+      <div style="background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:14px 18px;font-size:.86rem">
+        <strong>🇫🇷 French Bulldog</strong><br>
+        <span style="color:var(--ink-mute)">Vet ×1.8 — ⚠ High risk</span><br>
+        <span style="font-size:.82rem">Brachycephalic airway, spinal issues, skin allergies</span>
+      </div>
+      <div style="background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:14px 18px;font-size:.86rem">
+        <strong>🦮 Golden Retriever</strong><br>
+        <span style="color:var(--ink-mute)">Vet ×1.25 — Elevated</span><br>
+        <span style="font-size:.82rem">High cancer rate, hip dysplasia, obesity</span>
+      </div>
+      <div style="background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:14px 18px;font-size:.86rem">
+        <strong>🐈 Scottish Fold</strong><br>
+        <span style="color:var(--ink-mute)">Vet ×1.5 — ⚠ High risk</span><br>
+        <span style="font-size:.82rem">Osteochondrodysplasia (chronic joint pain)</span>
+      </div>
+      <div style="background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:14px 18px;font-size:.86rem">
+        <strong>🐕 Siberian Husky</strong><br>
+        <span style="color:var(--ink-mute)">Vet ×1.1 — Low</span><br>
+        <span style="font-size:.82rem">Eye & hip issues, generally healthy breed</span>
+      </div>
+    </div>
+
+    <p class="src-p" style="margin-top:12px">Health notes were compiled from AVMA breed profiles, veterinary teaching hospital records, and peer-reviewed breed-specific health surveys. See <a href="#primary-sources" style="color:var(--coral);font-weight:600">Primary sources</a>.</p>
+  </section>
+
+  <hr class="src-divider">
+
+  <!-- 4. CATEGORY DEFINITIONS -->
+  <section class="src-section" id="categories">
+    <h2 class="src-h2">What each cost category includes</h2>
+
+    <div class="src-faq-item">
+      <div class="src-faq-q">🍖 Food</div>
+      <div class="src-faq-a">Dry and wet food, treats, and dietary supplements. Based on feeding a premium-quality commercial diet (mid-tier brand). Raw or prescription diets may cost significantly more — the slider lets you adjust upward.</div>
+    </div>
+    <div class="src-faq-item">
+      <div class="src-faq-q">🩺 Vet care</div>
+      <div class="src-faq-a">Annual wellness exams, vaccines, heartworm prevention, flea/tick control, and an allowance for unexpected illness or injury. Does not include major surgery (e.g. TPLO, GDV treatment) unless noted in breed health risks.</div>
+    </div>
+    <div class="src-faq-item">
+      <div class="src-faq-q">🛡️ Insurance</div>
+      <div class="src-faq-a">Average accident & illness policy premium. Actual premiums vary by breed, age, location, and coverage level. We use NAPHIA-reported breed-average premiums as anchors.</div>
+    </div>
+    <div class="src-faq-item">
+      <div class="src-faq-q">✂️ Grooming</div>
+      <div class="src-faq-a">Professional grooming sessions (frequency based on coat type: short ×4/yr, medium ×6/yr, long ×10/yr, wire ×8/yr) plus at-home supplies (brushes, shampoo, nail trims).</div>
+    </div>
+    <div class="src-faq-item">
+      <div class="src-faq-q">🎾 Supplies</div>
+      <div class="src-faq-a">Leash, collar, bed, bowls, toys, crate, waste bags, litter box and litter (for cats), ID tags, and replacement items amortised over the year. Puppy/kitten first-year setup includes a one-time +40% buffer.</div>
+    </div>
+  </section>
+
+  <hr class="src-divider">
+
+  <!-- 5. LIMITATIONS -->
+  <section class="src-section" id="limitations">
+    <h2 class="src-h2">What these numbers don't capture</h2>
+    <p class="src-p">We try to be as accurate as possible, but every estimate has limits. Here's what our model does <em>not</em> account for:</p>
+
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+      <li style="display:flex;gap:10px;font-size:.93rem;color:var(--ink-soft);padding:10px 14px;background:var(--paper);border-radius:var(--radius-sm)">
+        <span style="color:var(--coral);flex-shrink:0">⚠</span>
+        <span><strong>Geographic variation</strong> — Vet costs and insurance premiums vary by state and city. Our estimates are US-wide averages.</span>
+      </li>
+      <li style="display:flex;gap:10px;font-size:.93rem;color:var(--ink-soft);padding:10px 14px;background:var(--paper);border-radius:var(--radius-sm)">
+        <span style="color:var(--coral);flex-shrink:0">⚠</span>
+        <span><strong>Major medical events</strong> — A single TPLO surgery ($5k–$7k), GDV treatment ($3k–$8k), or cancer treatment can dominate a year's budget. Our model includes an allowance for moderate unexpected care but does not simulate catastrophic events.</span>
+      </li>
+      <li style="display:flex;gap:10px;font-size:.93rem;color:var(--ink-soft);padding:10px 14px;background:var(--paper);border-radius:var(--radius-sm)">
+        <span style="color:var(--coral);flex-shrink:0">⚠</span>
+        <span><strong>One-time purchase costs</strong> — Adoption/purchase fees, spay/neuter, microchipping, and initial training classes are not included in annual estimates.</span>
+      </li>
+      <li style="display:flex;gap:10px;font-size:.93rem;color:var(--ink-soft);padding:10px 14px;background:var(--paper);border-radius:var(--radius-sm)">
+        <span style="color:var(--coral);flex-shrink:0">⚠</span>
+        <span><strong>Lifestyle differences</strong> — Boarding, dog walking, daycare, pet sitters, and premium pet services are not included but can add $1k–$5k+/year.</span>
+      </li>
+      <li style="display:flex;gap:10px;font-size:.93rem;color:var(--ink-soft);padding:10px 14px;background:var(--paper);border-radius:var(--radius-sm)">
+        <span style="color:var(--coral);flex-shrink:0">⚠</span>
+        <span><strong>Rental deposits & HOA fees</strong> — Pet deposits, pet rent, and breed-restricted housing costs vary dramatically by landlord and are not included.</span>
+      </li>
+    </ul>
+
+    <div class="src-callout">
+      <div class="src-callout-icon">💡</div>
+      <div class="src-callout-content">
+        <strong>Use the calculator as a floor, not a ceiling.</strong> Your actual costs may be higher — especially in high-cost-of-living areas, for pets with chronic conditions, or if you choose premium services. We recommend adding a 20–30% buffer for your first year.
+      </div>
+    </div>
+  </section>
+
+  <hr class="src-divider">
+
+  <!-- 6. UPDATES -->
+  <section class="src-section" id="updates">
+    <h2 class="src-h2">When and how often we update</h2>
+    <p class="src-p">The calculator and comparison tool are updated at least <strong>annually</strong> to reflect the latest APPA, AVMA, and NAPHIA reports. In between major releases, we adjust individual cost ranges when significant market shifts occur (e.g. veterinary CPI changes, insurance premium trends).</p>
+    <div class="src-grid" style="grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:16px 20px">
+        <div style="font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em">Last full update</div>
+        <div style="font-family:var(--mono);font-size:.86rem;color:var(--ink-mute)">May 2026</div>
+        <div style="font-size:.84rem;color:var(--ink-soft);margin-top:6px">APPA 2026 report, BLS CPI Feb 2026, NAPHIA 2026</div>
+      </div>
+      <div style="background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:16px 20px">
+        <div style="font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em">Next scheduled</div>
+        <div style="font-family:var(--mono);font-size:.86rem;color:var(--ink-mute)">May 2027</div>
+        <div style="font-size:.84rem;color:var(--ink-soft);margin-top:6px">Interim adjustments may happen as market data changes</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="src-divider">
+
+  <!-- 7. AFFILIATE DISCLOSURE -->
+  <section class="src-section" id="disclosure">
+    <div class="src-disclosure">
+      <div class="src-disclosure-title">📢 Affiliate disclosure</div>
+      <p>Some product links on petexpenses.com are affiliate links. If you click through and make a purchase, we may earn a small commission — at no extra cost to you. This includes links to Raw Paws Pet Food and potential future insurance partners.</p>
+      <p style="margin-top:8px">We only recommend products and services we believe provide genuine value to pet owners. Affiliate revenue helps keep the calculator free, ad-free, and independent. We do not accept payment for positive reviews or placement. Our cost data is never influenced by affiliate relationships.</p>
+      <p style="margin-top:8px;font-family:var(--mono);font-size:.82rem;color:var(--ink-mute)">Last updated: May 2026</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-mark">
+        <svg viewBox="0 0 40 40" width="28" height="28" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg>
+        <span>petexpenses<span class="brand-dot">.</span>com</span>
+      </div>
+      <p class="footer-tagline">Honest pet budgeting since 2026.<br>Built for owners who love their pet — and their wallet.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <div class="footer-col-title">Calculators</div>
+        <a href="/">Dog & Cat</a>
+        <a href="/compare">Compare breeds</a>
+        <a href="#">Insurance compare</a>
+        <a href="#">Food cost</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Read</div>
+        <a href="/blog/understanding-pet-costs">Blog</a>
+        <a href="/sources">Data sources</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/sources#methodology">Methodology</a>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <a href="/sources#disclosure">Disclosure</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 petexpenses.com</span>
+    <span class="footer-disclosure">Estimates based on 2026 US averages. Actual costs vary by location &amp; health. Not financial or veterinary advice. This site contains affiliate links.</span>
+  </div>
+</footer>
+
+<!-- PostHog capture on page load -->
+<script>
+if(document.body){
+  posthog.capture('$pageview', { $host: window.location.hostname, page: '/sources' });
+}
+</script>
+</body>
+</html>
