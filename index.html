@@ -385,18 +385,92 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <a href="#calculator" class="site-cta">Run the math →</a>
 </nav>
 
-<!-- RENDER TARGETS -->
+<!-- RENDER TARGETS + STATIC SECTIONS -->
 <main>
-<div id="hero"></div>
+
+<!-- Hero (dog default — Googlebot sees this before JS) -->
+<div id="hero"><section class="hero">
+<div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div>
+<div class="hero-grid">
+<div class="hero-left">
+<div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div>
+<h1 class="hero-h1">How much does<br>your <span class="h1-accent-orange">dog</span> <span class="h1-stamp">really</span><br>cost a year?</h1>
+<p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p>
+<div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div>
+</div>
+<div class="hero-right">
+<div class="hero-photo"><img src="hero-image.jpg" alt="Dog cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div>
+<div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div>
+<div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px"><svg viewBox="0 0 40 40" width="16" height="16" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg><span>save up to <strong>$840/yr</strong></span></div>
+<div class="deco-sticker deco-rating" style="transform:rotate(-4deg);bottom:-10px;left:20px"><span class="deco-stars">★★★★★</span><span>"finally a calculator that<br>doesn't want my email"</span></div>
+</div>
+</div>
+</section></div>
+
 <div id="species-toggle"></div>
 <div id="calculator"></div>
 <div id="result"></div>
 <div id="offers"></div>
-<div id="how-it-works"></div>
-<div id="social-proof"></div>
-<div id="sources"></div>
-<div id="blog"></div>
-<div id="faq"></div>
+
+<!-- HOW IT WORKS (static) -->
+<section class="hiw-section">
+<div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg> HOW IT WORKS</div><h2 class="section-h2">No paywall. No email. <span class="h2-accent">No nonsense.</span></h2></div>
+<div class="hiw-grid">
+<div class="hiw-step"><div class="hiw-num">01</div><h3 class="hiw-title">Tell us about your pet</h3><p class="hiw-body">Breed, weight, age, activity. Sliders only — no signup, no email.</p></div>
+<div class="hiw-step"><div class="hiw-num">02</div><h3 class="hiw-title">We crunch the numbers</h3><p class="hiw-body">Five categories. 70+ breeds. Adjusted for 2026 US prices. Math in plain sight.</p></div>
+<div class="hiw-step"><div class="hiw-num">03</div><h3 class="hiw-title">Save it or share it</h3><p class="hiw-body">Download a card for IG, copy a link, or just bookmark. Your data never leaves your browser.</p></div>
+</div>
+</section>
+
+<!-- SOCIAL PROOF (static) -->
+<section class="proof-section">
+<div class="section-head proof-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> WHAT OWNERS SAID</div><h2 class="section-h2">2.4M calculations and counting</h2><p class="section-sub">(That's a placeholder. But the warm reception is real.)</p></div>
+<div class="proof-wall">
+<div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">"I had no idea Frenchies cost this much. The insurance suggestion saved me a $4k vet bill."</p><div class="proof-who"><strong>Sara · Brooklyn</strong><span>· French Bulldog, 3 yrs</span></div></div>
+<div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">"Bookmarked. Sent to my partner. Now we agree on the food budget."</p><div class="proof-who"><strong>Mike · Austin</strong><span>· Labrador, 1 yr</span></div></div>
+<div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">"Honest answer about my cat's yearly bill. No paywall, no email-grab."</p><div class="proof-who"><strong>Priya · Chicago</strong><span>· Maine Coon, 5 yrs</span></div></div>
+<div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">"Calculator caught a vet category I'd been ignoring for years."</p><div class="proof-who"><strong>Diego · Los Angeles</strong><span>· Rescue mutt, 7 yrs</span></div></div>
+</div>
+<div class="press-strip"><span class="press-label">As seen referenced in:</span><span class="press-logo">NYT-Wirecutter*</span><span class="press-logo">MarketWatch*</span><span class="press-logo">Reddit r/dogs*</span><span class="press-logo">PetMD*</span><span class="press-label-small">* placeholders</span></div>
+</section>
+
+<!-- SOURCES (static) -->
+<section class="sources-section" id="sources">
+<div class="sources-card">
+<div class="sources-left"><div class="section-eyebrow light"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFD23F"/><circle cx="8" cy="14" r="4.5" fill="#FFD23F"/><circle cx="32" cy="14" r="4.5" fill="#FFD23F"/><circle cx="14" cy="5" r="3.6" fill="#FFD23F"/><circle cx="26" cy="5" r="3.6" fill="#FFD23F"/></svg> RECEIPTS</div><h2 class="sources-h2">Cited, not vibed.</h2><p class="sources-sub">Every dollar in our model traces back to one of these sources. We update twice a year.</p></div>
+<ul class="sources-list">
+<li><strong>APPA</strong><span>2026 State of the Industry Report</span></li>
+<li><strong>AVMA</strong><span>Pet Ownership &amp; Demographics 2026</span></li>
+<li><strong>NAPHIA</strong><span>Pet Health Insurance Report 2026</span></li>
+<li><strong>BLS</strong><span>Veterinary Services CPI · Feb 2026</span></li>
+<li><strong>MarketWatch</strong><span>Annual cost of pet ownership</span></li>
+</ul>
+</div>
+</section>
+
+<!-- BLOG (static) -->
+<section class="blog-section">
+<div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> FROM THE BLOG</div><h2 class="section-h2">Read more, spend less</h2></div>
+<div class="blog-grid">
+<a class="blog-card" href="/blog/understanding-pet-costs" target="_blank" style="--ba:#FF5A3C"><div class="blog-thumb"><img src="blog/images/pet-cost-breakdown.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div><div class="blog-body"><div class="blog-tag">NEW · MAY 2026</div><h3 class="blog-title">The $4,272 question: where does it all go?</h3><p class="blog-excerpt">A line-by-line look at the average American pet budget — and the three categories most owners underestimate.</p><div class="blog-meta">6 min read →</div></div></a>
+<a class="blog-card" href="/blog/pet-insurance-worth-it" target="_blank" style="--ba:#A78BFA"><div class="blog-thumb"><img src="blog/images/pet-insurance-worth-it.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div><div class="blog-body"><div class="blog-tag">INSURANCE</div><h3 class="blog-title">Is pet insurance worth it? We ran the math on 12 breeds.</h3><p class="blog-excerpt">For French Bulldogs and Goldens it pays for itself by year three. For others, a high-yield savings account wins.</p><div class="blog-meta">9 min read →</div></div></a>
+<a class="blog-card" href="/blog/kibble-vs-fresh-vs-raw" target="_blank" style="--ba:#6EE7B7"><div class="blog-thumb"><img src="blog/images/food-cost-comparison.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div><div class="blog-body"><div class="blog-tag">FOOD</div><h3 class="blog-title">Kibble vs fresh vs raw: a real cost comparison</h3><p class="blog-excerpt">We costed out a year of feeding a 50 lb dog across 8 popular brands. The cheapest option will surprise you.</p><div class="blog-meta">7 min read →</div></div></a>
+</div>
+</section>
+
+<!-- FAQ (dog default — Googlebot sees this before JS) -->
+<div id="faq"><section class="faq-section" id="faq">
+<div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg> ❓ QUESTIONS WE GET</div><h2 class="section-h2">FAQ</h2></div>
+<div class="faq-list">
+<details class="faq-item" open><summary>How much does a dog cost per year in the US?</summary><div class="faq-a">In 2026, the average annual cost is $1,500–$3,500, depending on size, breed, age and location. Small dogs cost less per year but live longer; larger ones cost more annually but have shorter lifespans.</div></details>
+<details class="faq-item"><summary>What's the most expensive part of owning a dog?</summary><div class="faq-a">Food and veterinary care are consistently the two largest expenses. Food: $360–2,000/yr depending on size and diet. Vet care: $200–1,500+/yr including routine care. Pet insurance can offset emergency costs.</div></details>
+<details class="faq-item"><summary>Is pet insurance worth it?</summary><div class="faq-a">Pet insurance is most valuable for brachycephalic breeds (Frenchies, Pugs, Bulldogs), high-cancer-risk breeds (Goldens, Berners), and senior dogs. Compare quotes from 3+ providers — one emergency surgery can cost $3,000–$10,000.</div></details>
+<details class="faq-item"><summary>Is fresh food worth the cost?</summary><div class="faq-a">Fresh-meal services run $60–360/month. While more expensive than kibble, owners often report fewer digestive issues, allergies and weight problems over time — which can offset vet costs. Most services have a discounted starter box so you can try risk-free.</div></details>
+<details class="faq-item"><summary>Which dog breeds are cheapest to own?</summary><div class="faq-a">Small, healthy breeds cost the least: Rat Terriers, Jack Russells, Papillons, Italian Greyhounds. Avoid brachycephalic (French Bulldog, Pug, Bulldog) and giant breeds (Great Dane, Mastiff) if minimizing cost is a priority.</div></details>
+<details class="faq-item"><summary>Where do your numbers come from?</summary><div class="faq-a">We pull annual averages from the APPA 2026 State of the Industry Report, AVMA Pet Ownership stats, NAPHIA insurance data, BLS veterinary CPI (Feb 2026), and PetCareBooker grooming. Adjusted for breed, weight, age and activity. We update the model twice a year.</div></details>
+</div>
+</section></div>
+
 </main>
 
 <!-- FOOTER (static) -->
@@ -551,19 +625,7 @@ var PET_DATA = (function () {
       {id:'treats',emoji:'📦',sticker:'AUTO-SHIP',accent:'#FFD23F',accentDark:'#C9941E',title:'Raw Food Auto-Ship',partner:'Raw Paws Pet Food',bullet1:'Never run out — delivered on schedule',bullet2:'10% recurring commission',bullet3:'Cancel or pause anytime',priceFrom:'from $0.44/oz',ratings:'10% recurring  ·  $160 avg order',ctaText:'Set up Auto-Ship →',ctaLink:'https://www.anrdoezrs.net/click-101748061-17234936'},
     ]
   };
-  var SOURCES = [{name:'APPA',full:'2026 State of the Industry Report'},{name:'AVMA',full:'Pet Ownership & Demographics 2026'},{name:'NAPHIA',full:'Pet Health Insurance Report 2026'},{name:'BLS',full:'Veterinary Services CPI · Feb 2026'},{name:'MarketWatch',full:'Annual cost of pet ownership'}];
-  var BLOG = [
-    {tag:'NEW · MAY 2026',title:'The $4,272 question: where does it all go?',body:'A line-by-line look at the average American pet budget — and the three categories most owners underestimate.',mins:6,accent:'#FF5A3C',url:'blog/understanding-pet-costs',thumb:'blog/images/pet-cost-breakdown.png'},
-    {tag:'INSURANCE',title:'Is pet insurance worth it? We ran the math on 12 breeds.',body:'For French Bulldogs and Goldens it pays for itself by year three. For others, a high-yield savings account wins.',mins:9,accent:'#A78BFA',url:'blog/pet-insurance-worth-it',thumb:'blog/images/pet-insurance-worth-it.png'},
-    {tag:'FOOD',title:'Kibble vs fresh vs raw: a real cost comparison',body:'We costed out a year of feeding a 50 lb dog across 8 popular brands. The cheapest option will surprise you.',mins:7,accent:'#6EE7B7',url:'blog/kibble-vs-fresh-vs-raw',thumb:'blog/images/food-cost-comparison.png'}
-  ];
-  var TESTIMONIALS = [
-    {who:'Sara · Brooklyn',pet:'French Bulldog, 3 yrs',quote:'"I had no idea Frenchies cost this much. The insurance suggestion saved me a $4k vet bill."',rotate:-2},
-    {who:'Mike · Austin',pet:'Labrador, 1 yr',quote:'"Bookmarked. Sent to my partner. Now we agree on the food budget."',rotate:1.5},
-    {who:'Priya · Chicago',pet:'Maine Coon, 5 yrs',quote:"Honest answer about my cat's yearly bill. No paywall, no email-grab.",rotate:-1},
-    {who:'Diego · Los Angeles',pet:'Rescue mutt, 7 yrs',quote:"Calculator caught a vet category I'd been ignoring for years.",rotate:2.5}
-  ];
-  return {DOG_BREEDS:DB,CAT_BREEDS:CB,DOG_COSTS:DC,CAT_COSTS:CC,AGE_MULT:AGE,ACTIVITY_MULT:ACT,OFFERS,SOURCES,BLOG,TESTIMONIALS};
+  return {DOG_BREEDS:DB,CAT_BREEDS:CB,DOG_COSTS:DC,CAT_COSTS:CC,AGE_MULT:AGE,ACTIVITY_MULT:ACT,OFFERS};
 })();
 
 // ==============================================================
@@ -767,23 +829,6 @@ function renderFAQ(s){
     items.map(function(it,i){return '<details class="faq-item"'+(i===0?' open':'')+'><summary>'+it.q+'</summary><div class="faq-a">'+it.a+'</div></details>'}).join('')+
   '</div></section>'
 }
-
-// ==============================================================
-// STATIC SECTIONS (rendered once)
-// ==============================================================
-document.getElementById('how-it-works').innerHTML='<section class="hiw-section"><div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg> HOW IT WORKS</div><h2 class="section-h2">No paywall. No email. <span class="h2-accent">No nonsense.</span></h2></div><div class="hiw-grid"><div class="hiw-step"><div class="hiw-num">01</div><h3 class="hiw-title">Tell us about your pet</h3><p class="hiw-body">Breed, weight, age, activity. Sliders only — no signup, no email.</p></div><div class="hiw-step"><div class="hiw-num">02</div><h3 class="hiw-title">We crunch the numbers</h3><p class="hiw-body">Five categories. 70+ breeds. Adjusted for 2026 US prices. Math in plain sight.</p></div><div class="hiw-step"><div class="hiw-num">03</div><h3 class="hiw-title">Save it or share it</h3><p class="hiw-body">Download a card for IG, copy a link, or just bookmark. Your data never leaves your browser.</p></div></div></section>'
-
-document.getElementById('social-proof').innerHTML='<section class="proof-section"><div class="section-head proof-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> WHAT OWNERS SAID</div><h2 class="section-h2">2.4M calculations and counting</h2><p class="section-sub">(That\'s a placeholder. But the warm reception is real.)</p></div><div class="proof-wall">'+
-  PET_DATA.TESTIMONIALS.map(function(t){return '<div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">'+t.quote+'</p><div class="proof-who"><strong>'+t.who+'</strong><span>· '+t.pet+'</span></div></div>'}).join('')+
-  '</div><div class="press-strip"><span class="press-label">As seen referenced in:</span><span class="press-logo">NYT-Wirecutter*</span><span class="press-logo">MarketWatch*</span><span class="press-logo">Reddit r/dogs*</span><span class="press-logo">PetMD*</span><span class="press-label-small">* placeholders</span></div></section>'
-
-document.getElementById('sources').innerHTML='<section class="sources-section" id="sources"><div class="sources-card"><div class="sources-left"><div class="section-eyebrow light"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FFD23F"/><circle cx="8" cy="14" r="4.5" fill="#FFD23F"/><circle cx="32" cy="14" r="4.5" fill="#FFD23F"/><circle cx="14" cy="5" r="3.6" fill="#FFD23F"/><circle cx="26" cy="5" r="3.6" fill="#FFD23F"/></svg> RECEIPTS</div><h2 class="sources-h2">Cited, not vibed.</h2><p class="sources-sub">Every dollar in our model traces back to one of these sources. We update twice a year.</p></div><ul class="sources-list">'+
-  PET_DATA.SOURCES.map(function(s){return '<li><strong>'+s.name+'</strong><span>'+s.full+'</span></li>'}).join('')+
-  '</ul></div></section>'
-
-document.getElementById('blog').innerHTML='<section class="blog-section"><div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> FROM THE BLOG</div><h2 class="section-h2">Read more, spend less</h2></div><div class="blog-grid">'+
-  PET_DATA.BLOG.map(function(b){return '<a class="blog-card" href="'+b.url+'" target="_blank" style="--ba:'+b.accent+'"><div class="blog-thumb"><img src="'+b.thumb+'" alt="" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div><div class="blog-body"><div class="blog-tag">'+b.tag+'</div><h3 class="blog-title">'+b.title+'</h3><p class="blog-excerpt">'+b.body+'</p><div class="blog-meta">'+b.mins+' min read →</div></div></a>'}).join('')+
-  '</div></section>'
 
 // ==============================================================
 // GLOBAL EVENT LISTENERS (registered once, not on every render)
