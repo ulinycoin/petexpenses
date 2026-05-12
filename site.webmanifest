@@ -1,0 +1,26 @@
+{
+  "name": "petexpenses.com — Pet Cost Calculator",
+  "short_name": "PetExpenses",
+  "description": "Free pet cost calculator. Honest 2026 US averages for dogs and cats — by breed, weight, age & activity. No signup, cited data.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1B1340",
+  "background_color": "#FFF7E8",
+  "categories": ["lifestyle", "finance", "pets"],
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
