@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /favicon.ico
+Disallow: /favicon-*.png
+Disallow: /favicon.svg
 
 Sitemap: https://petexpenses.com/sitemap.xml
