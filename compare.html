@@ -22,6 +22,46 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which dog breed is cheapest to own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small, healthy breeds like Rat Terriers, Jack Russell Terriers, Papillons, and Italian Greyhounds cost the least to own. Avoid brachycephalic breeds (French Bulldog, Pug, Bulldog) and giant breeds (Great Dane, Mastiff) if minimizing cost is a priority."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a dog cost vs a cat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In 2026, the average annual cost for a dog is $1,500–$3,500 and $900–$2,000 for a cat. The difference comes from food size, grooming needs, and insurance premiums — all factors you can compare side by side using our breed comparison tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most expensive dog breed to own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "French Bulldogs, Bulldogs, Great Danes, and Bernese Mountain Dogs rank among the most expensive breeds. French Bulldogs can cost $3,000+ per year due to brachycephalic breathing issues, skin allergies, and spinal problems. Giant breeds cost more in food and have shorter lifespans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are your breed cost comparisons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our cost model is based on data from the APPA 2026 State of the Industry Report, AVMA Pet Ownership stats, NAPHIA insurance data, and BLS Veterinary CPI (Feb 2026). Each breed's costs are adjusted for its typical size, coat type, age, weight, and known health risks."
+      }
+    }
+  ]
+}
+</script>
 <meta property="og:title" content="Breed Cost Comparison — petexpenses.com">
 <meta property="og:description" content="Pick 2–3 breeds and see exactly where the money goes. Side-by-side breakdown, no signup, 2026 US data.">
 <meta property="og:image" content="https://petexpenses.com/og-dog.jpg">
@@ -231,6 +271,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .cmp-share-btn.primary:hover{background:var(--coral);transform:translateY(-1px)}
 .cmp-share-btn.secondary{background:var(--paper);color:var(--ink);border:2px solid var(--ink)}
 .cmp-share-btn.secondary:hover{background:var(--cream)}
+
+/* FAQ section */
+.cmp-faq{max-width:800px;margin:0 auto 40px;padding:0 24px}
+.cmp-faq-list{display:flex;flex-direction:column;gap:10px}
+.cmp-faq-item{background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius-lg);overflow:hidden}
+.cmp-faq-item[open]{box-shadow:4px 4px 0 var(--coral)}
+.cmp-faq-item summary{list-style:none;cursor:pointer;padding:18px 22px;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;position:relative;padding-right:48px}
+.cmp-faq-item summary::-webkit-details-marker{display:none}
+.cmp-faq-item summary::after{content:'+';position:absolute;right:22px;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--coral);line-height:1;transition:transform .18s}
+.cmp-faq-item[open] summary::after{content:'–'}
+.cmp-faq-a{padding:0 22px 20px;color:var(--ink-soft);font-size:.96rem;line-height:1.6;text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -492,7 +543,8 @@ function renderAll(){
     renderSlots()+
     '<div id="cmp-results-container">'+renderResults()+'</div>'+
     renderOffers()+
-    renderShare()
+    renderShare()+
+    renderFaq()
 }
 
 function refreshResults(){
@@ -505,7 +557,7 @@ function renderHero(){
     '<div class="cmp-hero-inner">'+
     '<div class="cmp-eyebrow">'+svgPaw('#FF5A3C',18)+' BREED COST COMPARISON</div>'+
     '<h1 class="cmp-h1">Which breed costs <span class="cmp-h1-accent">less</span> to own?</h1>'+
-    '<p class="cmp-sub">Compare annual costs across 74 dog and cat breeds side-by-side. See which breed is cheapest to own with real 2026 US data on food, vet bills, pet insurance, grooming, and supplies. Free, no signup needed.</p>'+
+    '<p class="cmp-sub">Compare annual costs across 74 dog and cat breeds side-by-side. Whether you&rsquo;re choosing between a dog vs a cat, hunting for the cheapest breed to own, or just curious about pet expenses by breed &mdash; our tool shows real 2026 US data on food, vet bills, pet insurance, grooming, and supplies. Free, no signup needed.</p>'+
     '<div class="cmp-badges"><span class="cmp-badge">⚖️ Side-by-side</span><span class="cmp-badge">✦ 74 breeds</span><span class="cmp-badge">🔗 Shareable link</span><span class="cmp-badge">📊 Cited data</span></div>'+
     '</div></section>'
 }
@@ -777,6 +829,18 @@ function renderShare(){
     '<button class="cmp-share-btn primary" data-action="share-copy">🔗 Copy link</button>'+
     '<button class="cmp-share-btn secondary" data-action="share-x">𝕏 Post on X</button>'+
     '</div></div></div>'
+}
+
+function renderFaq(){
+  return '<section class=\"cmp-faq\"><div class=\"section-head\">'+
+    '<div class=\"section-eyebrow\">'+svgPaw('#FF5A3C',18)+' ❓ QUESTIONS WE GET</div>'+
+    '<h2 class=\"section-h2\">Breed cost <span class=\"h2-accent\">FAQ</span></h2>'+
+    '</div><div class=\"cmp-faq-list\">'+
+    '<details class=\"cmp-faq-item\" open><summary>Which dog breed is cheapest to own?</summary><div class=\"cmp-faq-a\">Small, healthy breeds like Rat Terriers, Jack Russell Terriers, Papillons, and Italian Greyhounds cost the least to own. Avoid brachycephalic breeds (French Bulldog, Pug, Bulldog) and giant breeds (Great Dane, Mastiff) if minimizing cost is a priority.</div></details>'+
+    '<details class=\"cmp-faq-item\"><summary>How much does a dog cost vs a cat?</summary><div class=\"cmp-faq-a\">In 2026, the average annual cost for a dog is $1,500–$3,500 and $900–$2,000 for a cat. The difference comes from food size, grooming needs, and insurance premiums — all factors you can compare side by side using our tool above.</div></details>'+
+    '<details class=\"cmp-faq-item\"><summary>What is the most expensive dog breed to own?</summary><div class=\"cmp-faq-a\">French Bulldogs, Bulldogs, Great Danes, and Bernese Mountain Dogs rank among the most expensive. French Bulldogs can cost $3,000+ per year due to brachycephalic breathing issues, skin allergies, and spinal problems. Giant breeds cost more in food and have shorter lifespans.</div></details>'+
+    '<details class=\"cmp-faq-item\"><summary>How accurate are your breed cost comparisons?</summary><div class=\"cmp-faq-a\">Our cost model is based on data from APPA 2026, AVMA, NAPHIA insurance data, and BLS Veterinary CPI (Feb 2026). Each breed is adjusted for typical size, coat type, age, weight, and known health risks.</div></details>'+
+    '</div></section>'
 }
 
 // ================================================================
