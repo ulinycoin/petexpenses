@@ -1,11 +1,33 @@
-# PetExpenses.com
+# petexpenses.com
 
-Pet cost calculator for dogs and cats. Get personalized annual expense breakdowns — food, vet, insurance, grooming, supplies, and smart savings tips.
+Pet cost calculator and financial research for US dog and cat owners. Get personalized annual expense breakdowns — food, vet, insurance, grooming, supplies — adjusted by breed, weight, age, activity level, and diet.
 
 ## Pages
 
-- [Dog & Cat Cost Calculator](https://petexpenses.com/) — Calculate your pet's annual expenses by breed, size, and age. Powered by React with PostHog analytics.
+- [Pet Cost Calculator](https://petexpenses.com/) — Calculate your pet's annual expenses. Choose breed, weight, age, activity, diet. Free, no signup.
+- [Breed Cost Comparison](https://petexpenses.com/compare) — Compare annual costs across breeds side by side.
+- [About — Pet Financial Research](https://petexpenses.com/about) — Mission, data sources (APPA, AVMA, NAPHIA, BLS), niche focus on pet finances and budget transparency.
+- [Contact](https://petexpenses.com/contact) — Email hello@petexpenses.com, GitHub, partnership inquiries.
+- [Data Sources & Methodology](https://petexpenses.com/sources) — Full source list with citations.
+- [Privacy Policy](https://petexpenses.com/privacy) — No data sales, PostHog EU analytics, localStorage only.
+- [Terms of Service](https://petexpenses.com/terms) — Terms, affiliate disclosure, disclaimers.
 
-## About
+## Blog / Research
 
-Single-page interactive tool built from 2026 US averages (APPA, AVMA, NAPHIA, BLS). No signup, no paywall.
+- [The $4,272 Question: Where Does Your Pet Budget Really Go?](https://petexpenses.com/blog/understanding-pet-costs) — Line-by-line breakdown of average US pet ownership costs across five categories.
+- [Is Pet Insurance Worth It?](https://petexpenses.com/blog/pet-insurance-worth-it) — Breakeven analysis, breed-specific premiums, and when insurance makes financial sense.
+- [Kibble vs Fresh vs Raw: What Actually Costs Less?](https://petexpenses.com/blog/kibble-vs-fresh-vs-raw) — Cost comparison across three feeding methods for different dog sizes.
+
+## Data Sources
+
+- APPA — American Pet Products Association (2025–2026)
+- AVMA — American Veterinary Medical Association (2022–2026)
+- NAPHIA — Pet Insurance Report (2025–2026)
+- BLS — Veterinary Services CPI (Monthly 2026)
+- MarketWatch — Pet Debt Survey (2025–2026)
+
+## Technical
+
+- Static site hosted on Cloudflare Pages. Vanilla JS SPA (no framework). Deploys from GitHub on push to main.
+- Analytics: PostHog (EU-hosted, IP anonymised).
+- Monetization: CJ Affiliate (Raw Paws Pet Food).
