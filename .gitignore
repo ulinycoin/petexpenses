@@ -37,3 +37,6 @@ components.jsx
 
 # Old hero-png (replaced by optimized jpg)
 hero-image.png
+
+# Research artifacts (local semantic-core runs, analysis)
+research/
