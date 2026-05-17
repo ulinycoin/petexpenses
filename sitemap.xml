@@ -32,32 +32,53 @@
   </url>
   <url>
     <loc>https://petexpenses.com/compare</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://petexpenses.com/sources</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://petexpenses.com/blog/understanding-pet-costs</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://petexpenses.com/blog/pet-insurance-worth-it</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://petexpenses.com/blog/kibble-vs-fresh-vs-raw</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Dog breed pages -->
+  <url><loc>https://petexpenses.com/breeds/french-bulldog-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/labrador-retriever-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/golden-retriever-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/german-shepherd-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/bulldog-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/poodle-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/beagle-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/rottweiler-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/dachshund-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/siberian-husky-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://petexpenses.com/breeds/pomeranian-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/great-dane-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/chihuahua-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/yorkshire-terrier-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/boxer-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/shih-tzu-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/boston-terrier-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/corgi-pembroke-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/australian-shepherd-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://petexpenses.com/breeds/bernese-mountain-dog-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
 </urlset>
