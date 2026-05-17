@@ -583,7 +583,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
 <div class="calc-promo">
   <h3>Get Your Exact !BREED! Cost</h3>
   <p>Every !SPECIES_TITLE! is different. Use our free calculator to adjust for your !BREED!&rsquo;s age, weight, and activity level.</p>
-  <a href="/?breed=!BREED_URL_ENCODED!&weight=!DEFAULT_WEIGHT!&age=adult&coat=!COAT!">Open !BREED! Calculator</a>
+  <a href="/?breed=!BREED_URL_ENCODED!&weight=!DEFAULT_WEIGHT!&age=adult&coat=!COAT!&species=!SPECIES!">Open !BREED! Calculator</a>
 </div>
 
 <section class="similar-breeds">
