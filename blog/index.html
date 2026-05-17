@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Expenses Blog — petexpenses.com</title>
+<meta name="description" content="Read about pet cost breakdowns, insurance comparisons, food budgets, and tips to save money on your dog or cat. Updated with 2026 data.">
+<link rel="canonical" href="https://petexpenses.com/blog/">
+<meta property="og:url" content="https://petexpenses.com/blog/">
+<meta property="og:title" content="Pet Expenses Blog — petexpenses.com">
+<meta property="og:description" content="Read about pet cost breakdowns, insurance comparisons, food budgets, and tips to save money on your dog or cat.">
+<meta property="og:image" content="https://petexpenses.com/og-dog.jpg">
+<meta property="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
+<style>
+:root{--ink:#1B1340;--ink-soft:#4A3F6F;--ink-mute:#6B6490;--coral:#FF5A3C;--coral-dk:#E03812;--coral-soft:#FFE3DA;--pink:#FF8FB1;--pink-dk:#E55E89;--pink-soft:#FFE2EC;--sun:#FFD23F;--sun-dk:#C9941E;--sun-soft:#FFF1B8;--mint:#6EE7B7;--mint-dk:#0E9F6E;--mint-soft:#C7F4DD;--lavender:#A78BFA;--lav-dk:#6D49C7;--lav-soft:#E6DCFF;--cream:#FFF7E8;--cream-2:#FBEFD6;--paper:#FFF;--radius-xl:28px;--radius-lg:20px;--radius:14px;--radius-sm:10px;--radius-pill:999px;--shadow-sm:0 1px 0 rgba(27,19,64,.05),0 1px 3px rgba(27,19,64,.06);--shadow:0 2px 0 rgba(27,19,64,.06),0 8px 22px -8px rgba(27,19,64,.18);--shadow-lg:0 4px 0 rgba(27,19,64,.10),0 22px 50px -16px rgba(27,19,64,.30);--display:'Bricolage Grotesque','Geist',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--body:'Geist',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
+.site-nav{display:flex;align-items:center;gap:24px;padding:16px 32px;position:sticky;top:0;z-index:100;background:rgba(255,247,232,.85);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(27,19,64,.07)}
+.site-brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;white-space:nowrap;color:var(--ink);text-decoration:none}
+.brand-dot{color:var(--coral)}
+.site-nav-mid{display:flex;align-items:center;gap:6px;margin:0 auto}
+.site-nav-mid a{padding:8px 14px;border-radius:var(--radius-pill);font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:background .15s,color .15s;text-decoration:none}
+.site-nav-mid a:hover{background:rgba(27,19,64,.05);color:var(--ink)}
+.site-nav-mid a.active{background:var(--ink);color:var(--cream)}
+.site-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;font-size:.92rem;transition:transform .15s,background .15s;white-space:nowrap;text-decoration:none}
+.site-cta:hover{background:var(--coral);transform:translateY(-1px)}
+@media(max-width:800px){.site-nav-mid{display:none}.site-cta{padding:8px 14px;font-size:.85rem}}
+.blog-index{max-width:780px;margin:0 auto;padding:48px 24px 64px}
+.blog-index h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:12px}
+.blog-index .sub{color:var(--ink-soft);font-size:1.1rem;margin-bottom:40px;padding-bottom:24px;border-bottom:1.5px dashed rgba(27,19,64,.1)}
+.post-card{background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:28px;margin-bottom:20px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.post-card:hover{transform:translateY(-2px);box-shadow:6px 6px 0 var(--ink)}
+.post-card .tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);background:var(--cream-2);padding:4px 10px;border-radius:6px;margin-bottom:12px}
+.post-card h2{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-.02em;margin-bottom:8px}
+.post-card h2 a{color:var(--ink);text-decoration:none}
+.post-card h2 a:hover{color:var(--coral)}
+.post-card p{color:var(--ink-soft);font-size:.95rem;margin-bottom:12px}
+.post-card .meta{font-family:var(--mono);font-size:11px;color:var(--ink-mute)}
+.post-card .read-more{font-weight:600;font-size:.95rem}
+.site-footer{background:var(--ink);color:var(--cream);padding:40px 24px 28px;margin-top:48px}
+.footer-inner{max-width:780px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,247,232,.6)}
+.footer-inner a{color:var(--sun);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="site-brand" href="https://petexpenses.com">
+    <svg viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg>
+    <span>petexpenses<span class="brand-dot">.</span>com</span>
+  </a>
+  <div class="site-nav-mid">
+    <a href="https://petexpenses.com">Calculator</a>
+    <a href="https://petexpenses.com/compare">Compare</a>
+    <a href="https://petexpenses.com/#faq">FAQ</a>
+  </div>
+  <a href="https://petexpenses.com" class="site-cta">Run the math &rarr;</a>
+</nav>
+
+<div class="blog-index">
+  <h1>Pet Expenses Blog</h1>
+  <p class="sub">Data-backed guides to help you budget for your dog or cat. No fluff, no spam.</p>
+
+  <div class="post-card">
+    <div class="tag">Cost breakdown</div>
+    <h2><a href="/blog/understanding-pet-costs">The $4,272 Question: Where Does Your Pet Budget Really Go?</a></h2>
+    <p>Breaking down the average US pet owner's annual spend across five categories. See where food, vet, insurance, grooming, and supplies really eat into your wallet.</p>
+    <div class="meta">May 2026 &bull; 5 min read</div>
+    <a href="/blog/understanding-pet-costs" class="read-more">Read article →</a>
+  </div>
+
+  <div class="post-card">
+    <div class="tag">Insurance</div>
+    <h2><a href="/blog/pet-insurance-worth-it">Is Pet Insurance Worth It? A Cost-Benefit Analysis for 2026</a></h2>
+    <p>A data-driven look at pet insurance premiums, payout rates, and breed-specific risk factors to help you decide if insurance makes financial sense for your pet.</p>
+    <div class="meta">May 2026 &bull; 6 min read</div>
+    <a href="/blog/pet-insurance-worth-it" class="read-more">Read article →</a>
+  </div>
+
+  <div class="post-card">
+    <div class="tag">Food &amp; nutrition</div>
+    <h2><a href="/blog/kibble-vs-fresh-vs-raw">Kibble vs. Fresh vs. Raw: Which Dog Food Is Actually Cheaper?</a></h2>
+    <p>We crunched the numbers on kibble, fresh meal services, and raw diets. The cheapest option isn't always the one with the lowest price tag.</p>
+    <div class="meta">May 2026 &bull; 6 min read</div>
+    <a href="/blog/kibble-vs-fresh-vs-raw" class="read-more">Read article →</a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 <a href="https://petexpenses.com">petexpenses.com</a></span>
+    <span>Data: APPA, AVMA, NAPHIA, BLS</span>
+    <span><a href="https://petexpenses.com">Back to calculator &rarr;</a></span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',function(){
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=!0}(document,window.posthog||[]);
+  posthog.init('phc_6iTpA8vFIxlQ8HxmPsoMmtj4sqgCUWiZQMOpfSfyvxe',{api_host:'https://eu.posthog.com'});
+});
+</script>
+</body>
+</html>
