@@ -1019,6 +1019,16 @@ document.body.addEventListener('input',function(e){
   loadSlot(0,'b1','w1','c1')
   loadSlot(1,'b2','w2','c2')
   if(p.b3){loadSlot(2,'b3','w3','c3');cmp.showThird=true}
+  // If no breed params were loaded from URL, apply species-default breeds
+  if(!p.b1 && !p.b2){
+    var isDog=cmp.species==='dog'
+    cmp.slots[0]=isDog
+      ?{breed:'Labrador Retriever',coat:'short',weight:65,query:'Labrador Retriever'}
+      :{breed:'Maine Coon',coat:'long',weight:16,query:'Maine Coon'}
+    cmp.slots[1]=isDog
+      ?{breed:'French Bulldog',coat:'short',weight:25,query:'French Bulldog'}
+      :{breed:'Persian',coat:'long',weight:11,query:'Persian'}
+  }
 })()
 
 // ================================================================
