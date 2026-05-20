@@ -1,0 +1,3 @@
+Contact: mailto:contact@petexpenses.com
+Canonical: https://petexpenses.com/.well-known/security.txt
+Preferred-Languages: en

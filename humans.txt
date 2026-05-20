@@ -1,0 +1,15 @@
+/* TEAM */
+Site operator: petexpenses.com
+Contact: contact@petexpenses.com
+
+/* SITE */
+Standards: HTML5, Schema.org, Open Graph, JSON-LD
+Components: Vanilla JS, Cloudflare Pages
+Language: English
+
+/* THANKS */
+Data: APPA 2026 State of the Industry Report, AVMA Pet Ownership & Demographics 2026,
+NAPHIA Pet Health Insurance Report 2026, BLS Veterinary Services CPI Feb 2026
+
+/* UPDATED */
+2026-05-20
