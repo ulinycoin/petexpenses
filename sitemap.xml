@@ -60,6 +60,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://petexpenses.com/blog/self-cleaning-litter-box-cost</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Dog breed pages -->
   <url><loc>https://petexpenses.com/breeds/french-bulldog-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://petexpenses.com/breeds/labrador-retriever-cost</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>

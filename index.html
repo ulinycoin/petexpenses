@@ -663,12 +663,12 @@ var PET_DATA = (function () {
     dog:[
       {id:'fresh-food',emoji:'🍖',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Dog Food',partner:'Raw Paws Pet Food',bullet1:'Small-batch frozen raw, made weekly',bullet2:'10% base commission · $160 avg order',bullet3:'Same-day nationwide free shipping',priceFrom:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',ctaText:'Shop Raw Paws →',ctaLink:'https://www.dpbolvw.net/click-101748061-17234885'},
       {id:'insurance',emoji:'🛡️',sticker:'SAFETY',accent:'#A78BFA',accentDark:'#6D49C7',title:'Pet Insurance Comparison',partner:'Insurance Marketplace',bullet1:'Compare top plans today',bullet2:'Avg payout 80% of vet bill',bullet3:'Covers accidents & illness',priceFrom:'from $14/mo',ratings:'★★★★★  ·  Top-rated 2026',ctaText:'Read Our Guide →',ctaLink:'/blog/pet-insurance-worth-it'},
-      {id:'treats',emoji:'📦',sticker:'AUTO-SHIP',accent:'#FFD23F',accentDark:'#C9941E',title:'Raw Food Auto-Ship',partner:'Raw Paws Pet Food',bullet1:'Never run out — delivered on schedule',bullet2:'10% recurring commission',bullet3:'Cancel or pause anytime',priceFrom:'from $0.44/oz',ratings:'10% recurring  ·  $160 avg order',ctaText:'Set up Auto-Ship →',ctaLink:'https://www.anrdoezrs.net/click-101748061-17234936'},
+      {id:'pet-tech',emoji:'🤖',sticker:'PET TECH',accent:'#0EA5E9',accentDark:'#0369A1',title:'Self-Cleaning Litter Box',partner:'MeoWant',bullet1:'12–15% commission · $209 avg order',bullet2:'App-controlled health tracking',bullet3:'Fits up to 6 cats · 30-day trial',priceFrom:'from $209',ratings:'4.2 ★  ·  4k+ Trustpilot reviews',ctaText:'Shop MeoWant →',ctaLink:'https://www.awin1.com/awclick.php?mid=55213&id=2900805&ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box'},
     ],
     cat:[
       {id:'fresh-food',emoji:'🐟',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Cat Food',partner:'Raw Paws Pet Food',bullet1:'Small-batch frozen raw, made weekly',bullet2:'10% base commission · $160 avg order',bullet3:'Same-day nationwide free shipping',priceFrom:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',ctaText:'Shop Raw Paws →',ctaLink:'https://www.dpbolvw.net/click-101748061-17234885'},
       {id:'insurance',emoji:'🛡️',sticker:'SAFETY',accent:'#A78BFA',accentDark:'#6D49C7',title:'Cat Insurance Comparison',partner:'Insurance Marketplace',bullet1:'Compare top plans today',bullet2:'Avg payout 80% of vet bill',bullet3:'Dental + chronic covered',priceFrom:'from $11/mo',ratings:'★★★★★  ·  Top-rated 2026',ctaText:'Read Our Guide →',ctaLink:'/blog/pet-insurance-worth-it'},
-      {id:'treats',emoji:'📦',sticker:'AUTO-SHIP',accent:'#FFD23F',accentDark:'#C9941E',title:'Raw Food Auto-Ship',partner:'Raw Paws Pet Food',bullet1:'Never run out — delivered on schedule',bullet2:'10% recurring commission',bullet3:'Cancel or pause anytime',priceFrom:'from $0.44/oz',ratings:'10% recurring  ·  $160 avg order',ctaText:'Set up Auto-Ship →',ctaLink:'https://www.anrdoezrs.net/click-101748061-17234936'},
+      {id:'pet-tech',emoji:'🤖',sticker:'PET TECH',accent:'#0EA5E9',accentDark:'#0369A1',title:'Self-Cleaning Litter Box',partner:'MeoWant',bullet1:'12–15% commission · $209 avg order',bullet2:'App-controlled health tracking',bullet3:'Fits up to 6 cats · 30-day trial',priceFrom:'from $209',ratings:'4.2 ★  ·  4k+ Trustpilot reviews',ctaText:'Shop MeoWant →',ctaLink:'https://www.awin1.com/awclick.php?mid=55213&id=2900805&ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box'},
     ]
   };
   return {DOG_BREEDS:DB,CAT_BREEDS:CB,DOG_COSTS:DC,CAT_COSTS:CC,AGE_MULT:AGE,ACTIVITY_MULT:ACT,OFFERS};
@@ -856,7 +856,7 @@ function renderOffers(s,costs){
         '<li>✓ '+o.bullet1+'</li><li>✓ '+o.bullet2+'</li><li>✓ '+o.bullet3+'</li></ul>'+
         (o.id==='fresh-food'?'<div class="offer-context">You currently spend ~<strong>$'+monthlyFood+'/mo</strong> on food.</div>':'')+
         (o.id==='insurance'?'<div class="offer-context">Your vet budget is ~<strong>$'+monthlyVet+'/mo</strong>. One emergency = $3–10k.</div>':'')+
-        (o.id==='treats'?'<div class="offer-context">Replace random toy-store runs with a curated monthly drop.</div>':'')+
+        (o.id==='pet-tech'?'<div class="offer-context">Self-cleaning = fewer supplies to buy. One box handles <strong>up to 6 cats</strong>.</div>')+
         '<a class="offer-cta" href="'+(o.ctaLink||'#')+'"'+(o.ctaLink?' target="_blank" rel="noopener"':'')+'>'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
     }).join('')+
   '</div><p class="offers-disclosure">Disclosure: some links above are affiliate links — we may earn a commission at no cost to you.</p></section>'
