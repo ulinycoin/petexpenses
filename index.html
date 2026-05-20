@@ -97,9 +97,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <!-- ALL STYLES INLINE -->
-<link rel="preload" as="image" href="hero-image.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="hero-image.jpg" fetchpriority="high">
 
-<style>
+    <!-- LLM/AI optimization -->
+    <link rel="llms.txt" href="/llms.txt">
+    <link rel="llms-full.txt" href="/llms-full.txt">
+    <meta name="llms" content="/llms.txt">
+    <meta name="llms-full" content="/llms-full.txt">
+
+    <style>
 :root {
   --ink:       #1B1340;
   --ink-soft:  #4A3F6F;

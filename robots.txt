@@ -4,4 +4,8 @@ Disallow: /favicon.ico
 Disallow: /favicon-*.png
 Disallow: /favicon.svg
 
+# AI crawler optimization
+Allow: /llms.txt
+Allow: /llms-full.txt
+
 Sitemap: https://petexpenses.com/sitemap.xml

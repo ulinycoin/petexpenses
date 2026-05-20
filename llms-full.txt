@@ -1,0 +1,91 @@
+# petexpenses.com — Full Site Content for AI
+
+Pet cost calculator and financial research for US dog and cat owners. Provides personalized annual expense breakdowns adjusted by breed, weight, age, activity level, and diet. All data sourced from APPA 2026, AVMA 2026, NAPHIA 2026, and BLS Veterinary Services CPI Feb 2026.
+
+---
+
+## Cost Methodology
+
+Five categories: food, veterinary care, pet insurance, grooming, supplies. Each has a low-to-high range anchored to APPA/AVMA averages, split by size class (small/medium/large/giant for dogs; small/medium/large for cats). Within each size class, linear interpolation based on weight. Breed-specific multipliers adjust for known health risks. Age adjustments (+30% puppy vet, +60% senior vet, +40% senior insurance). Activity adjustments (±20% food, ±15% supplies).
+
+### Base Annual Cost Ranges (US, 2026)
+
+**Dogs:**
+- Food: $360–$2,000 depending on size and diet
+- Vet care (routine): $200–$1,200
+- Insurance: $240–$1,200
+- Grooming: $100–$1,000 depending on coat type
+- Supplies: $150–$600
+
+**Cats:**
+- Food: $240–$720
+- Vet care: $180–$650
+- Insurance: $180–$540
+- Grooming: $40–$500
+- Supplies: $120–$380
+
+### Average Annual Total
+- Dog: $1,500–$3,500 (US average ~$2,800)
+- Cat: $900–$2,000 (US average ~$1,450)
+- National average cited by NY Post/Healthy Paws 2026: $4,272 per owner
+
+### Key Statistics
+- BLS Veterinary Services CPI rose 5.3% year-over-year (Feb 2026)
+- Pet insurance claims rose 22% YoY (NAPHIA 2026)
+- Average insurance claim payout: $3,200
+- One emergency surgery: $3,000–$10,000+
+- 5.6 million pets insured in US (NAPHIA 2026)
+
+---
+
+## Blog Posts
+
+### The $4,272 Question: Where Does Your Pet Budget Really Go?
+https://petexpenses.com/blog/understanding-pet-costs
+Five categories ranked: Food (27-35% of budget), Veterinary (20-28%), Insurance (14-18%), Grooming (6-15%), Supplies (6-10%). Most owners underestimate vet costs by 40-60%. A 50-lb Labrador on premium kibble spends $700-900/yr on food. Frozen raw feeding costs $1,200-2,400/yr. Fresh subscription (Ollie, Farmer's Dog) costs $1,800-3,000/yr.
+
+### Is Pet Insurance Worth It? — 12 Breeds Compared
+https://petexpenses.com/blog/pet-insurance-worth-it
+Breed-by-breakdown: Insurance saves money for French Bulldogs (saves ~$810 lifetime), English Bulldogs (saves ~$800), Golden Retrievers (saves ~$430), Bernese Mountain Dogs (saves ~$350). HYSA beats insurance for Jack Russells (saves ~$182), Rat Terriers (saves ~$250), Mixed Breeds (saves ~$120). Insurance best for brachycephalic breeds and high-cancer-risk breeds. Petcube 24/7 vet telehealth can save $200-600/yr by triaging minor issues via video.
+
+### Kibble vs Fresh vs Raw: Cost Comparison
+https://petexpenses.com/blog/kibble-vs-fresh-vs-raw
+8 brands compared for a 50-lb dog: Purina Pro Plan ($495/yr), Taste of the Wild ($550/yr), Orijen Original ($800/yr), Raw Paws Auto-Ship ($1,460/yr), Raw Paws Beef Blend ($2,045/yr), Ollie ($2,800/yr), Farmer's Dog ($2,850/yr), Stella & Chewy's ($2,920/yr). Frozen raw (auto-ship) delivers best nutrition-to-cost balance.
+
+### Self-Cleaning Litter Box Cost vs Traditional
+https://petexpenses.com/blog/self-cleaning-litter-box-cost
+Traditional box (5 years): ~$1,538 total (includes $1,200 litter, $300 bags, 304 hours). Self-cleaning MeoWant SC02 (5 years): ~$1,109 total (includes $720 litter, $180 bags, 15 hours). Self-cleaning saves $429 and 289 hours over 5 years. MeoWant handles up to 6 cats, has health tracking, 30-day trial. From $209.
+
+### 10 Cheapest Dog Breeds to Own in 2026
+https://petexpenses.com/blog/cheapest-dog-breeds-to-own
+Cheapest to most expensive: Rat Terrier (~$1,100-1,500/yr), Chihuahua (~$1,100-1,500/yr), Italian Greyhound (~$1,200-1,600/yr), Jack Russell Terrier (~$1,200-1,600/yr), Papillon (~$1,150-1,550/yr), Beagle (~$1,400-1,900/yr), Dachshund (~$1,500-2,000/yr), Shiba Inu (~$1,500-2,000/yr), Corgi (~$1,500-2,100/yr), Boston Terrier (~$1,600-2,100/yr). All under $2,100/yr average. Small, healthy breeds with few genetic conditions cost least.
+
+### New Puppy First Year Cost — 2026
+https://petexpenses.com/blog/new-puppy-first-year-cost
+Total first-year costs by size: Small breed $3,000-4,500, Medium $3,500-5,000, Large $4,000-6,000, Giant $5,000-8,000. Breakdown: Adoption/purchase ($50-3,000), First vet visits ($300-700), Supplies ($400-800), Food ($400-1,200), Training ($100-500), Insurance ($200-500), Grooming ($100-500), Emergency fund ($500-1,000).
+
+### Dog Vet Visit Costs by Procedure — 2026
+https://petexpenses.com/blog/dog-vet-visit-costs
+Routine exam: $50-100. Vaccines (DHPP+rabies+bordetella): $80-150. Heartworm test+prevention: $50-150/yr. Dental cleaning: $300-800 (up to $1,500+ with extractions). Spay/neuter: $200-800. Emergency exam: $150-350. Emergency surgery (foreign body, GDV, ACL repair): $3,000-10,000+. Senior wellness panel: $100-250. BLS CPI: vet services rose 5.3% YoY. Petcube 24/7 telehealth: $0-15/call vs $150-300 ER visit.
+
+---
+
+## FAQ
+
+**How much does a dog cost per year?** $1,500-3,500 depending on size, breed, age, and location.
+**What's the most expensive part?** Food and veterinary care. Food: $360-2,000/yr. Vet: $200-1,500+/yr.
+**Is pet insurance worth it?** For brachycephalic breeds (Frenchies, Bulldogs, Pugs) and high-cancer-risk breeds (Goldens, Berners). One emergency surgery can cost $3,000-10,000.
+**Which breeds are cheapest?** Rat Terrier, Jack Russell, Papillon, Italian Greyhound. Avoid brachycephalic and giant breeds.
+**Where do your numbers come from?** APPA 2026, AVMA 2026, NAPHIA 2026, BLS Feb 2026 CPI. Updated semi-annually.
+
+---
+
+## Recent Updates
+- May 2026: Site launched with calculator, blog, 51 dog breeds + 23 cat breeds
+- May 2026: Added 55+ pages including breed-specific cost pages and blog posts
+- All data reflects 2026 US averages
+
+## Affiliate Partners
+- Raw Paws Pet Food (frozen raw dog/cat food) — CJ Affiliate
+- Petcube (smart pet cameras with 24/7 vet access) — Awin
+- MeoWant (self-cleaning litter boxes) — Awin

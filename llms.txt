@@ -17,6 +17,10 @@ Pet cost calculator and financial research for US dog and cat owners. Get person
 - [The $4,272 Question: Where Does Your Pet Budget Really Go?](https://petexpenses.com/blog/understanding-pet-costs) — Line-by-line breakdown of average US pet ownership costs across five categories.
 - [Is Pet Insurance Worth It?](https://petexpenses.com/blog/pet-insurance-worth-it) — Breakeven analysis, breed-specific premiums, and when insurance makes financial sense.
 - [Kibble vs Fresh vs Raw: What Actually Costs Less?](https://petexpenses.com/blog/kibble-vs-fresh-vs-raw) — Cost comparison across three feeding methods for different dog sizes.
+- [Self-Cleaning Litter Box Cost vs Traditional](https://petexpenses.com/blog/self-cleaning-litter-box-cost) — 5-year cost comparison of self-cleaning vs traditional litter boxes.
+- [10 Cheapest Dog Breeds to Own](https://petexpenses.com/blog/cheapest-dog-breeds-to-own) — Annual cost breakdown of the cheapest dog breeds: Rat Terrier, Italian Greyhound, Jack Russell, and more.
+- [New Puppy First Year Cost](https://petexpenses.com/blog/new-puppy-first-year-cost) — Complete $3,000-$8,000 breakdown of all first-year puppy expenses.
+- [Dog Vet Visit Costs by Procedure](https://petexpenses.com/blog/dog-vet-visit-costs) — Average US prices for routine exams, vaccines, dental cleaning, emergency surgery, and more.
 
 ## Data Sources
 
@@ -30,4 +34,6 @@ Pet cost calculator and financial research for US dog and cat owners. Get person
 
 - Static site hosted on Cloudflare Pages. Vanilla JS SPA (no framework). Deploys from GitHub on push to main.
 - Analytics: PostHog (EU-hosted, IP anonymised).
-- Monetization: CJ Affiliate (Raw Paws Pet Food).
+- Monetization: CJ Affiliate (Raw Paws Pet Food), Awin (Petcube, MeoWant).
+
+For full site content in a single document, see [llms-full.txt](https://petexpenses.com/llms-full.txt).
