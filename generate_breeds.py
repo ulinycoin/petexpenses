@@ -475,6 +475,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
   <div class="site-nav-mid">
     <a href="https://petexpenses.com">Calculator</a>
     <a href="https://petexpenses.com/compare">Compare</a>
+    <a href="https://petexpenses.com/blog/">Blog</a>
     <a href="https://petexpenses.com/#faq">FAQ</a>
   </div>
   <a href="https://petexpenses.com" class="site-cta">Run the math &rarr;</a>
