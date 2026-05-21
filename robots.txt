@@ -10,5 +10,3 @@ Allow: /llms-full.txt
 Allow: /ai-summary.json
 
 Sitemap: https://petexpenses.com/sitemap.xml
-LLMS: https://petexpenses.com/llms.txt
-AI-Summary: https://petexpenses.com/ai-summary.json
