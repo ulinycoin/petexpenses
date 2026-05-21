@@ -347,7 +347,7 @@ TEMPLATE = r'''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Much Does a !BREED! Cost Per Year? (2026 Guide) — petexpenses.com</title>
+<title>!BREED! Annual Cost (2026) — petexpenses.com</title>
 <meta name="description" content="!META_DESC!">
 <script type="application/ld+json">
 {
@@ -392,7 +392,7 @@ TEMPLATE = r'''<!DOCTYPE html>
     },
     {
       "@type": "WebPage",
-      "name": "How Much Does a !BREED! Cost Per Year? (2026 Guide)",
+      "name": "!BREED! Annual Cost (2026)",
       "url": "https://petexpenses.com/breeds/!SLUG!",
       "speakable": {
         "@type": "SpeakableSpecification",
@@ -405,6 +405,8 @@ TEMPLATE = r'''<!DOCTYPE html>
       "description": "Annual cost data for owning a !BREED! in the United States, 2026. Includes food, veterinary care, insurance, grooming, and supplies cost ranges by breed, size, age, and activity level.",
       "url": "https://petexpenses.com/breeds/!SLUG!",
       "creator": {"@type": "Organization", "name": "petexpenses.com"},
+      "datePublished": "2026-05-01",
+      "dateModified": "2026-05-21",
       "temporalCoverage": "2026",
       "spatialCoverage": "United States",
       "sourceOrganization": [
@@ -417,10 +419,12 @@ TEMPLATE = r'''<!DOCTYPE html>
   ]
 }
 </script>
-<meta property="og:title" content="How Much Does a !BREED! Cost Per Year? (2026 Guide)">
+<meta property="og:title" content="!BREED! Annual Cost (2026) — petexpenses.com">
 <meta property="og:description" content="See the real annual cost of owning a !BREED! in 2026. Food, vet, insurance, grooming & supplies breakdown. Free calculator included.">
 <meta property="og:image" content="https://petexpenses.com/og-!SPECIES!.jpg">
 <meta property="og:url" content="https://petexpenses.com/breeds/!SLUG!">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="petexpenses.com">
 <meta property="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://petexpenses.com/breeds/!SLUG!">
 <link rel="ai-summary" href="https://petexpenses.com/ai-summary.json">
