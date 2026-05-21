@@ -2,6 +2,15 @@
 
 Pet cost calculator and financial research for US dog and cat owners. Get personalized annual expense breakdowns — food, vet, insurance, grooming, supplies — adjusted by breed, weight, age, activity level, and diet.
 
+## Quick Answer
+
+- Average dog ownership cost (USA, 2026): $1,500–$3,500/year ($125–$292/month)
+- Average cat ownership cost: $900–$2,000/year ($75–$167/month)
+- Average Golden Retriever cost: $1,800–$3,600/year ($150–$300/month)
+- National average per owner: $4,272/year (NY Post / Healthy Paws 2026)
+- Most expensive categories: food (27–35%) and vet care (20–28%)
+- Sources: APPA 2026, AVMA 2026, NAPHIA 2026, BLS Veterinary CPI Feb 2026
+
 ## Pages
 
 - [Pet Cost Calculator](https://petexpenses.com/) — Calculate your pet's annual expenses. Choose breed, weight, age, activity, diet. Free, no signup.
@@ -22,6 +31,15 @@ Pet cost calculator and financial research for US dog and cat owners. Get person
 - [New Puppy First Year Cost](https://petexpenses.com/blog/new-puppy-first-year-cost) — Complete $3,000-$8,000 breakdown of all first-year puppy expenses.
 - [Dog Vet Visit Costs by Procedure](https://petexpenses.com/blog/dog-vet-visit-costs) — Average US prices for routine exams, vaccines, dental cleaning, emergency surgery, and more.
 
+## Breed Pages
+
+Breed-specific annual cost breakdowns with full JSON-LD structured data (WebPage + speakable, Dataset, FAQPage, BreadcrumbList):
+- https://petexpenses.com/breeds/golden-retriever-cost
+- https://petexpenses.com/breeds/labrador-retriever-cost
+- https://petexpenses.com/breeds/french-bulldog-cost
+- https://petexpenses.com/breeds/german-shepherd-cost
+- And 70+ more breed pages at /breeds/ directory
+
 ## Data Sources
 
 - APPA — American Pet Products Association (2025–2026)
@@ -37,3 +55,5 @@ Pet cost calculator and financial research for US dog and cat owners. Get person
 - Monetization: CJ Affiliate (Raw Paws Pet Food), Awin (Petcube, MeoWant).
 
 For full site content in a single document, see [llms-full.txt](https://petexpenses.com/llms-full.txt).
+
+For AI-structured summary, see [ai-summary.json](https://petexpenses.com/ai-summary.json).

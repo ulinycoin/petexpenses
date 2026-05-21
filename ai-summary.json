@@ -1,0 +1,107 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "petexpenses.com",
+  "url": "https://petexpenses.com/",
+  "description": "Pet cost calculator and financial research for US dog and cat owners. Free, no signup, instant annual expense breakdowns based on 2026 US averages.",
+  "quickAnswer": {
+    "dogAnnualCost": "$1,500–$3,500/year ($125–$292/month)",
+    "catAnnualCost": "$900–$2,000/year ($75–$167/month)",
+    "goldenRetrieverAnnualCost": "$1,800–$3,600/year ($150–$300/month)",
+    "nationalAveragePerOwnerAnnual": "$4,272/year",
+    "mostExpensiveCategories": "Food (27-35% of budget) and Veterinary Care (20-28%)",
+    "keyStatistic": "BLS Veterinary Services CPI rose 5.3% year-over-year (Feb 2026)",
+    "dataSources": [
+      "APPA — American Pet Products Association (2026 State of the Industry Report)",
+      "AVMA — American Veterinary Medical Association (Pet Ownership & Demographics 2026)",
+      "NAPHIA — North American Pet Health Insurance Association (Pet Health Insurance Report 2026)",
+      "BLS — Bureau of Labor Statistics (Veterinary Services CPI, Feb 2026)"
+    ]
+  },
+  "costBreakdown": {
+    "dog": {
+      "description": "Annual cost ranges by category for dogs in the US (2026). Actual costs depend on breed, weight, age, activity, and location.",
+      "food": "$360–$2,000/year",
+      "veterinaryCare": "$200–$1,200/year",
+      "petInsurance": "$240–$1,200/year",
+      "grooming": "$100–$1,000/year",
+      "supplies": "$150–$600/year",
+      "averageTotal": "$1,500–$3,500/year"
+    },
+    "cat": {
+      "description": "Annual cost ranges by category for cats in the US (2026). Actual costs depend on breed, weight, age, activity, and location.",
+      "food": "$240–$720/year",
+      "veterinaryCare": "$180–$650/year",
+      "petInsurance": "$180–$540/year",
+      "grooming": "$40–$500/year",
+      "supplies": "$120–$380/year",
+      "averageTotal": "$900–$2,000/year"
+    }
+  },
+  "dogBreeds": [
+    "French Bulldog", "Labrador Retriever", "Golden Retriever", "German Shepherd",
+    "Bulldog", "Poodle", "Beagle", "Rottweiler", "Dachshund", "Siberian Husky",
+    "Pomeranian", "Great Dane", "Chihuahua", "Yorkshire Terrier", "Boxer",
+    "Shih Tzu", "Boston Terrier", "Corgi (Pembroke)", "Australian Shepherd",
+    "Bernese Mountain Dog", "Miniature Schnauzer", "Cocker Spaniel", "Pug",
+    "Maltese", "Jack Russell Terrier", "Miniature Poodle", "Havanese",
+    "Papillon", "Bichon Frise", "Italian Greyhound", "Lhasa Apso", "Rat Terrier",
+    "Cockapoo", "Cavapoo", "Standard Poodle", "Saint Bernard", "Mastiff",
+    "Newfoundland", "Whippet", "Vizsla", "Weimaraner", "Samoyed", "Chow Chow",
+    "Akita", "Doberman Pinscher", "Dalmatian", "Bernedoodle", "Border Collie",
+    "Cane Corso", "Shiba Inu"
+  ],
+  "catBreeds": [
+    "Maine Coon", "Persian", "Ragdoll", "Bengal", "Siamese", "Sphynx",
+    "British Shorthair", "Scottish Fold", "Russian Blue", "Abyssinian",
+    "Norwegian Forest Cat", "Exotic Shorthair", "American Shorthair",
+    "Burmese", "Birman", "Oriental Shorthair", "Devon Rex", "Cornish Rex",
+    "Savannah", "Domestic Shorthair", "Domestic Longhair", "Manx", "Tonkinese"
+  ],
+  "affiliates": [
+    {
+      "name": "Raw Paws Pet Food",
+      "type": "Frozen raw pet food auto-ship",
+      "commission": "10% (CJ Affiliate)",
+      "averageOrder": "$160"
+    },
+    {
+      "name": "Petcube",
+      "type": "Smart pet cameras with 24/7 vet access",
+      "commission": "10% (Awin)",
+      "averageOrder": "$200"
+    },
+    {
+      "name": "MeoWant",
+      "type": "Self-cleaning litter boxes",
+      "commission": "12–15% (Awin)",
+      "averageOrder": "$209"
+    }
+  ],
+  "pages": [
+    {"url": "https://petexpenses.com/", "title": "Pet Cost Calculator", "type": "WebApplication"},
+    {"url": "https://petexpenses.com/compare", "title": "Breed Cost Comparison"},
+    {"url": "https://petexpenses.com/sources", "title": "Data Sources & Methodology"},
+    {"url": "https://petexpenses.com/blog/", "title": "Pet Financial Blog"},
+    {"url": "https://petexpenses.com/blog/understanding-pet-costs", "title": "The $4,272 Question"},
+    {"url": "https://petexpenses.com/blog/pet-insurance-worth-it", "title": "Is Pet Insurance Worth It?"},
+    {"url": "https://petexpenses.com/blog/kibble-vs-fresh-vs-raw", "title": "Kibble vs Fresh vs Raw Cost"},
+    {"url": "https://petexpenses.com/blog/self-cleaning-litter-box-cost", "title": "Litter Box Cost Comparison"},
+    {"url": "https://petexpenses.com/blog/cheapest-dog-breeds-to-own", "title": "Cheapest Dog Breeds"},
+    {"url": "https://petexpenses.com/blog/new-puppy-first-year-cost", "title": "Puppy First Year Cost"},
+    {"url": "https://petexpenses.com/blog/dog-vet-visit-costs", "title": "Dog Vet Visit Costs"}
+  ],
+  "structuredData": {
+    "types": ["WebSite", "WebApplication", "SoftwareApplication", "Dataset", "HowTo", "FAQPage", "WebPage"],
+    "speakable": true,
+    "llmsDotTxt": "https://petexpenses.com/llms.txt",
+    "llmsFullDotTxt": "https://petexpenses.com/llms-full.txt",
+    "breedPagesHasStructuredData": ["BreadcrumbList", "FAQPage", "WebPage+speakable", "Dataset"]
+  },
+  "technical": {
+    "hosting": "Cloudflare Pages",
+    "analytics": "PostHog (EU-hosted, IP anonymised)",
+    "javascript": "Vanilla JS SPA (no framework)",
+    "deployment": "GitHub push to main triggers auto-deploy"
+  }
+}

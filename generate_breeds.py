@@ -389,6 +389,30 @@ TEMPLATE = r'''<!DOCTYPE html>
           }
         }
       ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "How Much Does a !BREED! Cost Per Year? (2026 Guide)",
+      "url": "https://petexpenses.com/breeds/!SLUG!",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".article-h1", ".highlight-card"]
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "!BREED! Pet Expenses 2026",
+      "description": "Annual cost data for owning a !BREED! in the United States, 2026. Includes food, veterinary care, insurance, grooming, and supplies cost ranges by breed, size, age, and activity level.",
+      "url": "https://petexpenses.com/breeds/!SLUG!",
+      "creator": {"@type": "Organization", "name": "petexpenses.com"},
+      "temporalCoverage": "2026",
+      "spatialCoverage": "United States",
+      "sourceOrganization": [
+        {"@type": "Organization", "name": "APPA"},
+        {"@type": "Organization", "name": "AVMA"},
+        {"@type": "Organization", "name": "NAPHIA"},
+        {"@type": "Organization", "name": "BLS"}
+      ]
     }
   ]
 }
@@ -399,6 +423,7 @@ TEMPLATE = r'''<!DOCTYPE html>
 <meta property="og:url" content="https://petexpenses.com/breeds/!SLUG!">
 <meta property="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://petexpenses.com/breeds/!SLUG!">
+<link rel="ai-summary" href="https://petexpenses.com/ai-summary.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">

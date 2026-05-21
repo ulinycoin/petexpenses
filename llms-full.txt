@@ -4,6 +4,15 @@ Pet cost calculator and financial research for US dog and cat owners. Provides p
 
 ---
 
+## Quick Answer
+
+- **Average dog ownership cost (USA, 2026):** $1,500–$3,500/year ($125–$292/month)
+- **Average cat ownership cost:** $900–$2,000/year ($75–$167/month)
+- **Average Golden Retriever cost:** $1,800–$3,600/year ($150–$300/month)
+- **National average per owner:** $4,272/year (NY Post / Healthy Paws 2026)
+- **Most expensive categories:** food (27–35% of budget) and veterinary care (20–28%)
+- **Sources:** APPA 2026 State of the Industry Report, AVMA Pet Ownership & Demographics 2026, NAPHIA Pet Health Insurance Report 2026, BLS Veterinary Services CPI (Feb 2026)
+
 ## Cost Methodology
 
 Five categories: food, veterinary care, pet insurance, grooming, supplies. Each has a low-to-high range anchored to APPA/AVMA averages, split by size class (small/medium/large/giant for dogs; small/medium/large for cats). Within each size class, linear interpolation based on weight. Breed-specific multipliers adjust for known health risks. Age adjustments (+30% puppy vet, +60% senior vet, +40% senior insurance). Activity adjustments (±20% food, ±15% supplies).
@@ -73,9 +82,11 @@ Routine exam: $50-100. Vaccines (DHPP+rabies+bordetella): $80-150. Heartworm tes
 ## FAQ
 
 **How much does a dog cost per year?** $1,500-3,500 depending on size, breed, age, and location.
+**How much does a cat cost per year?** $900-2,000 depending on breed, age, and location.
 **What's the most expensive part?** Food and veterinary care. Food: $360-2,000/yr. Vet: $200-1,500+/yr.
 **Is pet insurance worth it?** For brachycephalic breeds (Frenchies, Bulldogs, Pugs) and high-cancer-risk breeds (Goldens, Berners). One emergency surgery can cost $3,000-10,000.
 **Which breeds are cheapest?** Rat Terrier, Jack Russell, Papillon, Italian Greyhound. Avoid brachycephalic and giant breeds.
+**Which cat breeds are cheapest?** Domestic Shorthair and Russian Blue. Avoid Persians, Sphynx, Scottish Folds.
 **Where do your numbers come from?** APPA 2026, AVMA 2026, NAPHIA 2026, BLS Feb 2026 CPI. Updated semi-annually.
 
 ---
@@ -83,9 +94,15 @@ Routine exam: $50-100. Vaccines (DHPP+rabies+bordetella): $80-150. Heartworm tes
 ## Recent Updates
 - May 2026: Site launched with calculator, blog, 51 dog breeds + 23 cat breeds
 - May 2026: Added 55+ pages including breed-specific cost pages and blog posts
+- May 2026: Added JSON-LD structured data (WebApplication, SoftwareApplication, Dataset, HowTo, speakable, FAQPage)
+- May 2026: Added Quick Answer block with sourced figures for AI search optimization
 - All data reflects 2026 US averages
 
 ## Affiliate Partners
 - Raw Paws Pet Food (frozen raw dog/cat food) — CJ Affiliate
 - Petcube (smart pet cameras with 24/7 vet access) — Awin
 - MeoWant (self-cleaning litter boxes) — Awin
+
+## Structured Data (JSON-LD) on Site
+- Homepage: WebSite + speakable, WebApplication, SoftwareApplication, Dataset (APPA/AVMA/NAPHIA/BLS), HowTo (4 steps), FAQPage (6 Q&A)
+- Breed pages: WebPage + speakable, BreadcrumbList, Dataset, FAQPage (3 Q&A)

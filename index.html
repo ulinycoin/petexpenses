@@ -68,6 +68,95 @@
           }
         }
       ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Pet Cost Calculator",
+      "url": "https://petexpenses.com/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free pet cost calculator that estimates annual dog and cat expenses by breed, weight, age, and activity level. Instant result, no signup."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pet Cost Calculator",
+      "url": "https://petexpenses.com/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Interactive pet expense calculator for dogs and cats. Adjust breed, weight, age, and activity to see a personalized annual cost breakdown."
+    },
+    {
+      "@type": "Dataset",
+      "name": "Pet Expenses 2026 US Averages",
+      "description": "Annual pet ownership cost data for dogs and cats in the United States, 2026. Includes food, veterinary care, insurance, grooming, and supplies costs broken down by breed, size, age, and activity level. Sourced from industry reports.",
+      "url": "https://petexpenses.com/",
+      "creator": {
+        "@type": "Organization",
+        "name": "petexpenses.com"
+      },
+      "temporalCoverage": "2026",
+      "spatialCoverage": "United States",
+      "sourceOrganization": [
+        {"@type": "Organization", "name": "APPA — American Pet Products Association"},
+        {"@type": "Organization", "name": "AVMA — American Veterinary Medical Association"},
+        {"@type": "Organization", "name": "NAPHIA — North American Pet Health Insurance Association"},
+        {"@type": "Organization", "name": "BLS — Bureau of Labor Statistics Veterinary Services CPI"}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Calculate Your Pet's Annual Cost",
+      "description": "Use our free calculator to estimate your dog or cat's yearly expenses.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Select your pet type",
+          "text": "Choose between dog or cat calculator."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter your pet's breed",
+          "text": "Type your breed to auto-fill size, coat type, and health risk factors."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Adjust weight, age, and activity",
+          "text": "Use sliders and buttons to match your pet's profile."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Get your personalized cost breakdown",
+          "text": "See food, vet, insurance, grooming, and supplies costs with a shareable result."
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".hero-h1",
+          ".hero-sub",
+          ".section-h2",
+          ".quick-answer-heading",
+          ".quick-answer-text"
+        ]
+      }
     }
   ]
 }
@@ -102,6 +191,7 @@
     <!-- LLM/AI optimization -->
     <link rel="llms.txt" href="/llms.txt">
     <link rel="llms-full.txt" href="/llms-full.txt">
+    <link rel="ai-summary" href="/ai-summary.json">
     <meta name="llms" content="/llms.txt">
     <meta name="llms-full" content="/llms-full.txt">
 
@@ -423,7 +513,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="deco-sticker deco-rating" style="transform:rotate(-4deg);bottom:-10px;left:20px"><span class="deco-stars">★★★★★</span><span>"finally a calculator that<br>doesn't want my email"</span></div>
 </div>
 </div>
-</section></div>
+</div><!-- end hero -->
+
+<!-- Quick Answer (static for AI search / SEO) -->
+<section class="hiw-section" id="quick-answer" style="padding:0 24px 20px;margin-top:-8px">
+<div style="max-width:1160px;margin:0 auto;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:28px 32px;box-shadow:4px 4px 0 var(--ink)">
+<h2 class="quick-answer-heading" style="font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-.02em">Quick Answer</h2>
+<p class="quick-answer-text" style="font-size:1.05rem;margin-top:8px;text-wrap:pretty">
+  <strong>Average dog ownership cost in the USA (2026):</strong> $1,500–$3,500/year ($125–$292/month).<br>
+  <strong>Average cat ownership cost:</strong> $900–$2,000/year ($75–$167/month).<br>
+  <strong>Average Golden Retriever cost:</strong> $1,800–$3,600/year ($150–$300/month).<br>
+  <strong>Sources:</strong> APPA 2026 State of the Industry, AVMA Pet Ownership &amp; Demographics, NAPHIA Pet Health Insurance Report, BLS Veterinary Services CPI (Feb 2026).
+</p>
+<p style="margin-top:10px;font-size:.92rem;color:var(--ink-soft)">Adjust for any breed, weight, age, and activity using the calculator below. Free, no signup.</p>
+</div>
+</section>
 
 <div id="species-toggle"></div>
 <div id="calculator"></div>
