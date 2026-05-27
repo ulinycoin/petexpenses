@@ -777,7 +777,7 @@ var PET_DATA = (function () {
     dog:[
       {id:'fresh-food',emoji:'🍖',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Dog Food',partner:'Raw Paws Pet Food',bullet1:'Small-batch frozen raw, made weekly',bullet2:'10% base commission · $160 avg order',bullet3:'Same-day nationwide free shipping',priceFrom:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',ctaText:'Shop Raw Paws →',ctaLink:'https://www.dpbolvw.net/click-101748061-17234885'},
       {id:'pet-camera',emoji:'📷',sticker:'PETS',accent:'#0EA5E9',accentDark:'#0369A1',title:'Petcube Smart Pet Camera',partner:'Petcube',bullet1:'10% commission · $200 avg order',bullet2:'Treat-tossing + 24/7 vet access',bullet3:'See, talk & play with your pet',priceFrom:'from $30',ratings:'4.5 ★  ·  60k+ reviews',ctaText:'Shop Petcube →',ctaLink:'https://www.awin1.com/awclick.php?mid=33889&id=2900805&ued=https%3A%2F%2Fpetcube.com%2F'},
-      {id:'pet-tech',emoji:'🤖',sticker:'PET TECH',accent:'#0EA5E9',accentDark:'#0369A1',title:'Self-Cleaning Litter Box',partner:'MeoWant',bullet1:'12–15% commission · $209 avg order',bullet2:'App-controlled health tracking',bullet3:'Fits up to 6 cats · 30-day trial',priceFrom:'from $209',ratings:'4.2 ★  ·  4k+ Trustpilot reviews',ctaText:'Shop MeoWant →',ctaLink:'https://www.awin1.com/awclick.php?mid=55213&id=2900805&ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box'},
+      {id:'gps-collar',emoji:'🛰️',sticker:'GPS TRACKER',accent:'#FFD23F',accentDark:'#C9941E',title:'Fi Smart GPS Dog Collar',partner:'Fi',bullet1:'Real-time GPS tracking + LTE',bullet2:'Activity & sleep monitoring',bullet3:'Escape alerts & waterproof',priceFrom:'from $3/wk',ratings:'4.7 ★  ·  10k+ reviews',ctaText:'Shop Fi Collar →',ctaLink:'https://www.awin1.com/awclick.php?mid=123222&id=2900805&ued=https%3A%2F%2Ftryfi.com%2F'},
     ],
     cat:[
       {id:'fresh-food',emoji:'🐟',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Cat Food',partner:'Raw Paws Pet Food',bullet1:'Small-batch frozen raw, made weekly',bullet2:'10% base commission · $160 avg order',bullet3:'Same-day nationwide free shipping',priceFrom:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',ctaText:'Shop Raw Paws →',ctaLink:'https://www.dpbolvw.net/click-101748061-17234885'},
@@ -855,7 +855,8 @@ var state={
   species:'dog',
   dog:{breed:'Labrador Retriever',weight:65,age:'adult',activity:'moderate',coat:'short'},
   cat:{breed:'Maine Coon',weight:16,age:'adult',activity:'moderate',coat:'long'},
-  emergencySeverity:'moderate'
+  emergencySeverity:'moderate',
+  emergencySurgeryCost:5000
 };
 function curState(){return state[state.species]}
 
@@ -894,6 +895,50 @@ function renderWeight(weight){
   document.getElementById('result').innerHTML=renderResult(s,costs,bd,st,isDog,acc)
   document.getElementById('offers').innerHTML=renderOffers(s,costs)
   document.getElementById('emergency').innerHTML=renderEmergency(s,bd,st)
+}
+
+function renderSurgeryCost(cost){
+  state.emergencySurgeryCost=cost
+  var slider = document.getElementById('surgery-slider')
+  if(slider){
+    slider.style.setProperty('--pct', ((cost - 1000)/9000*100)+'%')
+    slider.value = cost
+  }
+  var valEl = document.getElementById('surg-cost-display')
+  if(valEl) valEl.textContent = '$' + cost.toLocaleString()
+  
+  var s=state.species,st=curState(),bd=getBreed(s,st.breed)
+  var costs=calcCosts(s,st.weight,st.age,st.activity,st.coat,bd)
+  var annualPremium = costs.insurance
+  var hysaTotal = Math.round(annualPremium * 3.14)
+  var hysaShortfall = Math.max(0, cost - hysaTotal)
+  var insOop = cost <= 250 ? cost : Math.round(250 + 0.1 * (cost - 250))
+  var insTotalCost = (annualPremium * 3) + insOop
+  var insuranceSavings = cost - insTotalCost
+  
+  var hysaOopEl = document.getElementById('hysa-oop')
+  if(hysaOopEl) hysaOopEl.textContent = '$' + cost.toLocaleString()
+  
+  var hysaStatusEl = document.getElementById('hysa-status')
+  if(hysaStatusEl) {
+    if(hysaShortfall > 0) {
+      hysaStatusEl.innerHTML = '<span style=\"color:#E03812;font-weight:700\">⚠️ $'+hysaShortfall.toLocaleString()+' Shortfall</span><br><span style=\"font-size:.8rem;color:var(--ink-mute)\">You must borrow or pay this amount out of pocket.</span>'
+    } else {
+      hysaStatusEl.innerHTML = '<span style=\"color:var(--mint-dk);font-weight:700\">✅ fully covered by savings</span>'
+    }
+  }
+  
+  var insOopEl = document.getElementById('ins-oop')
+  if(insOopEl) insOopEl.textContent = '$' + insOop.toLocaleString()
+  
+  var insStatusEl = document.getElementById('ins-status')
+  if(insStatusEl) {
+    if(insuranceSavings > 0) {
+      insStatusEl.innerHTML = '<span style=\"color:var(--mint-dk);font-weight:700\">🎉 Saved $'+insuranceSavings.toLocaleString()+' overall!</span><br><span style=\"font-size:.8rem;color:var(--ink-mute)\">Insurance paid $'+Math.round(cost - insOop).toLocaleString()+' of the bill.</span>'
+    } else {
+      insStatusEl.innerHTML = '<span style=\"color:var(--ink-soft);font-weight:700\">HYSA is $'+Math.abs(insuranceSavings).toLocaleString()+' cheaper</span><br><span style=\"font-size:.8rem;color:var(--ink-mute)\">Assuming no other illnesses/injuries occurred.</span>'
+    }
+  }
 }
 
 function setState(field,val){
@@ -983,6 +1028,7 @@ function renderOffers(s,costs){
         (o.id==='fresh-food'?'<div class="offer-context">You currently spend ~<strong>$'+monthlyFood+'/mo</strong> on food.</div>':'')+
         (o.id==='pet-camera'?'<div class="offer-context">Stay connected with your pet from anywhere. <strong>100M+ treats tossed</strong> by Petcube users.</div>':'')+
         (o.id==='pet-tech'?'<div class="offer-context">Self-cleaning = fewer supplies to buy. One box handles <strong>up to 6 cats</strong>.</div>':'')+
+        (o.id==='gps-collar'?'<div class="offer-context">Track activity, sleep, and location. Fits dogs <strong>from 5 lbs and up</strong>.</div>':'')+
         '<a class="offer-cta" href="'+(o.ctaLink||'#')+'"'+(o.ctaLink?' target="_blank" rel="noopener"':'')+'>'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
     }).join('')+
   '</div><p class="offers-disclosure">Disclosure: some links above are affiliate links — we may earn a commission at no cost to you.</p></section>'
@@ -1000,17 +1046,74 @@ function renderEmergency(s,bd,st){
   var adjMax=roundToNearest50(base.max*ageMult*breedMult)
   var sevLabel=base.label
   var costs=calcCosts(s,st.weight,st.age,st.activity,st.coat,bd)
-  var isDog=s==='dog',acc=isDog?'#FF5A3C':'#FF8FB1'
-
+  
   var pills=EMERGENCY_LABELS.map(function(k){
     var l=EMERGENCY_RANGES[k].label
     return '<button class=\"pill-seg-btn'+(sev===k?' active':'')+'\" data-action=\"set-emergency\" data-value=\"'+k+'\"'+(sev===k?' style=\"background:#0E9F6E;color:#fff\"':'')+'>'+l+'</button>'
   }).join('')
 
-  return '<section class=\"emergency-section\" style=\"padding:0 24px 40px\"><div class=\"emergency-card\" style=\"max-width:1160px;margin:0 auto;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);box-shadow:6px 6px 0 var(--ink);overflow:hidden\"><div style=\"padding:36px 40px 40px;position:relative\"><div style=\"position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.04) 1.4px,transparent 1.6px);background-size:16px 16px;pointer-events:none\" aria-hidden=\"true\"></div><div style=\"position:relative;z-index:1\"><div style=\"display:flex;align-items:center;gap:12px;margin-bottom:6px\"><span style=\"font-size:1.6rem\">🐾</span><span style=\"font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);font-weight:700\">EMERGENCY VET FUND</span></div><h2 style=\"font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px\">What if something happens to your '+s+'?</h2><p style=\"color:var(--ink-soft);font-size:.98rem;margin-bottom:24px\">Estimate how much you should set aside for your '+(bd?bd.name+' ('+st.age+', '+st.weight+' lb)':'pet')+'.</p><div style=\"margin-bottom:24px\"><div class=\"pill-seg\" style=\"background:var(--cream)\">'+pills+'</div></div><div style=\"display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px\">'+
+  var surgCost = state.emergencySurgeryCost || 5000
+  var annualPremium = costs.insurance
+  var hysaTotal = Math.round(annualPremium * 3.14)
+  var hysaShortfall = Math.max(0, surgCost - hysaTotal)
+  var insOop = surgCost <= 250 ? surgCost : Math.round(250 + 0.1 * (surgCost - 250))
+  var insTotalCost = (annualPremium * 3) + insOop
+  var insuranceSavings = surgCost - insTotalCost
+  var pctSurg = ((surgCost - 1000) / 9000) * 100
+
+  return '<section class=\"emergency-section\" style=\"padding:0 24px 40px\"><div class=\"emergency-card\" style=\"max-width:1160px;margin:0 auto;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);box-shadow:6px 6px 0 var(--ink);overflow:hidden\"><div style=\"padding:36px 40px 40px;position:relative\"><div style=\"position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.04) 1.4px,transparent 1.6px);background-size:16px 16px;pointer-events:none\" aria-hidden=\"true\"></div><div style=\"position:relative;z-index:1\"><div style=\"display:flex;align-items:center;gap:12px;margin-bottom:6px\"><span style=\"font-size:1.6rem\">🐾</span><span style=\"font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);font-weight:700\">EMERGENCY VET FUND</span></div><h2 style=\"font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px\">What if something happens to your '+s+'?</h2><p style=\"color:var(--ink-soft);font-size:.98rem;margin-bottom:24px\">Estimate how much you should set aside for your '+(bd?bd.name+' ('+st.age+', '+st.weight+' lb)':'pet')+'.</p><div style=\"margin-bottom:24px\"><div class=\"pill-seg\" style=\"background:var(--cream)\">'+pills+'</div></div><div style=\"display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:20px;margin-bottom:24px\">'+
     '<div style=\"background:var(--ink);color:var(--cream);border-radius:var(--radius-lg);padding:24px 28px\"><div style=\"font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,247,232,.6);margin-bottom:8px\">'+sevLabel.toUpperCase()+'</div><div style=\"font-family:var(--display);font-weight:800;font-size:2.2rem;letter-spacing:-.03em;color:var(--sun);line-height:1\">$'+adjMin.toLocaleString()+'–$'+adjMax.toLocaleString()+'</div><div style=\"font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:rgba(255,247,232,.5);margin-top:6px\">estimated cost</div></div>'+
     '<div style=\"background:var(--mint-soft);border-radius:var(--radius-lg);padding:24px 28px;border:1.5px solid var(--mint-dk)\"><div style=\"font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px\">PET INSURANCE</div><div style=\"font-family:var(--display);font-weight:800;font-size:2rem;letter-spacing:-.03em;color:var(--ink);line-height:1\">$'+costs.insurance.toLocaleString()+'<span style=\"font-size:1rem;font-family:var(--mono);font-weight:600;color:var(--ink-mute)\">/yr</span></div><div style=\"font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-mute);margin-top:6px\">annual premium estimate</div></div>'+
-  '</div><div style=\"display:flex;flex-wrap:wrap;gap:16px;align-items:center;padding:18px 22px;background:var(--cream-2);border-radius:var(--radius-lg)\"><span style=\"font-size:1.2rem\">💡</span><div style=\"flex:1;min-width:200px\"><strong style=\"font-family:var(--display);font-weight:700;font-size:.98rem\">24/7 vet chat, not a replacement.</strong><br><span style=\"font-size:.9rem;color:var(--ink-soft)\">For non-emergency concerns, <a href=\"https://petcube.com/care/?utm_source=aw&amp;utm_medium=affiliate&amp;sv1=affiliate&amp;sv_campaign_id=2900805&amp;awc=33889_1779350570_424e9d171ee1ab62435cc47577ddfe18\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--coral);font-weight:600;text-decoration:underline\">Petcube 24/7 vet access</a> may help you decide whether a clinic visit is needed.</span></div><a href=\"https://petcube.com/care/?utm_source=aw&amp;utm_medium=affiliate&amp;sv1=affiliate&amp;sv_campaign_id=2900805&amp;awc=33889_1779350570_424e9d171ee1ab62435cc47577ddfe18\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;font-size:.9rem;text-decoration:none;white-space:nowrap\">Learn more →</a></div>'+
+  '</div>'+
+  '<hr style=\"border:0;border-top:1.5px dashed rgba(27,19,64,0.15);margin:32px 0\">'+
+  '<div style=\"margin-bottom:24px\">'+
+    '<div style=\"display:flex;align-items:center;gap:8px;margin-bottom:8px\">'+
+      '<span style=\"font-size:1.4rem\">⚖️</span>'+
+      '<h3 style=\"font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em\">Insurance vs. Savings (HYSA) Simulation</h3>'+
+    '</div>'+
+    '<p style=\"color:var(--ink-soft);font-size:.92rem;margin-bottom:20px\">What happens if your pet has a major emergency (e.g. surgery) in Year 3?</p>'+
+    '<div class=\"bigslider\" style=\"background:var(--cream-2);margin-bottom:24px\">'+
+      '<div class=\"bigslider-head\">'+
+        '<div class=\"bigslider-label\">Estimated Surgery Cost</div>'+
+        '<div class=\"bigslider-value\" id=\"surg-cost-display\" style=\"color:#E03812;font-size:1.5rem\">$'+surgCost.toLocaleString()+'</div>'+
+      '</div>'+
+      '<div class=\"bigslider-track-wrap\">'+
+        '<input type=\"range\" class=\"bigslider-input\" id=\"surgery-slider\" aria-label=\"Vet surgery cost\" min=\"1000\" max=\"10000\" step=\"500\" value=\"'+surgCost+'\" style=\"--pct:'+pctSurg+'%;--accent:#FF5A3C\">'+
+      '</div>'+
+      '<div class=\"bigslider-ticks\">'+
+        '<span>$1,000</span>'+
+        '<span>$5,000</span>'+
+        '<span>$10,000</span>'+
+      '</div>'+
+    '</div>'+
+    '<div style=\"display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:20px;margin-bottom:24px\">'+
+      '<div style=\"background:rgba(27,19,64,0.03);border:1.5px solid rgba(27,19,64,0.1);border-radius:var(--radius-lg);padding:20px 22px\">'+
+        '<div style=\"font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px\">Option A: HYSA (4.5% APY)</div>'+
+        '<p style=\"font-size:.9rem;color:var(--ink-soft);margin-bottom:12px\">Save the equivalent of your premiums ($'+Math.round(annualPremium/12)+'/mo) in a savings account.</p>'+
+        '<div style=\"font-family:var(--mono);font-size:11px;color:var(--ink-mute)\">Saved in 3 years: <strong style=\"color:var(--ink)\">$'+hysaTotal.toLocaleString()+'</strong></div>'+
+        '<div style=\"font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-top:4px\">Out-of-pocket surgery: <strong id=\"hysa-oop\" style=\"color:#E03812\">$'+surgCost.toLocaleString()+'</strong></div>'+
+        '<div id=\"hysa-status\" style=\"border-top:1px dashed rgba(27,19,64,0.1);margin-top:10px;padding-top:10px\">'+
+          (hysaShortfall > 0 
+            ? '<span style=\"color:#E03812;font-weight:700\">⚠️ $'+hysaShortfall.toLocaleString()+' Shortfall</span><br><span style=\"font-size:.8rem;color:var(--ink-mute)\">You must borrow or pay this amount out of pocket.</span>'
+            : '<span style=\"color:var(--mint-dk);font-weight:700\">✅ fully covered by savings</span>'
+          )+
+        '</div>'+
+      '</div>'+
+      '<div style=\"background:rgba(110,231,183,0.06);border:1.5px solid rgba(14,159,110,0.25);border-radius:var(--radius-lg);padding:20px 22px\">'+
+        '<div style=\"font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mint-dk);margin-bottom:6px\">Option B: Odie Insurance</div>'+
+        '<p style=\"font-size:.9rem;color:var(--ink-soft);margin-bottom:12px\">Pay annual premium. Odie reimburses 90% of surgery costs after a $250 deductible.</p>'+
+        '<div style=\"font-family:var(--mono);font-size:11px;color:var(--ink-mute)\">3-yr premiums paid: <strong style=\"color:var(--ink)\">$'+(annualPremium*3).toLocaleString()+'</strong></div>'+
+        '<div style=\"font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-top:4px\">Out-of-pocket surgery: <strong id=\"ins-oop\" style=\"color:var(--ink)\">$'+insOop.toLocaleString()+'</strong></div>'+
+        '<div id=\"ins-status\" style=\"border-top:1px dashed rgba(14,159,110,0.2);margin-top:10px;padding-top:10px\">'+
+          (insuranceSavings > 0
+            ? '<span style=\"color:var(--mint-dk);font-weight:700\">🎉 Saved $'+insuranceSavings.toLocaleString()+' overall!</span><br><span style=\"font-size:.8rem;color:var(--ink-mute)\">Insurance paid $'+Math.round(surgCost - insOop).toLocaleString()+' of the bill.</span>'
+            : '<span style=\"color:var(--ink-soft);font-weight:700\">HYSA is $'+Math.abs(insuranceSavings).toLocaleString()+' cheaper</span><br><span style=\"font-size:.8rem;color:var(--ink-mute)\">Assuming no other illnesses/injuries occurred.</span>'
+          )+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div style=\"display:flex;flex-wrap:wrap;gap:16px;align-items:center;padding:18px 22px;background:var(--cream-2);border-radius:var(--radius-lg)\"><span style=\"font-size:1.2rem\">🛡️</span><div style=\"flex:1;min-width:200px\"><strong style=\"font-family:var(--display);font-weight:700;font-size:.98rem\">Avoid unexpected vet debt with Odie Pet Insurance.</strong><br><span style=\"font-size:.9rem;color:var(--ink-soft)\">Odie covers up to 90% of emergency treatments, illnesses, and breed-specific issues like '+(bd?bd.note.split(\';\')[0].toLowerCase():\'health concerns\')+'. Plans are fully customizable.</span></div><a href=\"https://www.awin1.com/awclick.php?mid=68990&amp;id=2900805&amp;ued=https%3A%2F%2Fgetodie.com%2F\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;font-size:.9rem;text-decoration:none;white-space:nowrap\">Get Odie Quote →</a></div>'+
   '<div style=\"margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-mute)\">Estimates only. Emergency costs vary by clinic, location, and condition.</div>'+
 '</div></div></div></section>'
 }
@@ -1101,6 +1204,8 @@ if(document.body){
 document.body.addEventListener('input',function(e){
   if(e.target.id==='weight-slider'){
     renderWeight(Number(e.target.value))
+  } else if(e.target.id==='surgery-slider'){
+    renderSurgeryCost(Number(e.target.value))
   } else if(e.target.id==='breed-input'){
     state[state.species].breed=e.target.value
     render()
