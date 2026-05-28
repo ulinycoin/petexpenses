@@ -507,7 +507,8 @@ var PET_DATA=(function(){
     cat:[
       {emoji:'🐟',sticker:'RAW',accent:'#6EE7B7',accentDark:'#0E9F6E',title:'Frozen Raw Cat Food',partner:'Raw Paws Pet Food',b1:'Small-batch frozen raw, made weekly',b2:'10% base commission · $160 avg order',b3:'Same-day nationwide free shipping',price:'from $0.44/oz',ratings:'4.8 ★  ·  2k+ reviews',cta:'Shop Raw Paws →',link:'https://www.dpbolvw.net/click-101748061-17234885'},
       {emoji:'📷',sticker:'PETS',accent:'#0EA5E9',accentDark:'#0369A1',title:'Petcube Smart Pet Camera',partner:'Petcube',b1:'10% commission · $200 avg order',b2:'Treat-tossing + 24/7 vet access',b3:'See, talk & play with your pet',price:'from $30',ratings:'4.5 ★  ·  60k+ reviews',cta:'Shop Petcube →',link:'https://www.awin1.com/awclick.php?mid=33889&id=2900805&ued=https%3A%2F%2Fpetcube.com%2F'},
-      {emoji:'🤖',sticker:'PET TECH',accent:'#FFD23F',accentDark:'#C9941E',title:'Self-Cleaning Litter Box',partner:'MeoWant',b1:'App-controlled health tracking',b2:'Fits up to 6 cats',b3:'30-day risk-free trial',price:'from $209',ratings:'4.2 ★  ·  4k+ reviews',cta:'Shop MeoWant →',link:'https://www.awin1.com/awclick.php?mid=55213&id=2900805&ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box'}
+      {emoji:'🤖',sticker:'PET TECH',accent:'#FFD23F',accentDark:'#C9941E',title:'Self-Cleaning Litter Box',partner:'MeoWant',b1:'App-controlled health tracking',b2:'Fits up to 6 cats',b3:'30-day risk-free trial',price:'from $209',ratings:'4.2 ★  ·  4k+ reviews',cta:'Shop MeoWant →',link:'https://www.awin1.com/awclick.php?mid=55213&id=2900805&ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box'},
+      {emoji:'🌿',sticker:'NATURAL',accent:'#8B5CF6',accentDark:'#6D28D9',title:'Flushable Cat Litter',partner:'Tuft & Paw',b1:'Ultra low-tracking tofu litter',b2:'99% dust-free & fully flushable',b3:'50% commission on first orders · $85 AOV',price:'from $22',ratings:'4.4 ★  ·  11k+ reviews',cta:'Shop Tuft & Paw →',link:'https://www.awin1.com/awclick.php?mid=59149&id=2900805&ued=https%3A%2F%2Fwww.tuftandpaw.com%2Fproducts%2Freally-great-cat-litter'},
     ]
   };
   return{DOG_BREEDS:DB,CAT_BREEDS:CB,DOG_COSTS:DC,CAT_COSTS:CC,AGE_MULT:AGE,ACTIVITY_MULT:ACT,OFFERS:OFFERS};
@@ -857,7 +858,7 @@ function renderOffers(){
   return '<section class="offers-section">'+
     '<div class="section-head">'+
     '<div class="section-eyebrow">'+svgPaw('#FF5A3C',18)+' WAYS TO SPEND LESS</div>'+
-    '<h2 class="section-h2">Three picks for your <span class="h2-accent">'+s+'</span></h2>'+
+    '<h2 class=\"section-h2\">'+offers.length+' picks for your <span class=\"h2-accent\">'+s+'</span></h2>'+
     '</div>'+
     '<div class="offers-grid">'+
     offers.map(function(o){

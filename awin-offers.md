@@ -95,9 +95,11 @@ Publisher ID: 2900805
 
 ## 🐱 Для владельцев кошек
 
-19. **[Tuft & Paw]** — https://ui.awin.com/merchant-profile/59149
-    Сайт: tuftandpaw.com
-    Мебель для кошек
+19. **✅ Tuft & Paw** — https://ui.awin.com/merchant-profile/59149
+   Сайт: tuftandpaw.com
+   12% · 50% на первый заказ · AOV $85 · 60-day cookie
+   **Активен на petexpenses — cat OFFERS** (Really Great Cat Litter)
+   Промо: TOFULITTER20
 
 20. **[Hide & Scratch]** — https://ui.awin.com/merchant-profile/105745
     Сайт: hideandscratch.com
