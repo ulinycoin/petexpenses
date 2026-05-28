@@ -945,8 +945,9 @@ function renderSurgeryCost(cost){
 function setState(field,val){
   state[state.species][field]=val
   render()
+  if(typeof posthog!=='undefined'){posthog.capture('calculator_updated',{species:state.species,field:field,value:val})}
 }
-function setSpecies(s){state.species=s; render()}
+function setSpecies(s){state.species=s; render(); if(typeof posthog!=='undefined'){posthog.capture('species_switched',{species:s})}}
 
 function renderHero(s,isDog){
   return '<section class="hero"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div><div class="hero-grid"><div class="hero-left"><div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div><h1 class="hero-h1">How much does<br>your <span class="'+(isDog?'h1-accent-orange':'h1-accent-pink')+'">'+(isDog?'dog':'cat')+'</span> <span class="h1-stamp">really</span><br>cost a year?</h1><p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p><div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div></div><div class="hero-right"><div class="hero-photo'+(isDog?'':' hero-photo-cat')+'"><img src="hero-image.jpg" alt="'+(isDog?'Dog':'Cat')+' cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div><div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div><div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px">'+
@@ -1031,7 +1032,7 @@ function renderOffers(s,costs){
         (o.id==='pet-tech'?'<div class="offer-context">Self-cleaning = fewer supplies to buy. One box handles <strong>up to 6 cats</strong>.</div>':'')+
         (o.id==='litter'?'<div class=\"offer-context\">Flushable = zero plastic bag waste. One bag lasts <strong>~1 month for 1 cat</strong>.</div>':'')+
         (o.id==='gps-collar'?'<div class="offer-context">Track activity, sleep, and location. Fits dogs <strong>from 5 lbs and up</strong>.</div>':'')+
-        '<a class="offer-cta" href="'+(o.ctaLink||'#')+'"'+(o.ctaLink?' target="_blank" rel="noopener"':'')+'>'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
+        '<a class="offer-cta" href="'+(o.ctaLink||'#')+'" data-track-offer="'+o.partner+'"'+(o.ctaLink?' target="_blank" rel="noopener"':'')+'>'+o.ctaText+'</a><div class="offer-ratings">'+o.ratings+'</div></article>'
     }).join('')+
   '</div><p class="offers-disclosure">Disclosure: some links above are affiliate links — we may earn a commission at no cost to you.</p></section>'
 }
@@ -1160,6 +1161,10 @@ document.body.addEventListener('click',function(e){
     return
   }
 
+  // Offer CTA tracking
+  var trackOffer=e.target.closest('[data-track-offer]')
+  if(trackOffer && typeof posthog!=='undefined'){posthog.capture('offer_clicked',{partner:trackOffer.getAttribute('data-track-offer'),species:state.species})}
+
   // Share buttons
   var shareBtn=e.target.closest('[data-action^="share-"]')
   if(shareBtn){
@@ -1186,6 +1191,7 @@ document.body.addEventListener('click',function(e){
       state[state.species].breed=bd2.name
       state[state.species].coat=bd2.coat
       state[state.species].weight=defaultWeight(state.species,bd2.size)
+      if(typeof posthog!=='undefined'){posthog.capture('breed_selected',{species:state.species,breed:bd2.name})}
     }
     render()
     return

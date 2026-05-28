@@ -870,7 +870,7 @@ function renderOffers(){
         '<h3 class="offer-title">'+o.title+'</h3>'+
         '<div class="offer-partner">— '+o.partner+'</div>'+
         '<ul class="offer-bullets"><li>✓ '+o.b1+'</li><li>✓ '+o.b2+'</li><li>✓ '+o.b3+'</li></ul>'+
-        '<a class="offer-cta" style="background:var(--oad,#1B1340)" href="'+(o.link||'#')+'"'+(o.link?' target="_blank" rel="noopener"':'')+'>'+o.cta+'</a>'+
+        '<a class="offer-cta" style="background:var(--oad,#1B1340)" href="'+(o.link||'#')+'" data-track-offer="'+o.partner+'"'+(o.link?' target="_blank" rel="noopener"':'')+'>'+o.cta+'</a>'+
         '<div class="offer-ratings">'+o.ratings+'</div>'+
         '</article>'
     }).join('')+
@@ -942,14 +942,15 @@ document.body.addEventListener('click',function(e){
     cmp.showThird=false
     cmp.openDrop=null
     renderAll()
+    if(typeof posthog!=='undefined'){posthog.capture('species_switched',{species:cmp.species})}
     return
   }
 
   // Shared settings
   var ageBtn=e.target.closest('[data-action="set-age"]')
-  if(ageBtn){cmp.age=ageBtn.getAttribute('data-value');renderAll();return}
+  if(ageBtn){cmp.age=ageBtn.getAttribute('data-value');renderAll();if(typeof posthog!=='undefined'){posthog.capture('calculator_updated',{page:'compare',field:'age',value:cmp.age})};return}
   var actBtn=e.target.closest('[data-action="set-activity"]')
-  if(actBtn){cmp.activity=actBtn.getAttribute('data-value');renderAll();return}
+  if(actBtn){cmp.activity=actBtn.getAttribute('data-value');renderAll();if(typeof posthog!=='undefined'){posthog.capture('calculator_updated',{page:'compare',field:'activity',value:cmp.activity})};return}
 
   // Per-slot coat
   var coatBtn=e.target.closest('[data-action="set-coat"]')
@@ -957,6 +958,7 @@ document.body.addEventListener('click',function(e){
     var si=parseInt(coatBtn.getAttribute('data-slot'),10)
     if(cmp.slots[si]) cmp.slots[si].coat=coatBtn.getAttribute('data-value')
     renderAll()
+    if(typeof posthog!=='undefined'){posthog.capture('calculator_updated',{page:'compare',field:'coat',species:cmp.species,value:coatBtn.getAttribute('data-value'),slot:si})}
     return
   }
 
@@ -987,11 +989,16 @@ document.body.addEventListener('click',function(e){
       cmp.slots[si2].query=bd.name
       cmp.slots[si2].coat=bd.coat
       cmp.slots[si2].weight=defaultWeight(cmp.species,bd.size)
+      if(typeof posthog!=='undefined'){posthog.capture('breed_selected',{page:'compare',species:cmp.species,breed:bd.name,slot:si2})}
     }
     cmp.openDrop=null
     renderAll()
     return
   }
+
+  // Offer CTA tracking
+  var trackOffer=e.target.closest('[data-track-offer]')
+  if(trackOffer && typeof posthog!=='undefined'){posthog.capture('offer_clicked',{partner:trackOffer.getAttribute('data-track-offer'),page:'compare',species:cmp.species})}
 
   // Share
   var shareBtn=e.target.closest('[data-action^="share-"]')
