@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Cost Widget — Free Breed Cost Table for Your Site</title>
+<meta name="description" content="Free embeddable pet cost table for bloggers and publishers. 43 dog and cat breeds with annual cost data. One line of HTML, zero configuration.">
+<link rel="canonical" href="https://petexpenses.com/embed/">
+<style>
+:root{--ink:#1B1340;--ink-soft:#4A3F6F;--ink-mute:#6B6490;--coral:#FF5A3C;--coral-dk:#E03812;--cream:#FFF7E8;--cream-2:#FBEFD6;--paper:#FFF;--radius-xl:28px;--radius:14px;--radius-sm:10px;--radius-pill:999px;--shadow:0 2px 0 rgba(27,19,64,.06),0 8px 22px -8px rgba(27,19,64,.18);--display:'Bricolage Grotesque','Geist',system-ui,-apple-system,sans-serif;--body:'Geist',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--coral);font-weight:600}
+.site-nav{display:flex;align-items:center;gap:24px;padding:16px 32px;position:sticky;top:0;z-index:100;background:rgba(255,247,232,.85);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(27,19,64,.07)}
+.site-brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.brand-dot{color:var(--coral)}
+.site-nav-mid{display:flex;align-items:center;gap:6px;margin:0 auto}
+.site-nav-mid a{padding:8px 14px;border-radius:var(--radius-pill);font-size:.92rem;font-weight:500;color:var(--ink-soft);text-decoration:none}
+.site-nav-mid a:hover{background:rgba(27,19,64,.05);color:var(--ink)}
+.site-nav-mid a.active{background:var(--ink);color:var(--cream)}
+@media(max-width:800px){.site-nav-mid{display:none}}
+.wrap{max-width:800px;margin:0 auto;padding:48px 24px 64px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:12px}
+.lead{font-size:1.1rem;color:var(--ink-soft);margin-bottom:40px;line-height:1.6}
+.steps{display:flex;flex-direction:column;gap:24px;margin-bottom:48px}
+.step{background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:24px 28px;box-shadow:4px 4px 0 var(--ink)}
+.step-num{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px}
+.step h3{font-family:var(--display);font-weight:700;font-size:1.15rem;margin-bottom:10px}
+.code-block{background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:13px;padding:16px 20px;border-radius:var(--radius-sm);overflow-x:auto;margin:10px 0;line-height:1.6;tab-size:2}
+.copy-btn{display:inline-block;margin-top:10px;padding:10px 20px;background:var(--coral);color:var(--cream);border:none;border-radius:var(--radius-pill);font-weight:600;font-size:14px;cursor:pointer;transition:background .15s}
+.copy-btn:hover{background:var(--coral-dk)}
+.preview-wrap{border:2.5px solid var(--ink);border-radius:var(--radius-xl);overflow:hidden;box-shadow:6px 6px 0 var(--ink);margin-bottom:48px}
+.preview-wrap iframe{width:100%;height:520px;border:none;display:block}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:48px}
+.feature-card{background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);padding:20px;text-align:center}
+.feature-card .icon{font-size:1.8rem;margin-bottom:8px}
+.feature-card h4{font-family:var(--display);font-weight:700;font-size:1rem;margin-bottom:6px}
+.feature-card p{font-size:.9rem;color:var(--ink-soft)}
+.faq-item{border-bottom:1px solid rgba(27,19,64,.08);padding:16px 0}
+.faq-item h3{font-family:var(--display);font-size:1rem;font-weight:700;margin-bottom:6px;cursor:pointer}
+.faq-item p{font-size:.95rem;color:var(--ink-soft)}
+.back-link{display:inline-block;margin-top:40px;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+<a href="https://petexpenses.com" class="site-brand"><span>🐾</span>petexpenses<span class="brand-dot">.</span></a>
+<div class="site-nav-mid">
+<a href="https://petexpenses.com">Calculator</a>
+<a href="https://petexpenses.com/compare">Compare</a>
+<a href="https://petexpenses.com/blog">Blog</a>
+<a href="https://petexpenses.com/embed/" class="active">Widget</a>
+</div>
+</nav>
+<div class="wrap">
+<h1>📋 Free Pet Cost Widget</h1>
+<p class="lead">Add a live breed cost table to your pet blog or article. 43 breeds, two tabs (dogs & cats), updated with 2026 data. One line of HTML.</p>
+
+<div class="steps">
+<div class="step">
+<div class="step-num">Step 1</div>
+<h3>Copy the embed code</h3>
+<div class="code-block" id="embed-code">&lt;iframe src="https://petexpenses.com/embed.html" width="100%" height="520"&gt;&lt;/iframe&gt;</div>
+<button class="copy-btn" onclick="copyCode()">📋 Copy code</button>
+</div>
+<div class="step">
+<div class="step-num">Step 2</div>
+<h3>Paste into your article</h3>
+<p>Paste the code in your WordPress, Ghost, Squarespace, or any HTML editor where you want the table to appear. The widget loads instantly — no scripts, no tracking.</p>
+</div>
+</div>
+
+<h2 style="font-family:var(--display);font-weight:800;font-size:1.4rem;margin-bottom:16px">👀 Live preview</h2>
+<div class="preview-wrap">
+<iframe src="https://petexpenses.com/embed.html" loading="lazy"></iframe>
+</div>
+
+<div class="features">
+<div class="feature-card"><div class="icon">📊</div><h4>43 breeds</h4><p>20 dog + 23 cat breeds with 2026 annual cost data from APPA, AVMA, NAPHIA</p></div>
+<div class="feature-card"><div class="icon">⚡</div><h4>Zero config</h4><p>No API keys, no CSS conflicts — drops into any HTML page cleanly</p></div>
+<div class="feature-card"><div class="icon">🔗</div><h4>Auto-updating</h4><p>Data refreshes when petexpenses updates — your article stays current without edits</p></div>
+<div class="feature-card"><div class="icon">📱</div><h4>Responsive</h4><p>Works on mobile, tablet, and desktop out of the box</p></div>
+</div>
+
+<h2 style="font-family:var(--display);font-weight:800;font-size:1.4rem;margin-bottom:16px">❓ FAQ</h2>
+<div class="faq-item">
+<h3>Is the widget free?</h3>
+<p>Yes. Free to use on any site. No registration, no rate limits.</p>
+</div>
+<div class="faq-item">
+<h3>Can I customize the colors?</h3>
+<p>Not yet, but the default design matches most pet blog themes. Custom themes coming soon.</p>
+</div>
+<div class="faq-item">
+<h3>Does it work with WordPress?</h3>
+<p>Yes — use the "Custom HTML" block in the block editor (Gutenberg) or install an iframe plugin.</p>
+</div>
+
+<a href="https://petexpenses.com" class="back-link">← Back to calculator</a>
+</div>
+<script>
+function copyCode(){var c=document.getElementById('embed-code').textContent;navigator.clipboard.writeText(c).then(function(){var b=document.querySelector('.copy-btn');b.textContent='✅ Copied!';setTimeout(function(){b.textContent='📋 Copy code'},2000)})}
+</script>
+</body>
+</html>
