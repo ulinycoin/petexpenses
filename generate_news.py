@@ -27,7 +27,6 @@ FALLBACK_NEWS = [
         "source": "Reuters",
         "source_color": "#E6382A",
         "date": "Apr 15, 2026",
-        "url": "https://www.reuters.com/world/us/pet-care-inflation-hits-owners-2026-04-15/",
         "title": "Pet Owners Squeezed as Veterinary Inflation Exceeds Human Healthcare Inflation",
         "summary": "Veterinary services prices rose 14% year-over-year as of March 2026, compared to 7% for human healthcare. An emergency overnight hospitalization for a dog now averages $3,500 — up 18% from 2024.",
         "tags": [("Veterinary", "vet"), ("Costs", "insurance")]
@@ -36,7 +35,6 @@ FALLBACK_NEWS = [
         "source": "Insurance Journal",
         "source_color": "#1B5E9E",
         "date": "Jan 15, 2026",
-        "url": "https://www.insurancejournal.com/news/national/2026/01/15/820937.htm",
         "title": "Pet Insurance Premiums Surge 18% in 2025, Expected to Rise Another 12% in 2026",
         "summary": "Average annual premiums for dogs reached $1,200 and for cats $720 in 2025, up 18% YoY. Analysts project a further 12% increase in 2026, driven by rising veterinary costs and higher claim frequency across all major carriers.",
         "tags": [("Insurance", "insurance")]
@@ -45,7 +43,6 @@ FALLBACK_NEWS = [
         "source": "Petfood Industry",
         "source_color": "#059669",
         "date": "Mar 3, 2026",
-        "url": "https://www.petfoodindustry.com/articles/13014-dog-food-prices-continue-to-rise-in-2026",
         "title": "Dog Food Prices Up 9.5% Year-over-Year in Q1 2026; Premium Brands See 14% Jump",
         "summary": "The average price per pound of dry dog food reached $4.85 in February 2026, a 9.5% increase from 2025. Ingredient costs (corn, chicken meal) and supply chain disruptions are cited as primary drivers.",
         "tags": [("Dog Food", "food"), ("Inflation", "industry")]
@@ -54,7 +51,6 @@ FALLBACK_NEWS = [
         "source": "AVMA",
         "source_color": "#9333EA",
         "date": "Apr 22, 2026",
-        "url": "https://www.avma.org/news/2026-veterinary-care-costs-surge",
         "title": "Veterinary Care Costs Rose 12.5% in 2025, Expected to Rise Another 10% in 2026",
         "summary": "The average cost of a routine vet visit rose to $95 in 2025, while specialty procedures jumped 16%. The AVMA attributes the increases to persistent veterinary staff shortages and higher pharmaceutical costs.",
         "tags": [("Veterinary", "vet"), ("Industry", "industry")]
@@ -63,7 +59,6 @@ FALLBACK_NEWS = [
         "source": "Associated Press",
         "source_color": "#FF5A3C",
         "date": "Mar 30, 2026",
-        "url": "https://www.apnews.com/article/pet-industry-spending-2026-e56a8f9c12b34d5a",
         "title": "Pet Industry Spending to Top $180 Billion in 2026, Led by Premiumization and Services",
         "summary": "Total U.S. pet industry expenditure is projected to reach $182.4 billion in 2026, up from $165.2 billion in 2025. The fastest-growing segments are pet health insurance (22% growth) and premium pet food (17% growth).",
         "tags": [("Industry", "industry"), ("Spending", "ownership")]
@@ -72,7 +67,6 @@ FALLBACK_NEWS = [
         "source": "NAIC",
         "source_color": "#1B5E9E",
         "date": "Apr 15, 2026",
-        "url": "https://www.naic.org/news/releases/2026-pet-insurance-market-report.pdf",
         "title": "Pet Insurance Market Hits $5.2 Billion as 8.3 Million Pets Now Covered",
         "summary": "The pet insurance market reached $5.2 billion in premiums written in 2025, a 22% increase from 2024. A total of 8.3 million pets are now insured in the U.S. (up 15% YoY), with penetration still under 5% of pet households.",
         "tags": [("Insurance", "insurance"), ("Market", "industry")]
@@ -81,7 +75,6 @@ FALLBACK_NEWS = [
         "source": "APPA",
         "source_color": "#1B5E9E",
         "date": "Feb 10, 2026",
-        "url": "https://www.americanpetproducts.org/news/2026-pet-ownership-survey",
         "title": "73% of U.S. Households Now Own a Pet — 102 Million Dogs, 84 Million Cats",
         "summary": "The APPA National Pet Owners Survey reports that 73% of U.S. households (≈97 million) own a pet, up from 70% in 2024. Average annual spending per dog hit $2,500 in 2025, while per-cat spending reached $1,600.",
         "tags": [("Ownership", "ownership"), ("Demographics", "industry")]
@@ -90,7 +83,6 @@ FALLBACK_NEWS = [
         "source": "FDA",
         "source_color": "#C0392B",
         "date": "Mar 15, 2026",
-        "url": "https://www.fda.gov/safety/recalls/dog-food-recall-2026-03-15",
         "title": "FDA Announces Recall of Three Dry Dog Food Brands Due to Salmonella Contamination",
         "summary": "Purina Pro Plan, Hill's Science Diet, and a private-label brand recalled specific lots of dry dog food after Salmonella was detected in routine FDA testing. No pet illnesses were reported.",
         "tags": [("Recall", "recall"), ("Dog Food", "food")]
@@ -210,7 +202,7 @@ def build_card(item):
       <span class="source"><span class="source-dot" style="background:{item['source_color']}"></span>{item['source']}</span>
       <span class="date">{item['date']}</span>
     </div>
-    <h2><a href="{item['url']}" target="_blank" rel="noopener">{item['title']}</a></h2>
+    <h2>{item['title']}</h2>
     <p>{item['summary']}</p>
     <div class="news-tags">
       {tags}
