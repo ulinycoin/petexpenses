@@ -10,3 +10,6 @@ www.petexpenses.com/* https://petexpenses.com/:splat 301
 /sources.html  /sources  301
 /blog/*.html  /blog/:splat  301
 /breeds/*.html  /breeds/:splat  301
+
+# /news/ removed
+/news*  https://petexpenses.com/  301
