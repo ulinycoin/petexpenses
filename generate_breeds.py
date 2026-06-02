@@ -289,45 +289,62 @@ def get_offers_html(species, size, coat, breed_name, breed_plural, health_issues
   </div>
 </section>'''
 
+    # 12. Chi Dog US (для собак, свежий корм по рецептам ветеринаров - Joined)
+    chidog_html = f'''<section class="offers-section">
+  <h2>Vet-Owned Fresh Food for Your {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-mint" style="border-color:var(--mint-dk);box-shadow:4px 4px 0 var(--mint-dk)">
+      <div class="hc-label">Chi Dog Food</div>
+      <p><strong>Fresh, customized meals created by holistic veterinarians.</strong> Chi Dog diets are based on Eastern medicine theory to help {bp} overcome allergies, digestive issues, and maintain a healthy weight. Human-grade ingredients, cooked fresh.</p>
+      <p>Recommended by vets &bull; Custom diet plans &bull; Free consultation online</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=124742&amp;id=2900805&amp;ued=https%3A%2F%2Fchidog.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--mint-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Get Chi Dog Diet &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
     selected_offers = []
     
     # ------------------ CATS ------------------
     if species == 'cat':
-        # Оффер 1: Всегда страховка Odie
+        # Оффер 1: Всегда страховка Odie (Joined)
         selected_offers.append(odie_html)
         
-        # Оффер 2: Умный наполнитель PrettyLitter ИЛИ Туалетный наполнитель Tuft & Paw
-        if any(w in hi_lc for w in ['kidney', 'renal', 'uti', 'urinary']):
-            selected_offers.append(prettylitter_html)
-        else:
-            selected_offers.append(tuft_html)
+        # Оффер 2: Наполнитель Tuft & Paw (Joined)
+        selected_offers.append(tuft_html)
+        # Note: Вернуть PrettyLitter (126553) когда одобрят:
+        # if any(w in hi_lc for w in ['kidney', 'renal', 'uti', 'urinary']):
+        #     selected_offers.append(prettylitter_html)
+        # else:
+        #     selected_offers.append(tuft_html)
             
-        # Оффер 3: MeoWant Smart Litter Box ИЛИ Hide & Scratch Scratcher
+        # Оффер 3: MeoWant Smart Litter Box (Joined) ИЛИ Petcube Camera (Joined)
         if size == 'large' or any(w in hi_lc for w in ['diabetes', 'weight', 'hcm', 'heart']) or breed_name in ['Bengal', 'Sphynx', 'Persian', 'Scottish Fold']:
             selected_offers.append(meowant_html)
         else:
-            selected_offers.append(scratch_html)
+            selected_offers.append(petcube_html) # Petcube вместо Hide & Scratch (Not Joined)
 
     # ------------------ DOGS ------------------
     else:
-        # Оффер 1: Страховка Odie
+        # Оффер 1: Страховка Odie (Joined)
         selected_offers.append(odie_html)
         
-        # Оффер 2: Корм (PetPlate / Badlands Ranch / Raw Paws)
+        # Оффер 2: Корм (Chi Dog [Joined] / Raw Paws [Active CJ])
         if any(w in hi_lc for w in ['allergy', 'allergies', 'stomach', 'digestive', 'pancreatitis', 'skin']):
-            selected_offers.append(petplate_html)
+            selected_offers.append(chidog_html) # Chi Dog вместо PetPlate (Not Joined)
         elif size == 'small':
-            selected_offers.append(badlands_html)
+            selected_offers.append(chidog_html) # Chi Dog вместо Badlands Ranch (Not Joined)
         else:
-            selected_offers.append(raw_paws_html)
+            selected_offers.append(raw_paws_html) # Raw Paws (Active CJ)
             
-        # Оффер 3: Гаджет / Телемедицина (Dutch / Fi Collar / Petcube)
-        if breed_name in ['French Bulldog', 'Pug', 'Bulldog', 'Boston Terrier', 'Yorkshire Terrier', 'Cavalier King Charles Spaniel', 'Cavapoo']:
-            selected_offers.append(dutch_html)
-        elif size in ['large', 'giant'] or breed_name in ['Siberian Husky', 'Border Collie', 'Australian Shepherd', 'Shiba Inu', 'Beagle', 'Jack Russell Terrier', 'Vizsla']:
-            selected_offers.append(fi_html)
-        else:
-            selected_offers.append(petcube_html)
+        # Оффер 3: Гаджет / Забота (Petcube [Joined] - временно заменяет Dutch и Fi Collar)
+        selected_offers.append(petcube_html)
+        # Note: Вернуть Dutch / Fi Collar когда одобрят:
+        # if breed_name in ['French Bulldog', 'Pug', 'Bulldog', 'Boston Terrier', 'Yorkshire Terrier', 'Cavalier King Charles Spaniel', 'Cavapoo']:
+        #     selected_offers.append(dutch_html)
+        # elif size in ['large', 'giant'] or breed_name in ['Siberian Husky', 'Border Collie', 'Australian Shepherd', 'Shiba Inu', 'Beagle', 'Jack Russell Terrier', 'Vizsla']:
+        #     selected_offers.append(fi_html)
+        # else:
+        #     selected_offers.append(petcube_html)
             
     return '\n\n'.join(selected_offers)
 
