@@ -116,22 +116,9 @@ CAT_COSTS = {
     'supplies': {'small': [120,240], 'medium': [150,300], 'large': [200,380]},
 }
 
-CAT_PRIORITY = [
-    'Maine Coon', 'Persian', 'Ragdoll', 'Bengal', 'Siamese',
-    'Sphynx', 'British Shorthair', 'Scottish Fold', 'Russian Blue',
-    'Abyssinian', 'Norwegian Forest Cat', 'Exotic Shorthair',
-    'American Shorthair', 'Burmese', 'Birman', 'Oriental Shorthair',
-    'Devon Rex', 'Cornish Rex', 'Savannah', 'Domestic Shorthair',
-    'Domestic Longhair', 'Manx', 'Tonkinese',
-]
+CAT_PRIORITY = list(CAT_BREEDS.keys())
 
-DOG_PRIORITY = [
-    'French Bulldog', 'Labrador Retriever', 'Golden Retriever', 'German Shepherd',
-    'Bulldog', 'Poodle', 'Beagle', 'Rottweiler', 'Dachshund', 'Siberian Husky',
-    'Pomeranian', 'Great Dane', 'Chihuahua', 'Yorkshire Terrier', 'Boxer',
-    'Shih Tzu', 'Boston Terrier', 'Corgi (Pembroke)', 'Australian Shepherd',
-    'Bernese Mountain Dog',
-]
+DOG_PRIORITY = list(DOG_BREEDS.keys())
 
 # ══════════════════════════════════════════════════════════
 
@@ -154,6 +141,195 @@ def get_similar_breeds(breed_name, breed_data, breed_dict, count=5):
             similar.append(name)
         if len(similar) >= count: break
     return similar
+
+def get_offers_html(species, size, coat, breed_name, breed_plural, health_issues, ins_low, ins_high):
+    bp = breed_plural
+    hi_lc = health_issues.lower()
+    
+    # 1. Odie Pet Insurance (для всех)
+    odie_html = f'''<section class="offers-section">
+  <h2>Protect Your {breed_name} with Pet Insurance</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-lav" style="border-color:var(--lav-dk);box-shadow:4px 4px 0 var(--lav-dk)">
+      <div class="hc-label">Odie Pet Insurance</div>
+      <p><strong>Customizable pet insurance plans.</strong> {bp} are prone to {hi_lc}, which can lead to expensive emergency treatments. Odie covers up to 90% of your vet bills for accidents, illnesses, and breed-specific conditions.</p>
+      <p>Customizable limits &bull; 24/7 vet access &bull; Premium estimate: ${ins_low}–${ins_high}/year</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=68990&amp;id=2900805&amp;ued=https%3A%2F%2Fgetodie.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--lav-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Get Odie Quote &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 2. Dutch Vet Telehealth (для слабых здоровьем пород)
+    dutch_html = f'''<section class="offers-section">
+  <h2>24/7 Veterinary Support for Your {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-pink" style="border-color:var(--pink-dk);box-shadow:4px 4px 0 var(--pink-dk)">
+      <div class="hc-label">Dutch Vet Telehealth</div>
+      <p><strong>Unlimited online vet visits &amp; prescription delivery.</strong> {bp} frequently experience health issues like {hi_lc}. With Dutch, you get round-the-clock access to licensed vets from the comfort of your home, saving you stressful and costly clinic trips.</p>
+      <p>24/7 chat &amp; video &bull; Custom treatment plans &bull; Direct prescription delivery</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=78166&amp;id=2900805&amp;ued=https%3A%2F%2Fdutch.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--pink-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Consult a Vet Online &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 3. PrettyLitter (кошачий наполнитель с индикацией здоровья)
+    prettylitter_html = f'''<section class="offers-section">
+  <h2>Monitor Your {breed_name}&rsquo;s Health with Smart Litter</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-mint" style="border-color:var(--mint-dk);box-shadow:4px 4px 0 var(--mint-dk)">
+      <div class="hc-label">PrettyLitter Health-Monitoring Litter</div>
+      <p><strong>Color-changing silica litter that detects illnesses early.</strong> {bp} have a known risk for urinary tract infections (UTIs) or kidney issues. PrettyLitter changes color based on urine pH, helping you catch potential health problems before they become emergency vet bills.</p>
+      <p>Odor control &bull; Low dust &bull; Color-changing health indicator</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=126553&amp;id=2900805&amp;ued=https%3A%2F%2Fprettylitter.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--mint-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop PrettyLitter &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 4. Tuft & Paw Tofu Litter (для кошек)
+    tuft_html = f'''<section class="offers-section">
+  <h2>Try Low-Tracking Litter for Your {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-coral" style="border-color:var(--coral);box-shadow:4px 4px 0 var(--coral)">
+      <div class="hc-label">Tuft &amp; Paw Tofu Litter</div>
+      <p><strong>Really Great Cat Litter &mdash; ultra low-tracking and 100% flushable.</strong> Natural tofu pellets do not stick to your {breed_name}&rsquo;s {coat}-haired coat or paw pads, keeping your floors clean. Dust-free and biodegradable.</p>
+      <p>4.4 stars from 11,000+ reviews &bull; 50% off first subscription box</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=59149&amp;id=2900805&amp;ued=https%3A%2F%2Fwww.tuftandpaw.com%2Fproducts%2Freally-great-cat-litter" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--coral);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Tuft &amp; Paw &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 5. MeoWant Self-Cleaning Litter Box (для кошек)
+    meowant_html = f'''<section class="offers-section">
+  <h2>Upgrade Your {breed_name} to a Smart Litter Box</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-lav" style="border-color:var(--lav-dk);box-shadow:4px 4px 0 var(--lav-dk)">
+      <div class="hc-label">MeoWant Self-Cleaning Litter Box</div>
+      <p><strong>App-controlled automatic cleaning litter box.</strong> Great for {bp}, this automatic box tracks your cat&rsquo;s weight and toilet visits to monitor health. Safe, odor-destroying, and holds up to 6 cats.</p>
+      <p>4.2 stars from 4,000+ reviews &bull; 30-day risk-free trial</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=55213&amp;id=2900805&amp;ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--lav-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop MeoWant &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 6. Hide & Scratch Cardboard Scratcher (для кошек)
+    scratch_html = f'''<section class="offers-section">
+  <h2>Protect Your Furniture with a Premium Scratcher</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-pink" style="border-color:var(--pink-dk);box-shadow:4px 4px 0 var(--pink-dk)">
+      <div class="hc-label">Hide &amp; Scratch Toy</div>
+      <p><strong>Stylish, enclosed cardboard scratcher that cats love.</strong> Keep your active {breed_name} entertained and save your sofas from scratches. Combining a cozy hideout with a durable scratching surface.</p>
+      <p>Amazon #1 best seller &bull; Eco-friendly cardboard &bull; Reversible pads</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=105745&amp;id=2900805&amp;ued=https%3A%2F%2Fhideandscratch.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--pink-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Scratcher &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 7. PetPlate Fresh Dog Food (для собак с аллергией / пищевыми проблемами)
+    petplate_html = f'''<section class="offers-section">
+  <h2>Fresh Vet-Formulated Meals for Your {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-coral" style="border-color:var(--coral);box-shadow:4px 4px 0 var(--coral)">
+      <div class="hc-label">PetPlate Fresh Dog Food</div>
+      <p><strong>Personalized fresh meal plans designed by veterinary nutritionists.</strong> Ideal for {bp} dealing with allergies, skin flare-ups, or sensitive stomachs. Made with human-grade ingredients and cooked fresh.</p>
+      <p>Aids digestion &bull; Improves coat shine &bull; 50% off your first box</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=70899&amp;id=2900805&amp;ued=https%3A%2F%2Fpetplate.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--coral);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Order Fresh Meals &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 8. Badlands Ranch (для мелких собак)
+    badlands_html = f'''<section class="offers-section">
+  <h2>Premium Superfood Complete for Your {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-mint" style="border-color:var(--mint-dk);box-shadow:4px 4px 0 var(--mint-dk)">
+      <div class="hc-label">Badlands Ranch Dog Food</div>
+      <p><strong>Premium air-dried dog food packed with superfoods.</strong> Created by Katherine Heigl. Because {bp} eat smaller portions, feed them the highest quality nutrient-dense raw diet without the freezer mess.</p>
+      <p>100% human-grade meats &bull; No artificial preservatives &bull; Up to 35% off subscriptions</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=75220&amp;id=2900805&amp;ued=https%3A%2F%2Fbadlandsranch.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--mint-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Badlands Ranch &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 9. Raw Paws (для крупных собак / сыроедение в объемах)
+    raw_paws_html = f'''<section class="offers-section">
+  <h2>Save on Your {breed_name}&rsquo;s Food</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-mint" style="border-color:var(--mint-dk);box-shadow:4px 4px 0 var(--mint-dk)">
+      <div class="hc-label">Raw Paws Pet Food</div>
+      <p><strong>Frozen raw dog food, made fresh and shipped bulk.</strong> {bp} on raw diets often experience better digestion, cleaner teeth, and healthier weight. Free shipping nationwide on bulk orders.</p>
+      <p>4.8 stars from 2,000+ reviews &bull; Deep bulk discounts &bull; Auto-ship saving</p>
+      <p style="margin-top:12px"><a href="https://www.dpbolvw.net/click-101748061-17234885" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--mint-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Raw Paws &rarr;</a> <a href="https://www.anrdoezrs.net/click-101748061-17234936" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;margin-left:8px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;text-decoration:none">Auto-Ship &amp; Save</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 10. Fi Smart GPS Collar (для активных собак)
+    fi_html = f'''<section class="offers-section">
+  <h2>Track Your Active {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-coral" style="border-color:var(--coral);box-shadow:4px 4px 0 var(--coral)">
+      <div class="hc-label">Fi Smart GPS Collar</div>
+      <p><strong>Real-time GPS tracking + LTE activity monitor.</strong> Prevent escapes and monitor sleep or activity level for your active {breed_name}. Waterproof, rugged, and fits dogs from 5 lbs up.</p>
+      <p>4.7 stars from 10,000+ reviews &bull; Long battery life &bull; Escape alerts</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=123222&amp;id=2900805&amp;ued=https%3A%2F%2Ftryfi.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--coral);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Fi Collar &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    # 11. Petcube Smart Camera (для домашних собак, которых оставляют дома)
+    petcube_html = f'''<section class="offers-section">
+  <h2>Stay Connected with Your {breed_name}</h2>
+  <div class="article-body">
+    <div class="highlight-card hc-pink" style="border-color:var(--pink-dk);box-shadow:4px 4px 0 var(--pink-dk)">
+      <div class="hc-label">Petcube Smart Camera</div>
+      <p><strong>Treat-tossing smart camera for {bp}.</strong> See, talk, and play with your {breed_name} from anywhere. Features 1080p HD video, night vision, and 24/7 access to online vets.</p>
+      <p>4.5 stars from 60,000+ reviews &bull; Treat dispenser built-in</p>
+      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=33889&amp;id=2900805&amp;ued=https%3A%2F%2Fpetcube.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--pink-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Petcube &rarr;</a></p>
+    </div>
+  </div>
+</section>'''
+
+    selected_offers = []
+    
+    # ------------------ CATS ------------------
+    if species == 'cat':
+        # Оффер 1: Всегда страховка Odie
+        selected_offers.append(odie_html)
+        
+        # Оффер 2: Умный наполнитель PrettyLitter ИЛИ Туалетный наполнитель Tuft & Paw
+        if any(w in hi_lc for w in ['kidney', 'renal', 'uti', 'urinary']):
+            selected_offers.append(prettylitter_html)
+        else:
+            selected_offers.append(tuft_html)
+            
+        # Оффер 3: MeoWant Smart Litter Box ИЛИ Hide & Scratch Scratcher
+        if size == 'large' or any(w in hi_lc for w in ['diabetes', 'weight', 'hcm', 'heart']) or breed_name in ['Bengal', 'Sphynx', 'Persian', 'Scottish Fold']:
+            selected_offers.append(meowant_html)
+        else:
+            selected_offers.append(scratch_html)
+
+    # ------------------ DOGS ------------------
+    else:
+        # Оффер 1: Страховка Odie
+        selected_offers.append(odie_html)
+        
+        # Оффер 2: Корм (PetPlate / Badlands Ranch / Raw Paws)
+        if any(w in hi_lc for w in ['allergy', 'allergies', 'stomach', 'digestive', 'pancreatitis', 'skin']):
+            selected_offers.append(petplate_html)
+        elif size == 'small':
+            selected_offers.append(badlands_html)
+        else:
+            selected_offers.append(raw_paws_html)
+            
+        # Оффер 3: Гаджет / Телемедицина (Dutch / Fi Collar / Petcube)
+        if breed_name in ['French Bulldog', 'Pug', 'Bulldog', 'Boston Terrier', 'Yorkshire Terrier', 'Cavalier King Charles Spaniel', 'Cavapoo']:
+            selected_offers.append(dutch_html)
+        elif size in ['large', 'giant'] or breed_name in ['Siberian Husky', 'Border Collie', 'Australian Shepherd', 'Shiba Inu', 'Beagle', 'Jack Russell Terrier', 'Vizsla']:
+            selected_offers.append(fi_html)
+        else:
+            selected_offers.append(petcube_html)
+            
+    return '\n\n'.join(selected_offers)
 
 def build_args(name, data, species):
     """species = 'dog' or 'cat'"""
@@ -278,7 +454,10 @@ def build_args(name, data, species):
     accent = '#FF8FB1' if species == 'cat' else '#FF5A3C'
     accent_dk = '#E55E89' if species == 'cat' else '#E03812'
 
+    offers_html = get_offers_html(species, size, coat, name, bp, health_issues, il, ih)
+
     return {
+        'OFFERS_HTML': offers_html,
         'SPECIES': species,
         'SPECIES_TITLE': species_title,
         'SPECIES_PLURAL': species_plural_lc,
@@ -624,29 +803,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
   </div>
 </section>
 
-<section class="offers-section">
-  <h2>Protect Your !BREED! with Pet Insurance</h2>
-  <div class="article-body">
-    <div class="highlight-card hc-lav">
-      <div class="hc-label">Odie Pet Insurance</div>
-      <p><strong>Customizable pet insurance plans.</strong> !BREED_PLURAL! are prone to !HEALTH_ISSUES_LC!, which can lead to expensive emergency treatments. Odie covers up to 90% of your vet bills for accidents, illnesses, and breed-specific conditions.</p>
-      <p>Customizable limits &bull; 24/7 vet access &bull; Premium estimate: $!INS_LOW!–$!INS_HIGH!/year</p>
-      <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=68990&amp;id=2900805&amp;ued=https%3A%2F%2Fgetodie.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--lav-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Get Odie Quote &rarr;</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="offers-section">
-  <h2>Save on Your !BREED!&rsquo;s Food</h2>
-  <div class="article-body">
-    <div class="highlight-card hc-mint">
-      <div class="hc-label">Raw Paws Pet Food</div>
-      <p><strong>Frozen raw !SPECIES_TITLE! food, made fresh weekly.</strong> Free shipping nationwide. !BREED_PLURAL! on raw diets often show better digestion and fewer allergy symptoms.</p>
-      <p>4.8 stars from 2,000+ reviews &bull; $160 avg order</p>
-      <p style="margin-top:12px"><a href="https://www.dpbolvw.net/click-101748061-17234885" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--mint-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Shop Raw Paws</a> <a href="https://www.anrdoezrs.net/click-101748061-17234936" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;margin-left:8px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;text-decoration:none">Auto-Ship &amp; Save</a></p>
-    </div>
-  </div>
-</section>
+!OFFERS_HTML!
 
 <footer class="site-footer">
   <div class="footer-inner">
@@ -676,6 +833,106 @@ def generate_page(name, data, species):
         f.write(html)
     print(f'  {slug}.html ({len(html)} bytes)')
     return filepath
+
+def generate_sitemap(generated_dogs, generated_cats):
+    import datetime
+    today = datetime.date.today().strftime('%Y-%m-%d')
+    sitemap_path = '/Users/aleksejs/Desktop/dog-cost-tool/sitemap.xml'
+    
+    # Базовые страницы
+    static_urls = [
+        ('', '1.0'),
+        ('about', '0.6'),
+        ('contact', '0.4'),
+        ('privacy', '0.3'),
+        ('terms', '0.3'),
+        ('compare', '0.9'),
+        ('sources', '0.85'),
+        ('blog/', '0.7')
+    ]
+    
+    # Статьи в блоге (сканируем папку blog)
+    blog_dir = '/Users/aleksejs/Desktop/dog-cost-tool/blog'
+    blog_urls = []
+    if os.path.exists(blog_dir):
+        for f in sorted(os.listdir(blog_dir)):
+            if f.endswith('.html') and f != 'index.html':
+                slug = f[:-5] # убираем .html
+                blog_urls.append(f'blog/{slug}')
+                
+    xml = []
+    xml.append('<?xml version="1.0" encoding="UTF-8"?>')
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    
+    # Пишем статические страницы
+    for slug, priority in static_urls:
+        xml.append('  <url>')
+        xml.append(f'    <loc>https://petexpenses.com/{slug}</loc>')
+        xml.append(f'    <lastmod>{today}</lastmod>')
+        xml.append('    <changefreq>monthly</changefreq>')
+        xml.append(f'    <priority>{priority}</priority>')
+        xml.append('  </url>')
+        
+    # Пишем блог
+    for slug in blog_urls:
+        xml.append('  <url>')
+        xml.append(f'    <loc>https://petexpenses.com/{slug}</loc>')
+        xml.append(f'    <lastmod>{today}</lastmod>')
+        xml.append('    <changefreq>monthly</changefreq>')
+        xml.append('    <priority>0.8</priority>')
+        xml.append('  </url>')
+        
+    # Пишем породы собак
+    for name in sorted(generated_dogs):
+        slug = make_slug(name)
+        xml.append(f'  <url><loc>https://petexpenses.com/breeds/{slug}</loc><lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>')
+        
+    # Пишем породы кошек
+    for name in sorted(generated_cats):
+        slug = make_slug(name)
+        xml.append(f'  <url><loc>https://petexpenses.com/breeds/{slug}</loc><lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>')
+        
+    xml.append('</urlset>')
+    
+    with open(sitemap_path, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(xml))
+    print(f'\n[+] Sitemap сгенерирован: {len(xml)-3} URL адресов записано в {sitemap_path}')
+
+def update_compare_links(generated_dogs, generated_cats):
+    compare_path = '/Users/aleksejs/Desktop/dog-cost-tool/compare.html'
+    if not os.path.exists(compare_path):
+        return
+        
+    with open(compare_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+        
+    # Генерируем HTML ссылок для собак
+    dog_links = []
+    for name in sorted(generated_dogs):
+        slug = make_slug(name)
+        dog_links.append(f'    <a href="/breeds/{slug}" style="display:block;padding:10px 14px;background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);font-weight:600;font-size:.9rem;color:var(--ink);text-decoration:none;transition:transform .12s">{name} Cost</a>')
+    
+    dog_html = '\n' + '\n'.join(dog_links) + '\n  '
+    
+    # Генерируем HTML ссылок для кошек
+    cat_links = []
+    for name in sorted(generated_cats):
+        slug = make_slug(name)
+        cat_links.append(f'    <a href="/breeds/{slug}" style="display:block;padding:10px 14px;background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);font-weight:600;font-size:.9rem;color:var(--ink);text-decoration:none;transition:transform .12s">{name} Cost</a>')
+        
+    cat_html = '\n' + '\n'.join(cat_links) + '\n  '
+    
+    # Заменяем блоки в compare.html
+    dog_pattern = r'(<div style="display:grid;grid-template-columns:repeat\(auto-fill,minmax\(200px,1fr\)\);gap:10px">)(.*?)(</div>)'
+    cat_pattern = r'(<div style="display:grid;grid-template-columns:repeat\(auto-fill,minmax\(200px,1fr\)\);gap:10px;margin-top:10px">)(.*?)(</div>)'
+    
+    content = re.sub(dog_pattern, rf'\1{dog_html}\3', content, flags=re.DOTALL)
+    content = re.sub(cat_pattern, rf'\1{cat_html}\3', content, flags=re.DOTALL)
+    
+    with open(compare_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+        
+    print(f'[+] Ссылки на породы в {compare_path} успешно обновлены!')
 
 def main():
     target_breed = None
@@ -731,6 +988,12 @@ def main():
         for name in CAT_PRIORITY:
             if name in CAT_BREEDS:
                 generate_page(name, CAT_BREEDS[name], 'cat')
+
+    # Генерируем полный sitemap.xml
+    generate_sitemap(DOG_BREEDS.keys(), CAT_BREEDS.keys())
+
+    # Обновляем ссылки в compare.html
+    update_compare_links(DOG_BREEDS.keys(), CAT_BREEDS.keys())
 
     total = (len(DOG_PRIORITY) if do_dogs else 0) + (len(CAT_PRIORITY) if do_cats else 0)
     print(f'\nDone! {total} pages in /breeds/')
