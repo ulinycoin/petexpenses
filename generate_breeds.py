@@ -471,9 +471,50 @@ def build_args(name, data, species):
     accent = '#FF8FB1' if species == 'cat' else '#FF5A3C'
     accent_dk = '#E55E89' if species == 'cat' else '#E03812'
 
+    # ------------------ IN-CONTENT BANNERS ------------------
+    if species == 'dog':
+        if size == 'small' or any(w in hi_lc for w in ['allergy', 'allergies', 'stomach', 'digestive', 'pancreatitis', 'skin']):
+            in_content_banner = f'''<a href="https://www.awin1.com/awclick.php?mid=124742&amp;id=2900805&amp;ued=https%3A%2F%2Fchidog.com%2F" target="_blank" rel="noopener" class="native-banner">
+  <div class="nb-icon" style="background:var(--mint-soft)">🍖</div>
+  <div class="nb-info">
+    <div class="nb-title">Vet-Owned Fresh Food for {bp}</div>
+    <div class="nb-desc">Customized human-grade fresh diets designed by holistic veterinarians. Formulated to improve digestion, heal skin allergies, and manage weight naturally.</div>
+  </div>
+  <div class="nb-cta">Get Chi Dog &rarr;</div>
+</a>'''
+        else:
+            in_content_banner = f'''<a href="https://www.awin1.com/awclick.php?mid=68990&amp;id=2900805&amp;ued=https%3A%2F%2Fgetodie.com%2F" target="_blank" rel="noopener" class="native-banner">
+  <div class="nb-icon" style="background:var(--lav-soft)">🛡️</div>
+  <div class="nb-info">
+    <div class="nb-title">Protect Your {name} &amp; Save on Vet Bills</div>
+    <div class="nb-desc">Get customizable pet insurance from Odie. Covers up to 90% of emergency treatments, illnesses, and breed-specific conditions. Free 24/7 vet chat included.</div>
+  </div>
+  <div class="nb-cta">Get Free Quote &rarr;</div>
+</a>'''
+    else:
+        if coat == 'long':
+            in_content_banner = f'''<a href="https://www.awin1.com/awclick.php?mid=59149&amp;id=2900805&amp;ued=https%3A%2F%2Fwww.tuftandpaw.com%2Fproducts%2Freally-great-cat-litter" target="_blank" rel="noopener" class="native-banner">
+  <div class="nb-icon" style="background:var(--pink-soft)">🌿</div>
+  <div class="nb-info">
+    <div class="nb-title">Flushable Low-Tracking Litter for {bp}</div>
+    <div class="nb-desc">Tuft &amp; Paw Really Great Cat Litter is dust-free, fully flushable, and doesn&rsquo;t stick to long fur. 100% natural, odor-destroying tofu pellets.</div>
+  </div>
+  <div class="nb-cta">Shop Tuft &amp; Paw &rarr;</div>
+</a>'''
+        else:
+            in_content_banner = f'''<a href="https://www.awin1.com/awclick.php?mid=55213&amp;id=2900805&amp;ued=https%3A%2F%2Fmeowant.com%2Fcollections%2Fself-cleaning-litter-box" target="_blank" rel="noopener" class="native-banner">
+  <div class="nb-icon" style="background:var(--lav-soft)">🤖</div>
+  <div class="nb-info">
+    <div class="nb-title">Upgrade Your {name} to a Smart Litter Box</div>
+    <div class="nb-desc">The MeoWant automatic self-cleaning litter box tracks your cat&rsquo;s weight and health visits automatically. Clean, safe, and odorless. Holds up to 6 cats.</div>
+  </div>
+  <div class="nb-cta">Shop MeoWant &rarr;</div>
+</a>'''
+
     offers_html = get_offers_html(species, size, coat, name, bp, health_issues, il, ih)
 
     return {
+        'IN_CONTENT_BANNER': in_content_banner,
         'OFFERS_HTML': offers_html,
         'SPECIES': species,
         'SPECIES_TITLE': species_title,
@@ -688,6 +729,14 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
 .site-footer{background:var(--ink);color:var(--cream);padding:40px 24px 28px;margin-top:48px}
 .footer-inner{max-width:780px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,247,232,.6)}
 .footer-inner a{color:var(--sun);text-decoration:none}
+.native-banner{display:flex;flex-wrap:wrap;align-items:center;gap:20px;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-lg);padding:20px 24px;margin:32px 0;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;text-decoration:none;color:var(--ink)}
+.native-banner:hover{transform:translateY(-2px);box-shadow:6px 6px 0 var(--ink);text-decoration:none}
+.nb-icon{font-size:2rem;display:flex;align-items:center;justify-content:center;width:56px;height:56px;background:var(--cream-2);border-radius:50%;flex-shrink:0}
+.nb-info{flex:1;min-width:260px}
+.nb-title{font-family:var(--display);font-weight:800;font-size:1.1rem;margin-bottom:4px;color:var(--ink)}
+.nb-desc{font-size:.92rem;color:var(--ink-soft);line-height:1.4}
+.nb-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:700;font-size:.9rem;white-space:nowrap;transition:background .15s}
+.native-banner:hover .nb-cta{background:var(--coral);color:var(--cream)}
 </style>
 </head>
 <body>
@@ -743,6 +792,8 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
           </tbody>
         </table>
       </div>
+
+      !IN_CONTENT_BANNER!
 
       <h3>Food</h3>
       <p>Food is typically the largest recurring expense for !BREED_PLURAL!. Expect to spend $!FOOD_LOW!–$!FOOD_HIGH! per year on quality !SPECIES_TITLE! food. !BREED_PLURAL! with food sensitivities may need specialized diets, which can add !FOOD_ALLERGY_EXTRA! per year. Larger !BREED_PLURAL! eat more and cost more to feed.</p>
