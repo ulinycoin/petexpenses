@@ -13,3 +13,6 @@ www.petexpenses.com/* https://petexpenses.com/:splat 301
 
 # /news/ removed
 /news*  https://petexpenses.com/  301
+
+# Old widget redirect to prevent 404s
+/embed.html  /widget  301
