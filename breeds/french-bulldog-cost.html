@@ -13,7 +13,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://petexpenses.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Breeds", "item": "https://petexpenses.com/breeds"},
+        {"@type": "ListItem", "position": 2, "name": "Compare", "item": "https://petexpenses.com/compare"},
         {"@type": "ListItem", "position": 3, "name": "French Bulldog Cost", "item": "https://petexpenses.com/breeds/french-bulldog-cost"}
       ]
     },
@@ -63,14 +63,11 @@
       "creator": {"@type": "Organization", "name": "petexpenses.com"},
       "datePublished": "2026-05-01",
       "dateModified": "2026-05-21",
-      "temporalCoverage": "2026",
-      "spatialCoverage": "United States",
-      "sourceOrganization": [
-        {"@type": "Organization", "name": "APPA"},
-        {"@type": "Organization", "name": "AVMA"},
-        {"@type": "Organization", "name": "NAPHIA"},
-        {"@type": "Organization", "name": "BLS"}
-      ]
+      "temporalCoverage": "2026-01-01/2026-12-31",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "United States"
+      }
     }
   ]
 }
@@ -148,6 +145,14 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
 .site-footer{background:var(--ink);color:var(--cream);padding:40px 24px 28px;margin-top:48px}
 .footer-inner{max-width:780px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,247,232,.6)}
 .footer-inner a{color:var(--sun);text-decoration:none}
+.native-banner{display:flex;flex-wrap:wrap;align-items:center;gap:20px;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-lg);padding:20px 24px;margin:32px 0;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;text-decoration:none;color:var(--ink)}
+.native-banner:hover{transform:translateY(-2px);box-shadow:6px 6px 0 var(--ink);text-decoration:none}
+.nb-icon{font-size:2rem;display:flex;align-items:center;justify-content:center;width:56px;height:56px;background:var(--cream-2);border-radius:50%;flex-shrink:0}
+.nb-info{flex:1;min-width:260px}
+.nb-title{font-family:var(--display);font-weight:800;font-size:1.1rem;margin-bottom:4px;color:var(--ink)}
+.nb-desc{font-size:.92rem;color:var(--ink-soft);line-height:1.4}
+.nb-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:700;font-size:.9rem;white-space:nowrap;transition:background .15s}
+.native-banner:hover .nb-cta{background:var(--coral);color:var(--cream)}
 </style>
 </head>
 <body>
@@ -203,6 +208,15 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
           </tbody>
         </table>
       </div>
+
+      <a href="https://www.awin1.com/awclick.php?mid=124742&amp;id=2900805&amp;ued=https%3A%2F%2Fchidog.com%2F" target="_blank" rel="noopener" class="native-banner">
+  <div class="nb-icon" style="background:var(--mint-soft)">🍖</div>
+  <div class="nb-info">
+    <div class="nb-title">Vet-Owned Fresh Food for French Bulldogs</div>
+    <div class="nb-desc">Customized human-grade fresh diets designed by holistic veterinarians. Formulated to improve digestion, heal skin allergies, and manage weight naturally.</div>
+  </div>
+  <div class="nb-cta">Get Chi Dog &rarr;</div>
+</a>
 
       <h3>Food</h3>
       <p>Food is typically the largest recurring expense for French Bulldogs. Expect to spend $612–$1020 per year on quality Dog food. French Bulldogs with food sensitivities may need specialized diets, which can add $200–$400 per year. Larger French Bulldogs eat more and cost more to feed.</p>

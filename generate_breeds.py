@@ -594,7 +594,7 @@ TEMPLATE = r'''<!DOCTYPE html>
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://petexpenses.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Breeds", "item": "https://petexpenses.com/breeds"},
+        {"@type": "ListItem", "position": 2, "name": "Compare", "item": "https://petexpenses.com/compare"},
         {"@type": "ListItem", "position": 3, "name": "!BREED! Cost", "item": "https://petexpenses.com/breeds/!SLUG!"}
       ]
     },
@@ -644,14 +644,11 @@ TEMPLATE = r'''<!DOCTYPE html>
       "creator": {"@type": "Organization", "name": "petexpenses.com"},
       "datePublished": "2026-05-01",
       "dateModified": "2026-05-21",
-      "temporalCoverage": "2026",
-      "spatialCoverage": "United States",
-      "sourceOrganization": [
-        {"@type": "Organization", "name": "APPA"},
-        {"@type": "Organization", "name": "AVMA"},
-        {"@type": "Organization", "name": "NAPHIA"},
-        {"@type": "Organization", "name": "BLS"}
-      ]
+      "temporalCoverage": "2026-01-01/2026-12-31",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "United States"
+      }
     }
   ]
 }
