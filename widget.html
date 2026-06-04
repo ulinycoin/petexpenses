@@ -4,12 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pet Cost by Breed — embeddable table</title>
+<meta property="og:title" content="Pet Cost by Breed Widget">
+<meta property="og:description" content="Annual dog & cat costs breakdown table.">
+<meta property="og:image" content="https://petexpenses.com/og-dog.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://petexpenses.com/widget.html">
+<meta name="description" content="Embeddable annual pet cost by breed table for dogs and cats. Free tool for pet websites.">
 <style>
 :root{--ink:#1B1340;--ink-soft:#4A3F6F;--ink-mute:#6B6490;--coral:#FF5A3C;--cream:#FFF7E8;--cream-2:#FBEFD6;--paper:#FFF;--radius:10px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,sans-serif;color:var(--ink);background:transparent;font-size:14px;line-height:1.5}
 .pet-table-wrap{max-width:680px;margin:0 auto;padding:16px}
-h2{font-size:1.1rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+h1{font-size:1.1rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .tab-bar{display:flex;gap:4px;margin-bottom:12px}
 .tab-btn{padding:6px 16px;border:2px solid var(--ink);border-radius:999px;font-weight:600;font-size:13px;background:var(--paper);cursor:pointer;color:var(--ink);transition:all .15s}
 .tab-btn.active{background:var(--ink);color:var(--cream)}
@@ -31,7 +37,7 @@ tr:hover td.price{color:var(--cream)}
 <body>
 <div class="pet-table-wrap">
 <div class="embed-bar"><a href="https://petexpenses.com/embed/" target="_top">📋 Get this widget for your site →</a></div>
-<h2>🐾 Annual Pet Cost by Breed (2026, US)</h2>
+<h1>🐾 Annual Pet Cost by Breed (2026, US)</h1>
 <div class="tab-bar">
 <button class="tab-btn active" onclick="showTab('dog')" id="tab-dog">🐕 Dogs</button>
 <button class="tab-btn" onclick="showTab('cat')" id="tab-cat">🐈 Cats</button>

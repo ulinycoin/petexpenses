@@ -16,3 +16,10 @@ www.petexpenses.com/* https://petexpenses.com/:splat 301
 
 # Old widget redirect to prevent 404s
 /embed.html  /widget  301
+
+# Redirect /breeds and /breeds/ to /compare
+/breeds  /compare  301
+/breeds/  /compare  301
+
+# Redirect clean /blog to trailing slash /blog/
+/blog  /blog/  301
