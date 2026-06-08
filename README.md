@@ -115,7 +115,7 @@ CLOUDFLARE_API_TOKEN=… wrangler pages deploy . --project-name=pet-expenses
 - **AVMA** — Pet Ownership & Demographics 2026
 - **NAPHIA** — Pet Health Insurance Report 2026
 - **BLS** — Veterinary Services CPI, Feb 2026
-- **MarketWatch** — Annual cost of pet ownership
+- **Industry Surveys** — Pet ownership debt and spending trends
 
 ---
 

@@ -23,30 +23,30 @@ DOG_BREEDS = {
     'French Bulldog': ['small','short',1.7,1.7,1,.9,'Breathing & spine issues'],
     'Boston Terrier': ['small','short',1.4,1.4,1,.9,'Eye & joint issues'],
     'Miniature Schnauzer': ['small','wire',1.15,1.15,1,1.3,'Pancreatitis & bladder stones'],
-    'Jack Russell Terrier': ['small','short',1.1,1.1,1,1,'Very healthy; high energy'],
+    'Jack Russell Terrier': ['small','short',1.1,1.1,1,1,'Generally healthy'],
     'Beagle': ['small','short',1.2,1.2,1.1,1,'Obesity & epilepsy risk'],
     'Cocker Spaniel': ['medium','long',1.25,1.25,1,1.4,'Ear & eye issues'],
-    'Miniature Poodle': ['small','wire',1.1,1.1,1,1.4,'Healthy; needs grooming'],
+    'Miniature Poodle': ['small','wire',1.1,1.1,1,1.4,'Generally healthy'],
     'Havanese': ['small','long',1.1,1.1,.95,1.3,'Joint & eye issues'],
-    'Papillon': ['small','long',1.05,1.05,.9,1.1,'Long-lived, healthy'],
+    'Papillon': ['small','long',1.05,1.05,.9,1.1,'Generally healthy'],
     'Bichon Frise': ['small','wire',1.15,1.15,.95,1.4,'Skin allergies; needs grooming'],
     'Italian Greyhound': ['small','short',1.15,1.15,.9,.8,'Fragile bones; dental'],
     'Lhasa Apso': ['small','long',1.15,1.15,.95,1.4,'Kidney & eye issues'],
-    'Rat Terrier': ['small','short',1,1,.95,.8,'Very hardy'],
-    'Cockapoo': ['small','wire',1.1,1.1,.95,1.4,'Ear infections; grooming'],
+    'Rat Terrier': ['small','short',1,1,.95,.8,'Generally healthy'],
+    'Cockapoo': ['small','wire',1.1,1.1,.95,1.4,'Ear infections'],
     'Cavapoo': ['small','wire',1.15,1.15,.95,1.4,'Possible MVD heart risk'],
     'Labrador Retriever': ['large','short',1.2,1.2,1.1,1,'Hip dysplasia & obesity risk'],
     'Golden Retriever': ['large','long',1.25,1.3,1.1,1.2,'High cancer risk'],
     'German Shepherd': ['large','long',1.3,1.3,1.1,1.1,'Hip dysplasia common'],
-    'Bulldog': ['medium','short',1.8,1.8,1,.9,'Very high lifetime vet costs'],
+    'Bulldog': ['medium','short',1.8,1.8,1,.9,'Brachycephalic syndrome & joint issues'],
     'Poodle': ['medium','wire',1.1,1.1,1,1.5,"Addison's disease risk"],
     'Boxer': ['large','short',1.4,1.4,1.1,.9,'Heart issues & cancer rate'],
     'Siberian Husky': ['medium','long',1.1,1.1,1.2,1.2,'Eye & hip issues'],
-    'Australian Shepherd': ['medium','long',1.15,1.15,1.1,1.2,'MDR1 mutation; epilepsy'],
+    'Australian Shepherd': ['medium','long',1.15,1.15,1.1,1.2,'MDR1 mutation & epilepsy'],
     'Border Collie': ['medium','long',1.1,1.1,1.1,1.2,'Epilepsy & CEA risk'],
     'Shiba Inu': ['medium','long',1.1,1.1,1,1.1,'Allergies & hip risk'],
     'Corgi (Pembroke)': ['small','long',1.2,1.2,1.05,1.1,'Back & hip; obesity'],
-    'Whippet': ['medium','short',1.05,1.05,1,.8,'Very healthy'],
+    'Whippet': ['medium','short',1.05,1.05,1,.8,'Generally healthy'],
     'Vizsla': ['medium','short',1.1,1.1,1.1,.8,'Epilepsy & hip risk'],
     'Weimaraner': ['large','short',1.2,1.2,1.1,.9,'Bloat & hip risk'],
     'Samoyed': ['medium','long',1.2,1.2,1.1,1.5,'Diabetes & heart issues'],
@@ -56,7 +56,7 @@ DOG_BREEDS = {
     'Doberman Pinscher': ['large','short',1.3,1.3,1.1,.9,'Cardiomyopathy risk'],
     'Bernese Mountain Dog': ['large','long',1.5,1.6,1.1,1.3,'Short lifespan ~7–8 yrs'],
     'Dalmatian': ['medium','short',1.2,1.2,1,.9,'Deafness & urinary stones'],
-    'Bernedoodle': ['large','wire',1.2,1.25,1.1,1.5,'High grooming needs'],
+    'Bernedoodle': ['large','wire',1.2,1.25,1.1,1.5,'Generally healthy'],
     'Great Dane': ['giant','short',1.4,1.5,1.1,.9,'Bloat; lifespan 7–10 yrs'],
     'Saint Bernard': ['giant','long',1.3,1.4,1.2,1.2,'Hip & heart issues'],
     'Mastiff': ['giant','short',1.3,1.4,1.15,.9,'Hip dysplasia; bloat'],
@@ -80,8 +80,8 @@ DOG_COSTS = {
 # ─── CATS ────────────────────────────────────────────────
 
 CAT_BREEDS = {
-    'Domestic Shorthair': ['medium','short',1,1,1,.8,'The classic — generally healthy'],
-    'Domestic Longhair': ['medium','long',1.05,1.05,1,1.3,'Brushing 2–3× per week'],
+    'Domestic Shorthair': ['medium','short',1,1,1,.8,'Generally healthy'],
+    'Domestic Longhair': ['medium','long',1.05,1.05,1,1.3,'Generally healthy'],
     'Maine Coon': ['large','long',1.25,1.3,1.2,1.4,'HCM heart condition risk'],
     'Ragdoll': ['large','long',1.2,1.25,1.1,1.3,'HCM & UTI risk; very affectionate'],
     'Persian': ['medium','long',1.4,1.4,1,1.6,'Brachycephalic; daily grooming'],
@@ -90,10 +90,10 @@ CAT_BREEDS = {
     'Bengal': ['medium','short',1.15,1.15,1.1,.9,'High energy; HCM risk'],
     'Sphynx': ['medium','short',1.4,1.4,1.05,1.2,'Skin care + weekly bathing'],
     'Scottish Fold': ['medium','short',1.5,1.5,1,1,'Osteochondrodysplasia (joint pain)'],
-    'Russian Blue': ['medium','short',1,1,1,.9,'Very healthy, low-maintenance'],
+    'Russian Blue': ['medium','short',1,1,1,.9,'Generally healthy'],
     'Abyssinian': ['medium','short',1.15,1.15,1,.8,'Renal amyloidosis risk'],
     'Norwegian Forest Cat': ['large','long',1.2,1.2,1.15,1.4,'HCM & hip dysplasia'],
-    'American Shorthair': ['medium','short',1.05,1.05,1,.8,'Generally hardy'],
+    'American Shorthair': ['medium','short',1.05,1.05,1,.8,'Generally healthy'],
     'Exotic Shorthair': ['medium','short',1.35,1.35,1,1,'Brachycephalic like Persian'],
     'Burmese': ['medium','short',1.2,1.2,1,.8,'Diabetes & cranial issues'],
     'Birman': ['medium','long',1.1,1.1,1,1.2,'Generally healthy'],
@@ -145,14 +145,17 @@ def get_similar_breeds(breed_name, breed_data, breed_dict, count=5):
 def get_offers_html(species, size, coat, breed_name, breed_plural, health_issues, ins_low, ins_high):
     bp = breed_plural
     hi_lc = health_issues.lower()
+    is_healthy = any(word in hi_lc for word in ['healthy', 'hardy', 'classic', 'none'])
     
+    insurance_p = f"Although {bp} are generally healthy, unexpected accidents or illnesses can still happen. Odie covers up to 90% of your vet bills for accidents, illnesses, and emergency treatments." if is_healthy else f"{bp} are prone to {hi_lc}, which can lead to expensive emergency treatments. Odie covers up to 90% of your vet bills for accidents, illnesses, and breed-specific conditions."
+
     # 1. Odie Pet Insurance (для всех)
     odie_html = f'''<section class="offers-section">
   <h2>Protect Your {breed_name} with Pet Insurance</h2>
   <div class="article-body">
     <div class="highlight-card hc-lav" style="border-color:var(--lav-dk);box-shadow:4px 4px 0 var(--lav-dk)">
       <div class="hc-label">Odie Pet Insurance</div>
-      <p><strong>Customizable pet insurance plans.</strong> {bp} are prone to {hi_lc}, which can lead to expensive emergency treatments. Odie covers up to 90% of your vet bills for accidents, illnesses, and breed-specific conditions.</p>
+      <p><strong>Customizable pet insurance plans.</strong> {insurance_p}</p>
       <p>Customizable limits &bull; 24/7 vet access &bull; Premium estimate: ${ins_low}–${ins_high}/year</p>
       <p style="margin-top:12px"><a href="https://www.awin1.com/awclick.php?mid=68990&amp;id=2900805&amp;ued=https%3A%2F%2Fgetodie.com%2F" target="_blank" rel="noopener" style="display:inline-block;padding:10px 24px;background:var(--lav-dk);color:#fff;border-radius:var(--radius-pill);font-weight:700;text-decoration:none">Get Odie Quote &rarr;</a></p>
     </div>
@@ -402,7 +405,9 @@ def build_args(name, data, species):
     species_title = 'Cat' if species == 'cat' else 'Dog'
     species_plural_lc = 'cats' if species == 'cat' else 'dogs'
 
-    # Health extended
+    # Health extended & insurance/FAQ sentences
+    is_healthy_breed = any(word in hi_lc for word in ['healthy', 'hardy', 'classic', 'none', 'very healthy'])
+    
     if 'hcm' in hi_lc or 'heart' in hi_lc:
         he = f'{bp} are prone to hypertrophic cardiomyopathy (HCM), a serious heart condition that requires regular veterinary monitoring and can significantly increase healthcare costs.'
     elif 'brachycephalic' in hi_lc:
@@ -417,8 +422,20 @@ def build_args(name, data, species):
         he = f'{bp} have a higher risk of developing diabetes, which requires ongoing medication, special diets, and regular veterinary monitoring.'
     elif 'spine' in hi_lc or 'joint' in hi_lc or 'hip' in hi_lc:
         he = f'{bp} are prone to joint and spinal issues, which may require ongoing supplements, medications, or even surgical intervention.'
+    elif is_healthy_breed:
+        he = f'{bp} are generally healthy, hardy, and have low risks of major breed-specific genetic diseases.'
     else:
         he = f'{bp} are generally healthy but can be prone to {hi_lc}.'
+
+    art_capital = art.capitalize()
+    if is_healthy_breed:
+        ins_reason_json = f"Yes — although {bp} are generally healthy, unexpected emergency surgeries can cost $2,000–$5,000. Pet insurance typically costs ${il}–${ih}/year and can cover 70-90% of eligible costs."
+        ins_reason_html = f"Pet insurance for {art} {name} costs ${il}–${ih} per year. Although {bp} are generally healthy, unexpected accidents or illnesses can still happen. Insurance is worth considering since an emergency visit can cost $2,000 to $5,000 — far more than a year's premiums."
+        faq_health_text = f"{bp} are generally healthy and hardy, with relatively low risk of genetic conditions. However, like all pets, they still require routine vaccinations, dental care, and preventative vet visits."
+    else:
+        ins_reason_json = f"Yes — {bp} are prone to {hi_lc}, which can lead to expensive vet bills. One emergency surgery can cost $2,000–$5,000. Pet insurance typically costs ${il}–${ih}/year and can cover 70-90% of eligible costs."
+        ins_reason_html = f"Pet insurance for {art} {name} costs ${il}–${ih} per year. Given the breed's predisposition to {hi_lc}, insurance is worth considering. An emergency visit can cost $2,000 to $5,000 — far more than a year's premiums."
+        faq_health_text = f"{bp} are prone to {hi_lc}. These conditions can require ongoing medication, special diets, or surgery — increasing annual veterinary costs beyond the routine care baseline."
 
     # Grooming text
     if coat == 'long':
@@ -438,6 +455,7 @@ def build_args(name, data, species):
         cc = 'Less'; cc_lc = 'less'; cr = f'their {sd} size, generally good health, and low-maintenance needs'
     else:
         cc = 'About Average'; cc_lc = 'about average'; cr = f'their {sd} size and moderate health profile'
+    comp_heading = f'Why {bp} Cost {cc} Than Average' if cc in ['More', 'Less'] else f'Why {bp} Cost About Average'
 
     cl_label = 'more' if cc == 'More' else 'less'
     avg_cost_str = f'${avg:,}'
@@ -551,6 +569,9 @@ def build_args(name, data, species):
         'HEALTH_ISSUES': health_issues,
         'HEALTH_ISSUES_LC': hi_lc,
         'HEALTH_NOTE_EXTENDED': he,
+        'INSURANCE_REASON_JSON': ins_reason_json,
+        'INSURANCE_REASON_HTML': ins_reason_html,
+        'FAQ_HEALTH_TEXT': faq_health_text,
         'GROOMING_TEXT': gt,
         'COST_COMPARISON': cc,
         'COST_COMPARISON_LC': cc_lc,
@@ -567,6 +588,7 @@ def build_args(name, data, species):
         'FOOD_EMOJI': '🐟' if species == 'cat' else '🍖',
         'SPECIES_EMOJI': '🐈' if species == 'cat' else '🐕',
         'AVG_COST': str(avg),
+        'COMP_HEADING': comp_heading,
     }
 
 def fill_template(template, args):
@@ -614,7 +636,7 @@ TEMPLATE = r'''<!DOCTYPE html>
           "name": "Is !BREED! pet insurance worth it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — !BREED!s are prone to !HEALTH_ISSUES_LC!, which can lead to expensive vet bills. One emergency surgery can cost $2,000–$5,000. Pet insurance typically costs $!INS_LOW!–$!INS_HIGH!/year and can cover 70-90% of eligible costs."
+            "text": "!INSURANCE_REASON_JSON!"
           }
         },
         {
@@ -799,7 +821,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
       <p>Routine veterinary care for !BREED_PLURAL! costs $!VET_LOW!–$!VET_HIGH! per year. This covers annual check-ups, vaccinations, and preventative treatments. !HEALTH_NOTE_EXTENDED! Unexpected emergencies can add thousands in a single visit.</p>
 
       <h3>Pet Insurance</h3>
-      <p>Pet insurance for a !BREED! costs $!INS_LOW!–$!INS_HIGH! per year. Given the breed&rsquo;s predisposition to !HEALTH_ISSUES_LC!, insurance is worth considering. An emergency visit can cost $2,000 to $5,000 — far more than a year&rsquo;s premiums.</p>
+      <p>!INSURANCE_REASON_HTML!</p>
 
       <h3>Grooming</h3>
       <p>!GROOMING_TEXT!</p>
@@ -807,7 +829,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
       <h3>Supplies</h3>
       <p>Annual supplies — litter box, scratching post, bed, bowls, toys — run $!SUPP_LOW!–$!SUPP_HIGH!. Initial setup in the first year costs more due to one-time purchases.</p>
 
-      <h2>Why !BREED_PLURAL! Cost !COST_COMPARISON! Than Average</h2>
+      <h2>!COMP_HEADING!</h2>
       <p>!HEALTH_FACTORS_SECTION!</p>
 
       <h2>How to Save on !BREED! Ownership</h2>
@@ -846,7 +868,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
       <details>
         <summary>What health issues do !BREED_PLURAL! have?</summary>
         <div class="faq-a">
-          <p>!BREED_PLURAL! are prone to !HEALTH_ISSUES_LC!. These conditions can require ongoing medication, special diets, or surgery — increasing annual veterinary costs beyond the routine care baseline.</p>
+          <p>!FAQ_HEALTH_TEXT!</p>
         </div>
       </details>
 

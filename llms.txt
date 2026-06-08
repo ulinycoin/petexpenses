@@ -46,7 +46,7 @@ Breed-specific annual cost breakdowns with full JSON-LD structured data (WebPage
 - AVMA — American Veterinary Medical Association (2022–2026)
 - NAPHIA — Pet Insurance Report (2025–2026)
 - BLS — Veterinary Services CPI (Monthly 2026)
-- MarketWatch — Pet Debt Survey (2025–2026)
+- Industry Surveys — Pet Debt & spending trends (2025–2026)
 
 ## Technical
 
