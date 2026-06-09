@@ -13,57 +13,14 @@ import os, sys, re, urllib.parse
 # ─── DOGS ────────────────────────────────────────────────
 
 DOG_BREEDS = {
-    'Chihuahua': ['small','short',1.1,1.1,.9,1,'Dental issues common'],
-    'Yorkshire Terrier': ['small','long',1.15,1.15,.9,1.4,'Prone to dental & tracheal issues'],
-    'Dachshund': ['small','short',1.3,1.3,.95,1,'High risk of back (IVDD) problems'],
-    'Shih Tzu': ['small','long',1.2,1.2,.95,1.5,'Brachycephalic; lots of grooming'],
-    'Pomeranian': ['small','long',1.1,1.1,.9,1.3,'Dental & luxating patella risk'],
-    'Maltese': ['small','long',1.1,1.1,.9,1.4,'Dental & skin issues'],
-    'Pug': ['small','short',1.6,1.6,1,.9,'Brachycephalic syndrome'],
     'French Bulldog': ['small','short',1.7,1.7,1,.9,'Breathing & spine issues'],
-    'Boston Terrier': ['small','short',1.4,1.4,1,.9,'Eye & joint issues'],
-    'Miniature Schnauzer': ['small','wire',1.15,1.15,1,1.3,'Pancreatitis & bladder stones'],
-    'Jack Russell Terrier': ['small','short',1.1,1.1,1,1,'Generally healthy'],
-    'Beagle': ['small','short',1.2,1.2,1.1,1,'Obesity & epilepsy risk'],
-    'Cocker Spaniel': ['medium','long',1.25,1.25,1,1.4,'Ear & eye issues'],
-    'Miniature Poodle': ['small','wire',1.1,1.1,1,1.4,'Generally healthy'],
-    'Havanese': ['small','long',1.1,1.1,.95,1.3,'Joint & eye issues'],
-    'Papillon': ['small','long',1.05,1.05,.9,1.1,'Generally healthy'],
-    'Bichon Frise': ['small','wire',1.15,1.15,.95,1.4,'Skin allergies; needs grooming'],
-    'Italian Greyhound': ['small','short',1.15,1.15,.9,.8,'Fragile bones; dental'],
-    'Lhasa Apso': ['small','long',1.15,1.15,.95,1.4,'Kidney & eye issues'],
-    'Rat Terrier': ['small','short',1,1,.95,.8,'Generally healthy'],
-    'Cockapoo': ['small','wire',1.1,1.1,.95,1.4,'Ear infections'],
-    'Cavapoo': ['small','wire',1.15,1.15,.95,1.4,'Possible MVD heart risk'],
     'Labrador Retriever': ['large','short',1.2,1.2,1.1,1,'Hip dysplasia & obesity risk'],
     'Golden Retriever': ['large','long',1.25,1.3,1.1,1.2,'High cancer risk'],
     'German Shepherd': ['large','long',1.3,1.3,1.1,1.1,'Hip dysplasia common'],
-    'Bulldog': ['medium','short',1.8,1.8,1,.9,'Brachycephalic syndrome & joint issues'],
     'Poodle': ['medium','wire',1.1,1.1,1,1.5,"Addison's disease risk"],
-    'Boxer': ['large','short',1.4,1.4,1.1,.9,'Heart issues & cancer rate'],
-    'Siberian Husky': ['medium','long',1.1,1.1,1.2,1.2,'Eye & hip issues'],
-    'Australian Shepherd': ['medium','long',1.15,1.15,1.1,1.2,'MDR1 mutation & epilepsy'],
-    'Border Collie': ['medium','long',1.1,1.1,1.1,1.2,'Epilepsy & CEA risk'],
-    'Shiba Inu': ['medium','long',1.1,1.1,1,1.1,'Allergies & hip risk'],
-    'Corgi (Pembroke)': ['small','long',1.2,1.2,1.05,1.1,'Back & hip; obesity'],
-    'Whippet': ['medium','short',1.05,1.05,1,.8,'Generally healthy'],
-    'Vizsla': ['medium','short',1.1,1.1,1.1,.8,'Epilepsy & hip risk'],
-    'Weimaraner': ['large','short',1.2,1.2,1.1,.9,'Bloat & hip risk'],
-    'Samoyed': ['medium','long',1.2,1.2,1.1,1.5,'Diabetes & heart issues'],
-    'Chow Chow': ['medium','long',1.3,1.3,1,1.4,'Hip & eye issues'],
-    'Akita': ['large','long',1.25,1.25,1.1,1.1,'Autoimmune & kidney'],
     'Rottweiler': ['large','short',1.35,1.35,1.1,.9,'Hip & high cancer rate'],
-    'Doberman Pinscher': ['large','short',1.3,1.3,1.1,.9,'Cardiomyopathy risk'],
-    'Bernese Mountain Dog': ['large','long',1.5,1.6,1.1,1.3,'Short lifespan ~7–8 yrs'],
-    'Dalmatian': ['medium','short',1.2,1.2,1,.9,'Deafness & urinary stones'],
-    'Bernedoodle': ['large','wire',1.2,1.25,1.1,1.5,'Generally healthy'],
-    'Great Dane': ['giant','short',1.4,1.5,1.1,.9,'Bloat; lifespan 7–10 yrs'],
-    'Saint Bernard': ['giant','long',1.3,1.4,1.2,1.2,'Hip & heart issues'],
-    'Mastiff': ['giant','short',1.3,1.4,1.15,.9,'Hip dysplasia; bloat'],
-    'Newfoundland': ['giant','long',1.3,1.35,1.2,1.3,'Heart disease (SAS)'],
-    'Standard Poodle': ['large','wire',1.1,1.1,1.05,1.5,"Addison's; bloat risk"],
-    'Cane Corso': ['giant','short',1.2,1.3,1.15,.9,'Hip; cherry eye risk'],
 }
+
 
 DOG_COSTS = {
     'food': {'small': [360,600], 'medium': [600,1000], 'large': [900,1500], 'giant': [1200,2000]},
@@ -80,30 +37,12 @@ DOG_COSTS = {
 # ─── CATS ────────────────────────────────────────────────
 
 CAT_BREEDS = {
-    'Domestic Shorthair': ['medium','short',1,1,1,.8,'Generally healthy'],
-    'Domestic Longhair': ['medium','long',1.05,1.05,1,1.3,'Generally healthy'],
     'Maine Coon': ['large','long',1.25,1.3,1.2,1.4,'HCM heart condition risk'],
-    'Ragdoll': ['large','long',1.2,1.25,1.1,1.3,'HCM & UTI risk; very affectionate'],
     'Persian': ['medium','long',1.4,1.4,1,1.6,'Brachycephalic; daily grooming'],
-    'Siamese': ['medium','short',1.15,1.15,1,.8,'Dental & respiratory issues'],
-    'British Shorthair': ['medium','short',1.15,1.2,1,.9,'HCM risk; placid'],
+    'Ragdoll': ['large','long',1.2,1.25,1.1,1.3,'HCM & UTI risk; very affectionate'],
     'Bengal': ['medium','short',1.15,1.15,1.1,.9,'High energy; HCM risk'],
-    'Sphynx': ['medium','short',1.4,1.4,1.05,1.2,'Skin care + weekly bathing'],
-    'Scottish Fold': ['medium','short',1.5,1.5,1,1,'Osteochondrodysplasia (joint pain)'],
-    'Russian Blue': ['medium','short',1,1,1,.9,'Generally healthy'],
-    'Abyssinian': ['medium','short',1.15,1.15,1,.8,'Renal amyloidosis risk'],
-    'Norwegian Forest Cat': ['large','long',1.2,1.2,1.15,1.4,'HCM & hip dysplasia'],
-    'American Shorthair': ['medium','short',1.05,1.05,1,.8,'Generally healthy'],
-    'Exotic Shorthair': ['medium','short',1.35,1.35,1,1,'Brachycephalic like Persian'],
-    'Burmese': ['medium','short',1.2,1.2,1,.8,'Diabetes & cranial issues'],
-    'Birman': ['medium','long',1.1,1.1,1,1.2,'Generally healthy'],
-    'Oriental Shorthair': ['medium','short',1.1,1.1,1,.8,'Dental & cardiac risk'],
-    'Devon Rex': ['small','short',1.15,1.15,.95,.9,'Patellar luxation'],
-    'Cornish Rex': ['small','short',1.15,1.15,.95,.9,'HCM & hypotrichosis'],
-    'Savannah': ['large','short',1.2,1.25,1.2,.9,'High energy; pricey vet'],
-    'Manx': ['medium','short',1.3,1.3,1,.9,'Manx syndrome (spine)'],
-    'Tonkinese': ['medium','short',1.1,1.1,1,.8,'Generally healthy'],
 }
+
 
 CAT_COSTS = {
     'food': {'small': [240,420], 'medium': [300,600], 'large': [420,720]},
@@ -785,6 +724,10 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
         <span>!SPECIES_TITLE! guide</span>
       </div>
     </header>
+
+    <div class="article-disclosure" style="font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-bottom:24px;padding:10px 14px;background:var(--cream-2);border-radius:var(--radius-sm);line-height:1.4">
+      <strong>Affiliate Disclosure:</strong> petexpenses.com is reader-supported. We may earn a small commission from our partners when you click links on our site, at no extra cost to you.
+    </div>
 
     <div class="article-body">
 
