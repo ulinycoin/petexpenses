@@ -41,6 +41,9 @@ CAT_BREEDS = {
     'Persian': ['medium','long',1.4,1.4,1,1.6,'Brachycephalic; daily grooming'],
     'Ragdoll': ['large','long',1.2,1.25,1.1,1.3,'HCM & UTI risk; very affectionate'],
     'Bengal': ['medium','short',1.15,1.15,1.1,.9,'High energy; HCM risk'],
+    'Sphynx': ['medium','short',1.4,1.4,1.0,1.8,'HCM heart condition & skin issues'],
+    'British Shorthair': ['medium','short',1.1,1.1,1.1,1.0,'HCM & kidney cyst risk'],
+    'Siamese': ['medium','short',1.0,1.0,1.1,1.2,'Amyloidosis & dental disease risk'],
 }
 
 
