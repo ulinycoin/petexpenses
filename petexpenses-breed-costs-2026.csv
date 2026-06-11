@@ -1,44 +1,69 @@
 Breed,Species,"Annual Cost Range (US, 2026)",URL
-Abyssinian,Cat,$202-$6/year,https://petexpenses.com/breeds/abyssinian
-American Shorthair,Cat,$202-$6/year,https://petexpenses.com/breeds/american-shorthair
-Australian Shepherd,Cat,$202-$6/year,https://petexpenses.com/breeds/australian-shepherd
-Beagle,Cat,$202-$6/year,https://petexpenses.com/breeds/beagle
-Bengal,Cat,$202-$6/year,https://petexpenses.com/breeds/bengal
-Birman,Cat,$202-$6/year,https://petexpenses.com/breeds/birman
-Boston Terrier,Cat,$202-$6/year,https://petexpenses.com/breeds/boston-terrier
-Boxer,Cat,$202-$6/year,https://petexpenses.com/breeds/boxer
-British Shorthair,Cat,$202-$6/year,https://petexpenses.com/breeds/british-shorthair
-Bulldog,Cat,$202-$6/year,https://petexpenses.com/breeds/bulldog
-Burmese,Cat,$202-$6/year,https://petexpenses.com/breeds/burmese
-Chihuahua,Cat,$202-$6/year,https://petexpenses.com/breeds/chihuahua
-Corgi Pembroke,Cat,$202-$6/year,https://petexpenses.com/breeds/corgi-pembroke
-Cornish Rex,Cat,$202-$6/year,https://petexpenses.com/breeds/cornish-rex
-Dachshund,Cat,$202-$6/year,https://petexpenses.com/breeds/dachshund
-Devon Rex,Cat,$202-$6/year,https://petexpenses.com/breeds/devon-rex
-Domestic Longhair,Cat,$202-$6/year,https://petexpenses.com/breeds/domestic-longhair
-Domestic Shorthair,Cat,$202-$6/year,https://petexpenses.com/breeds/domestic-shorthair
-Exotic Shorthair,Cat,$202-$6/year,https://petexpenses.com/breeds/exotic-shorthair
-French Bulldog,Cat,$202-$6/year,https://petexpenses.com/breeds/french-bulldog
-German Shepherd,Cat,$202-$6/year,https://petexpenses.com/breeds/german-shepherd
-Golden Retriever,Cat,$202-$6/year,https://petexpenses.com/breeds/golden-retriever
-Great Dane,Cat,$202-$6/year,https://petexpenses.com/breeds/great-dane
-Labrador Retriever,Cat,$202-$6/year,https://petexpenses.com/breeds/labrador-retriever
-Maine Coon,Cat,$202-$6/year,https://petexpenses.com/breeds/maine-coon
-Manx,Cat,$202-$6/year,https://petexpenses.com/breeds/manx
-Norwegian Forest Cat,Cat,$202-$6/year,https://petexpenses.com/breeds/norwegian-forest-cat
-Oriental Shorthair,Cat,$202-$6/year,https://petexpenses.com/breeds/oriental-shorthair
-Persian,Cat,$202-$6/year,https://petexpenses.com/breeds/persian
-Pomeranian,Cat,$202-$6/year,https://petexpenses.com/breeds/pomeranian
-Poodle,Cat,$202-$6/year,https://petexpenses.com/breeds/poodle
-Ragdoll,Cat,$202-$6/year,https://petexpenses.com/breeds/ragdoll
-Rottweiler,Cat,$202-$6/year,https://petexpenses.com/breeds/rottweiler
-Russian Blue,Cat,$202-$6/year,https://petexpenses.com/breeds/russian-blue
-Savannah,Cat,$202-$6/year,https://petexpenses.com/breeds/savannah
-Scottish Fold,Cat,$202-$6/year,https://petexpenses.com/breeds/scottish-fold
-Shih Tzu,Cat,$202-$6/year,https://petexpenses.com/breeds/shih-tzu
-Siamese,Cat,$202-$6/year,https://petexpenses.com/breeds/siamese
-Siberian Husky,Cat,$202-$6/year,https://petexpenses.com/breeds/siberian-husky
-Sphynx,Cat,$202-$6/year,https://petexpenses.com/breeds/sphynx
-Tonkinese,Cat,$202-$6/year,https://petexpenses.com/breeds/tonkinese
-Yorkshire Terrier,Cat,$202-$6/year,https://petexpenses.com/breeds/yorkshire-terrier
-Bernese Mountain Dog,Dog,$202-$6/year,https://petexpenses.com/breeds/bernese-mountain-dog
+Cavalier King Charles Spaniel,Dog,"$1,725-$3,420/year",https://petexpenses.com/breeds/cavalier-king-charles-spaniel-cost
+Pug,Dog,"$1,680-$3,328/year",https://petexpenses.com/breeds/pug-cost
+French Bulldog,Dog,"$1,785-$3,536/year",https://petexpenses.com/breeds/french-bulldog-cost
+Boston Terrier,Dog,"$1,470-$2,912/year",https://petexpenses.com/breeds/boston-terrier-cost
+Miniature Schnauzer,Dog,"$1,299-$2,564/year",https://petexpenses.com/breeds/miniature-schnauzer-cost
+Jack Russell Terrier,Dog,"$1,155-$2,288/year",https://petexpenses.com/breeds/jack-russell-terrier-cost
+Beagle,Dog,"$1,260-$2,496/year",https://petexpenses.com/breeds/beagle-cost
+Cocker Spaniel,Dog,"$2,200-$4,150/year",https://petexpenses.com/breeds/cocker-spaniel-cost
+Miniature Poodle,Dog,"$1,243-$2,453/year",https://petexpenses.com/breeds/miniature-poodle-cost
+Havanese,Dog,"$1,265-$2,508/year",https://petexpenses.com/breeds/havanese-cost
+Papillon,Dog,"$1,207-$2,394/year",https://petexpenses.com/breeds/papillon-cost
+Bichon Frise,Dog,"$1,299-$2,564/year",https://petexpenses.com/breeds/bichon-frise-cost
+Italian Greyhound,Dog,"$1,207-$2,392/year",https://petexpenses.com/breeds/italian-greyhound-cost
+Lhasa Apso,Dog,"$1,322-$2,622/year",https://petexpenses.com/breeds/lhasa-apso-cost
+Rat Terrier,Dog,"$1,050-$2,080/year",https://petexpenses.com/breeds/rat-terrier-cost
+Cockapoo,Dog,"$1,243-$2,453/year",https://petexpenses.com/breeds/cockapoo-cost
+Cavapoo,Dog,"$1,299-$2,564/year",https://petexpenses.com/breeds/cavapoo-cost
+Labrador Retriever,Dog,"$2,676-$5,232/year",https://petexpenses.com/breeds/labrador-retriever-cost
+Golden Retriever,Dog,"$3,037-$6,188/year",https://petexpenses.com/breeds/golden-retriever-cost
+German Shepherd,Dog,"$3,159-$6,188/year",https://petexpenses.com/breeds/german-shepherd-cost
+Bulldog,Dog,"$2,898-$5,616/year",https://petexpenses.com/breeds/bulldog-cost
+Poodle,Dog,"$1,881-$3,597/year",https://petexpenses.com/breeds/poodle-cost
+Boxer,Dog,"$3,122-$6,104/year",https://petexpenses.com/breeds/boxer-cost
+Siberian Husky,Dog,"$1,936-$3,652/year",https://petexpenses.com/breeds/siberian-husky-cost
+Australian Shepherd,Dog,"$2,023-$3,817/year",https://petexpenses.com/breeds/australian-shepherd-cost
+Border Collie,Dog,"$1,936-$3,652/year",https://petexpenses.com/breeds/border-collie-cost
+Shiba Inu,Dog,"$1,936-$3,652/year",https://petexpenses.com/breeds/shiba-inu-cost
+Corgi (Pembroke),Dog,"$1,380-$2,736/year",https://petexpenses.com/breeds/corgi-pembroke-cost
+Whippet,Dog,"$1,690-$3,276/year",https://petexpenses.com/breeds/whippet-cost
+Vizsla,Dog,"$1,771-$3,432/year",https://petexpenses.com/breeds/vizsla-cost
+Weimaraner,Dog,"$2,676-$5,232/year",https://petexpenses.com/breeds/weimaraner-cost
+Samoyed,Dog,"$2,112-$3,984/year",https://petexpenses.com/breeds/samoyed-cost
+Chow Chow,Dog,"$2,288-$4,316/year",https://petexpenses.com/breeds/chow-chow-cost
+Akita,Dog,"$3,037-$5,950/year",https://petexpenses.com/breeds/akita-cost
+Rottweiler,Dog,"$3,010-$5,886/year",https://petexpenses.com/breeds/rottweiler-cost
+Doberman Pinscher,Dog,"$2,899-$5,668/year",https://petexpenses.com/breeds/doberman-pinscher-cost
+Bernese Mountain Dog,Dog,"$3,645-$7,616/year",https://petexpenses.com/breeds/bernese-mountain-dog-cost
+Dalmatian,Dog,"$1,932-$3,744/year",https://petexpenses.com/breeds/dalmatian-cost
+Bernedoodle,Dog,"$2,856-$5,825/year",https://petexpenses.com/breeds/bernedoodle-cost
+Great Dane,Dog,"$3,989-$8,250/year",https://petexpenses.com/breeds/great-dane-cost
+Saint Bernard,Dog,"$4,030-$8,400/year",https://petexpenses.com/breeds/saint-bernard-cost
+Mastiff,Dog,"$3,705-$7,699/year",https://petexpenses.com/breeds/mastiff-cost
+Newfoundland,Dog,"$4,030-$8,100/year",https://petexpenses.com/breeds/newfoundland-cost
+Standard Poodle,Dog,"$2,618-$5,126/year",https://petexpenses.com/breeds/standard-poodle-cost
+Cane Corso,Dog,"$3,420-$7,150/year",https://petexpenses.com/breeds/cane-corso-cost
+Domestic Shorthair,Cat,"$970-$2,030/year",https://petexpenses.com/breeds/domestic-shorthair-cost
+Domestic Longhair,Cat,"$1,144-$2,394/year",https://petexpenses.com/breeds/domestic-longhair-cost
+Maine Coon,Cat,"$1,825-$3,627/year",https://petexpenses.com/breeds/maine-coon-cost
+Ragdoll,Cat,"$1,752-$3,487/year",https://petexpenses.com/breeds/ragdoll-cost
+Persian,Cat,"$1,526-$3,192/year",https://petexpenses.com/breeds/persian-cost
+Siamese,Cat,"$1,115-$2,334/year",https://petexpenses.com/breeds/siamese-cost
+British Shorthair,Cat,"$1,115-$2,436/year",https://petexpenses.com/breeds/british-shorthair-cost
+Bengal,Cat,"$1,115-$2,334/year",https://petexpenses.com/breeds/bengal-cost
+Sphynx,Cat,"$1,358-$2,842/year",https://petexpenses.com/breeds/sphynx-cost
+Scottish Fold,Cat,"$1,455-$3,045/year",https://petexpenses.com/breeds/scottish-fold-cost
+Russian Blue,Cat,"$970-$2,030/year",https://petexpenses.com/breeds/russian-blue-cost
+Abyssinian,Cat,"$1,115-$2,334/year",https://petexpenses.com/breeds/abyssinian-cost
+Norwegian Forest Cat,Cat,"$1,752-$3,348/year",https://petexpenses.com/breeds/norwegian-forest-cat-cost
+American Shorthair,Cat,"$1,018-$2,131/year",https://petexpenses.com/breeds/american-shorthair-cost
+Exotic Shorthair,Cat,"$1,309-$2,740/year",https://petexpenses.com/breeds/exotic-shorthair-cost
+Burmese,Cat,"$1,164-$2,436/year",https://petexpenses.com/breeds/burmese-cost
+Birman,Cat,"$1,199-$2,508/year",https://petexpenses.com/breeds/birman-cost
+Oriental Shorthair,Cat,"$1,067-$2,233/year",https://petexpenses.com/breeds/oriental-shorthair-cost
+Devon Rex,Cat,"$873-$1,770/year",https://petexpenses.com/breeds/devon-rex-cost
+Cornish Rex,Cat,"$873-$1,770/year",https://petexpenses.com/breeds/cornish-rex-cost
+Savannah,Cat,"$1,560-$3,087/year",https://petexpenses.com/breeds/savannah-cost
+Manx,Cat,"$1,261-$2,639/year",https://petexpenses.com/breeds/manx-cost
+Tonkinese,Cat,"$1,067-$2,233/year",https://petexpenses.com/breeds/tonkinese-cost
