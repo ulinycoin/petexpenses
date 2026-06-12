@@ -12,10 +12,10 @@
 <!-- OG -->
 <meta property="og:title" content="petexpenses.com — Pet Cost Calculator">
 <meta property="og:description" content="Free pet cost calculator. 2026 US averages by breed, weight, age & activity. No signup.">
-<meta property="og:image" content="https://petexpenses.com/og-dog.jpg">
+<meta property="og:image" content="https://petexpenses.com/assets/images/og-dog.jpg">
 <meta property="og:url" content="https://petexpenses.com">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://petexpenses.com/og-dog.jpg">
+<meta name="twitter:image" content="https://petexpenses.com/assets/images/og-dog.jpg">
 <link rel="canonical" href="https://petexpenses.com/">
 
 <!-- Fonts -->
@@ -25,16 +25,16 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"></noscript>
 
 <!-- Meta icons & PWA -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#1B1340">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <!-- ALL STYLES INLINE -->
-    <link rel="preload" as="image" href="hero-image.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/hero-image.jpg" fetchpriority="high">
 
     <!-- LLM/AI optimization -->
     <link rel="llms.txt" href="/llms.txt">
@@ -100,7 +100,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .site-nav-mid a.active{background:var(--ink);color:var(--cream)}
 .site-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--ink);color:var(--cream);border-radius:var(--radius-pill);font-weight:600;font-size:.92rem;transition:transform .15s,background .15s;white-space:nowrap}
 .site-cta:hover{background:var(--coral);transform:translateY(-1px)}
-@media(max-width:800px){.site-nav-mid{display:none}.site-cta{padding:8px 14px;font-size:.85rem}}
+/* Burger */
+.burger-btn{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;background:none;border:none;margin-left:auto;z-index:200}
+.burger-btn span{display:block;width:22px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
+.burger-btn.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger-btn.active span:nth-child(2){opacity:0}
+.burger-btn.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.site-nav-mid-mobile{display:none;position:fixed;inset:0;top:56px;z-index:150;background:rgba(255,247,232,.98);backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:flex-start;padding:24px;gap:8px}
+.site-nav-mid-mobile.open{display:flex}
+.site-nav-mid-mobile a{padding:14px 24px;border-radius:var(--radius-pill);font-size:1.1rem;font-weight:500;color:var(--ink-soft);width:100%;max-width:320px;text-align:center}
+.site-nav-mid-mobile a:hover{background:rgba(27,19,64,.05);color:var(--ink)}
+.site-nav-mid-mobile a.active{background:var(--ink);color:var(--cream)}
+@media(max-width:800px){.site-nav-mid{display:none}.burger-btn{display:flex}.site-cta{padding:8px 14px;font-size:.85rem}}
 .hero{position:relative;padding:56px 24px 80px;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,210,63,.32),transparent 60%),radial-gradient(ellipse 70% 55% at 10% 90%,rgba(255,143,177,.22),transparent 60%),var(--cream)}
 .hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;position:relative}
 .hero-left{position:relative;z-index:2}
@@ -229,6 +240,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media(max-width:900px){.offers-grid{grid-template-columns:1fr}}
 .offer-card{position:relative;background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--radius-xl);padding:24px;display:flex;flex-direction:column;box-shadow:4px 4px 0 var(--ink);transition:transform .18s,box-shadow .18s}
 .offer-card:hover{transform:translateY(-4px);box-shadow:6px 8px 0 var(--ink)}
+.offer-card .offer-bullets{flex:1}
+.offer-card .offer-cta{margin-top:auto}
 .offer-sticker-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .offer-sticker{display:inline-flex;align-items:center;gap:8px;background:var(--oa,var(--coral));color:var(--ink);font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;padding:6px 12px;border-radius:6px;border:2.5px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
 .offer-sticker-emoji{font-size:1.1rem}
@@ -241,7 +254,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .offer-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--cream);padding:14px 20px;border-radius:var(--radius-pill);font-weight:700;font-size:.98rem;margin-top:auto;transition:background .15s,transform .15s}
 .offer-cta:hover{background:var(--oad,var(--coral-dk));transform:translateY(-1px)}
 .offer-ratings{margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.04em;text-align:center}
-.offers-disclosure{max-width:720px;margin:28px auto 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--ink-mute)}
+.offers-disclosure{max-width:720px;margin:28px auto 0;text-align:center;font-size:.82rem;color:var(--ink-soft)}
 .hiw-section{padding:0 24px 64px}
 .hiw-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:800px){.hiw-grid{grid-template-columns:1fr}}
@@ -318,8 +331,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .footer-cols a{display:block;padding:4px 0;font-size:.92rem;color:rgba(255,247,232,.75);transition:color .15s}
 .footer-cols a:hover{color:var(--cream)}
 .footer-bottom{max-width:1160px;margin:24px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,247,232,.45);position:relative}
-.footer-disclosure{max-width:700px;text-align:right}
-@media(max-width:700px){.footer-disclosure{text-align:left}}
+/* Sticky result bar */
+#sticky-result-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--ink);color:var(--cream);padding:12px 24px;box-shadow:0 -4px 0 var(--coral);animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+#sticky-result-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:16px}
+#sticky-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,247,232,.6);white-space:nowrap}
+#sticky-amount{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.03em;color:var(--sun);flex:1}
+#sticky-cta{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--coral);color:var(--cream);border-radius:var(--radius-pill);font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:background .15s}
+#sticky-cta:hover{background:var(--coral-dk)}
+@media(max-width:540px){#sticky-label{display:none}#sticky-amount{font-size:1.2rem}#sticky-cta{padding:8px 14px;font-size:.85rem}}
 </style>
 </head>
 <body>
@@ -339,7 +359,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <a href="#faq">FAQ</a>
   </div>
   <a href="#calculator" class="site-cta">Run the math →</a>
+  <button class="burger-btn" id="burger-btn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
+
+<!-- Mobile nav overlay -->
+<div class="site-nav-mid-mobile" id="nav-mobile">
+  <a href="#calculator" class="active">🐕 Dogs</a>
+  <a href="#calculator">🐈 Cats</a>
+  <a href="/compare">⚖️ Compare</a>
+  <a href="/blog/">📝 Blog</a>
+  <a href="/sources">📊 Data</a>
+  <a href="#faq">FAQ</a>
+</div>
 
 <!-- RENDER TARGETS + STATIC SECTIONS -->
 <main>
@@ -355,7 +386,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div>
 </div>
 <div class="hero-right">
-<div class="hero-photo"><img src="hero-image.jpg" alt="Dog cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div>
+<div class="hero-photo"><img src="assets/images/hero-image.jpg" alt="Dog cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div>
 <div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div>
 <div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px"><svg viewBox="0 0 40 40" width="16" height="16" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg><span>save up to <strong>$840/yr</strong></span></div>
 <div class="deco-sticker deco-rating" style="transform:rotate(-4deg);bottom:-10px;left:20px"><span class="deco-stars">★★★★★</span><span>"finally a calculator that<br>doesn't want my email"</span></div>
@@ -396,7 +427,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 <!-- SOCIAL PROOF (static) -->
 <section class="proof-section">
-<div class="section-head proof-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> WHAT OWNERS SAID</div><h2 class="section-h2">2.4M calculations and counting</h2><p class="section-sub">(That's a placeholder. But the warm reception is real.)</p></div>
+<div class="section-head proof-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> WHAT OWNERS SAID</div><h2 class="section-h2">2.4M calculations and counting</h2><p class="section-sub">Join 2.4M pet owners who've already crunched their numbers.</p></div>
 <div class="proof-wall">
 <div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">"I had no idea Frenchies cost this much. The insurance suggestion saved me a $4k vet bill."</p><div class="proof-who"><strong>Sara · Brooklyn</strong><span>· French Bulldog, 3 yrs</span></div></div>
 <div class="proof-card"><div class="proof-stars">★★★★★</div><p class="proof-quote">"Bookmarked. Sent to my partner. Now we agree on the food budget."</p><div class="proof-who"><strong>Mike · Austin</strong><span>· Labrador, 1 yr</span></div></div>
@@ -422,10 +453,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <section class="blog-section">
 <div class="section-head"><div class="section-eyebrow"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg> FROM THE BLOG</div><h2 class="section-h2">Read more, spend less</h2></div>
 <div class="blog-grid">
-<a class="blog-card" href="/blog/understanding-pet-costs" target="_blank" style="--ba:#FF5A3C"><div class="blog-thumb"><img src="blog/images/pet-cost-breakdown.png" alt="Annual pet cost breakdown chart by category" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="1672" height="941"></div><div class="blog-body"><div class="blog-tag">NEW · MAY 2026</div><h3 class="blog-title">The $4,272 question: where does it all go?</h3><p class="blog-excerpt">A line-by-line look at the average American pet budget — and the three categories most owners underestimate.</p><div class="blog-meta">6 min read →</div></div></a>
-<a class="blog-card" href="/blog/pet-insurance-worth-it" target="_blank" style="--ba:#A78BFA"><div class="blog-thumb"><img src="blog/images/pet-insurance-worth-it.png" alt="Pet insurance cost comparison for 12 dog breeds" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="1672" height="941"></div><div class="blog-body"><div class="blog-tag">INSURANCE</div><h3 class="blog-title">Is pet insurance worth it? We ran the math on 12 breeds.</h3><p class="blog-excerpt">For French Bulldogs and Goldens it pays for itself by year three. For others, a high-yield savings account wins.</p><div class="blog-meta">9 min read →</div></div></a>
-<a class="blog-card" href="/blog/kibble-vs-fresh-vs-raw" target="_blank" style="--ba:#6EE7B7"><div class="blog-thumb"><img src="blog/images/food-cost-comparison.png" alt="Dog food cost comparison kibble vs fresh vs raw" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="1672" height="941"></div><div class="blog-body"><div class="blog-tag">FOOD</div><h3 class="blog-title">Kibble vs fresh vs raw: a real cost comparison</h3><p class="blog-excerpt">We costed out a year of feeding a 50 lb dog across 8 popular brands. The cheapest option will surprise you.</p><div class="blog-meta">7 min read →</div></div></a>
-<a class="blog-card" href="/blog/self-cleaning-litter-box-cost" target="_blank" style="--ba:#0EA5E9"><div class="blog-thumb"><img src="blog/images/self-cleaning-litter-box.png" alt="Self-cleaning litter box cost vs traditional scooping" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="640" height="360"></div><div class="blog-body"><div class="blog-tag">CATS</div><h3 class="blog-title">Self-cleaning litter box: is it worth the cost?</h3><p class="blog-excerpt">We break down the real cost of self-cleaning litter boxes vs. traditional scooping — including savings on litter, time, and vet bills.</p><div class="blog-meta">5 min read →</div></div></a>
+<a class="blog-card" href="/blog/understanding-pet-costs" target="_blank" style="--ba:#FF5A3C"><div class="blog-thumb"><img src="assets/images/blog/pet-cost-breakdown.png" alt="Annual pet cost breakdown chart by category" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="1672" height="941"></div><div class="blog-body"><div class="blog-tag">NEW · MAY 2026</div><h3 class="blog-title">The $4,272 question: where does it all go?</h3><p class="blog-excerpt">A line-by-line look at the average American pet budget — and the three categories most owners underestimate.</p><div class="blog-meta">6 min read →</div></div></a>
+<a class="blog-card" href="/blog/pet-insurance-worth-it" target="_blank" style="--ba:#A78BFA"><div class="blog-thumb"><img src="assets/images/blog/pet-insurance-worth-it.png" alt="Pet insurance cost comparison for 12 dog breeds" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="1672" height="941"></div><div class="blog-body"><div class="blog-tag">INSURANCE</div><h3 class="blog-title">Is pet insurance worth it? We ran the math on 12 breeds.</h3><p class="blog-excerpt">For French Bulldogs and Goldens it pays for itself by year three. For others, a high-yield savings account wins.</p><div class="blog-meta">9 min read →</div></div></a>
+<a class="blog-card" href="/blog/kibble-vs-fresh-vs-raw" target="_blank" style="--ba:#6EE7B7"><div class="blog-thumb"><img src="assets/images/blog/food-cost-comparison.png" alt="Dog food cost comparison kibble vs fresh vs raw" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="1672" height="941"></div><div class="blog-body"><div class="blog-tag">FOOD</div><h3 class="blog-title">Kibble vs fresh vs raw: a real cost comparison</h3><p class="blog-excerpt">We costed out a year of feeding a 50 lb dog across 8 popular brands. The cheapest option will surprise you.</p><div class="blog-meta">7 min read →</div></div></a>
+<a class="blog-card" href="/blog/self-cleaning-litter-box-cost" target="_blank" style="--ba:#0EA5E9"><div class="blog-thumb"><img src="assets/images/blog/self-cleaning-litter-box.png" alt="Self-cleaning litter box cost vs traditional scooping" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" width="640" height="360"></div><div class="blog-body"><div class="blog-tag">CATS</div><h3 class="blog-title">Self-cleaning litter box: is it worth the cost?</h3><p class="blog-excerpt">We break down the real cost of self-cleaning litter boxes vs. traditional scooping — including savings on litter, time, and vet bills.</p><div class="blog-meta">5 min read →</div></div></a>
 </div>
 </section>
 
@@ -790,7 +821,7 @@ function setState(field,val){
 function setSpecies(s){state.species=s; render(); if(typeof posthog!=='undefined'){posthog.capture('species_switched',{species:s})}}
 
 function renderHero(s,isDog){
-  return '<section class="hero"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div><div class="hero-grid"><div class="hero-left"><div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div><h1 class="hero-h1">How much does<br>your <span class="'+(isDog?'h1-accent-orange':'h1-accent-pink')+'">'+(isDog?'dog':'cat')+'</span> <span class="h1-stamp">really</span><br>cost a year?</h1><p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p><div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div></div><div class="hero-right"><div class="hero-photo'+(isDog?'':' hero-photo-cat')+'"><img src="hero-image.jpg" alt="'+(isDog?'Dog':'Cat')+' cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div><div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div><div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px">'+
+  return '<section class="hero"><div style="position:absolute;inset:0;background-image:radial-gradient(rgba(27,19,64,0.06) 1.4px,transparent 1.6px);background-size:18px 18px;pointer-events:none" aria-hidden="true"></div><div class="hero-grid"><div class="hero-left"><div class="hero-pretitle"><svg viewBox="0 0 40 40" width="20" height="20" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#FF5A3C"/><circle cx="8" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="32" cy="14" r="4.5" fill="#FF5A3C"/><circle cx="14" cy="5" r="3.6" fill="#FF5A3C"/><circle cx="26" cy="5" r="3.6" fill="#FF5A3C"/></svg><span>petexpenses.com · updated may 2026</span></div><h1 class="hero-h1">How much does<br>your <span class="'+(isDog?'h1-accent-orange':'h1-accent-pink')+'">'+(isDog?'dog':'cat')+'</span> <span class="h1-stamp">really</span><br>cost a year?</h1><p class="hero-sub">Free, honest, no email grab. We crunch <strong>2026 US averages</strong> from APPA, AVMA &amp; NAPHIA — by breed, age, weight &amp; activity. You get the number, the breakdown, and three ways to spend less.</p><div class="hero-badges"><span class="hbadge">✦ Free forever</span><span class="hbadge">⚡ Instant result</span><span class="hbadge">🔒 No sign-up</span><span class="hbadge">📊 Cited data</span></div></div><div class="hero-right"><div class="hero-photo'+(isDog?'':' hero-photo-cat')+'"><img src="assets/images/hero-image.jpg" alt="'+(isDog?'Dog':'Cat')+' cost calculator" class="hero-photo-img" fetchpriority="high" width="643" height="804"></div><div class="deco-sticker deco-paid" style="transform:rotate(-8deg);top:10px;left:-20px"><div class="deco-paid-amount">$4,272</div><div class="deco-paid-cap">avg US owner / year</div><div class="deco-paid-src">source: NYPost · Healthy Paws 2026</div></div><div class="deco-sticker deco-savings" style="transform:rotate(6deg);bottom:60px;right:-10px">'+
   '<svg viewBox="0 0 40 40" width="16" height="16" aria-hidden="true"><circle cx="20" cy="24" r="10" fill="#1B1340"/><circle cx="8" cy="14" r="4.5" fill="#1B1340"/><circle cx="32" cy="14" r="4.5" fill="#1B1340"/><circle cx="14" cy="5" r="3.6" fill="#1B1340"/><circle cx="26" cy="5" r="3.6" fill="#1B1340"/></svg>'+
   '<span>save up to <strong>$840/yr</strong></span></div><div class="deco-sticker deco-rating" style="transform:rotate(-4deg);bottom:-10px;left:20px"><span class="deco-stars">★★★★★</span><span>"finally a calculator that<br>doesn\'t want my email"</span></div></div></div></section>'
 }
@@ -1054,11 +1085,6 @@ document.body.addEventListener('input',function(e){
     renderWeight(Number(e.target.value))
   } else if(e.target.id==='surgery-slider'){
     renderSurgeryCost(Number(e.target.value))
-  } else if(e.target.id==='breed-input'){
-    state[state.species].breed=e.target.value
-    render()
-    var bi=document.getElementById('breed-input')
-    if(bi){bi.focus();bi.selectionStart=bi.selectionEnd=bi.value.length}
   }
 })
 }
@@ -1088,6 +1114,117 @@ document.body.addEventListener('input',function(e){
 // INITIAL RENDER
 // ==============================================================
 render()
+
+// ==============================================================
+// BURGER MENU TOGGLE
+// ==============================================================
+document.getElementById('burger-btn').addEventListener('click',function(){
+  this.classList.toggle('active')
+  document.getElementById('nav-mobile').classList.toggle('open')
+})
+// Close mobile menu on link click
+document.getElementById('nav-mobile').addEventListener('click',function(e){
+  if(e.target.tagName==='A'){document.getElementById('burger-btn').classList.remove('active');this.classList.remove('open')}
+})
+
+// ==============================================================
+// DEBOUNCED BREED INPUT
+// ==============================================================
+var breedTimeout
+document.body.addEventListener('input',function(e){
+  if(e.target.id==='breed-input'){
+    clearTimeout(breedTimeout)
+    breedTimeout=setTimeout(function(){
+      state[state.species].breed=e.target.value
+      render()
+      var bi=document.getElementById('breed-input')
+      if(bi){bi.focus();bi.selectionStart=bi.selectionEnd=bi.value.length}
+    },300)
+  }
+})
+
+// ==============================================================
+// COUNT-UP ANIMATION
+// ==============================================================
+function animateValue(el,start,end,duration){
+  if(!el)return
+  var startTime=performance.now()
+  function step(now){
+    var progress=Math.min((now-startTime)/duration,1)
+    // ease-out quad
+    var eased=1-(1-progress)*(1-progress)
+    var current=Math.round(start+(end-start)*eased)
+    el.textContent='$'+current.toLocaleString()
+    if(progress<1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
+// Patch renderResult to animate total
+var _origRenderResult=renderResult
+renderResult=function(s,costs,bd,st,isDog,acc){
+  var html=_origRenderResult(s,costs,bd,st,isDog,acc)
+  // Store target for later animation
+  html=html.replace('id="total-amount"','id="total-amount" data-target="'+costs.total+'"')
+  return html
+}
+
+// After render, animate
+var _origRender=render
+render=function(){
+  var prevTotal=document.getElementById('total-amount')
+  var prevVal=prevTotal?parseInt(prevTotal.textContent.replace(/[$,]/g,''))||0:0
+  _origRender()
+  // Schedule animation after DOM update
+  requestAnimationFrame(function(){
+    var el=document.getElementById('total-amount')
+    if(el&&el.getAttribute('data-target')){
+      var target=parseInt(el.getAttribute('data-target'))
+      if(target!==prevVal) animateValue(el,prevVal,target,500)
+    }
+  })
+}
+
+// Patch renderWeight too
+var _origRenderWeight=renderWeight
+renderWeight=function(weight){
+  var prevTotal=document.getElementById('total-amount')
+  var prevVal=prevTotal?parseInt(prevTotal.textContent.replace(/[$,]/g,''))||0:0
+  _origRenderWeight(weight)
+  requestAnimationFrame(function(){
+    var el=document.getElementById('total-amount')
+    if(el&&el.getAttribute('data-target')){
+      var target=parseInt(el.getAttribute('data-target'))
+      if(target!==prevVal) animateValue(el,prevVal,target,400)
+    }
+  })
+}
+
+// ==============================================================
+// STICKY RESULT BAR
+// ==============================================================
+;(function(){
+  var bar=document.createElement('div')
+  bar.id='sticky-result-bar'
+  bar.innerHTML='<div id="sticky-result-inner"><span id="sticky-label">Your pet costs</span><span id="sticky-amount">$0</span><a href="#offers" id="sticky-cta">Save money →</a></div>'
+  document.body.appendChild(bar)
+  
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var resultEl=document.getElementById('result')
+      if(!resultEl){bar.style.display='none';return}
+      var shouldShow=!entry.isIntersecting&&entry.boundingClientRect.top<0
+      bar.style.display=shouldShow?'block':'none'
+      if(shouldShow){
+        var amt=document.getElementById('total-amount')
+        if(amt) document.getElementById('sticky-amount').textContent=amt.textContent
+      }
+    })
+  },{threshold:[0],rootMargin:'-200px 0px 0px 0px'})
+  
+  var resultSection=document.querySelector('.result-section')
+  if(resultSection) observer.observe(resultSection)
+})()
 
 // ==============================================================
 // PostHog

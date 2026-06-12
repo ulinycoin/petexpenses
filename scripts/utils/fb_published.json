@@ -1,0 +1,42 @@
+{
+  "pet-insurance": {
+    "timestamp": "2026-06-10T14:29:34.280098",
+    "post_id": "122098590015359064",
+    "image": "/tmp/fb_banner_pet_insurance.png"
+  },
+  "kibble-vs-fresh": {
+    "timestamp": "2026-06-10T14:40:39.555678",
+    "post_id": "122098593711359064",
+    "image": "/tmp/fb_banner_kibble.png"
+  },
+  "new-puppy": {
+    "timestamp": "2026-06-10T21:26:21.484734",
+    "post_id": "122098780509359064",
+    "image": "/tmp/fb_banner_new_puppy.png"
+  },
+  "cheapest-breeds": {
+    "timestamp": "2026-06-10T21:26:32.052413",
+    "post_id": "122098780599359064",
+    "image": "/tmp/fb_banner_cheapest_breeds.png"
+  },
+  "litter-box-cost": {
+    "timestamp": "2026-06-10T21:32:18.567465",
+    "post_id": "122098783941359064",
+    "image": "/tmp/fb_banner_litter_box.png"
+  },
+  "understanding-costs": {
+    "timestamp": "2026-06-10T21:32:27.014704",
+    "post_id": "122098784025359064",
+    "image": "/tmp/fb_banner_cat_costs.png"
+  },
+  "persian-cat": {
+    "timestamp": "2026-06-11T00:15:00",
+    "post_id": "122099029845359064",
+    "image": "/tmp/fb_banner_persian.png"
+  },
+  "bengal-cat": {
+    "timestamp": "2026-06-11T00:15:00",
+    "post_id": "122099030013359064",
+    "image": "/tmp/fb_banner_bengal.png"
+  }
+}
