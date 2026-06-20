@@ -38,7 +38,7 @@ Breed-specific annual cost breakdowns with full JSON-LD structured data (WebPage
 - https://petexpenses.com/breeds/labrador-retriever-cost
 - https://petexpenses.com/breeds/french-bulldog-cost
 - https://petexpenses.com/breeds/german-shepherd-cost
-- And 70+ more breed pages at /breeds/ directory
+- And 73 breed pages at /breeds/ directory
 
 ## Data Sources
 
