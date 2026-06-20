@@ -9,18 +9,9 @@ Usage:
 """
 
 import os, sys, re, urllib.parse
+from breeds_data import DOG_BREEDS, CAT_BREEDS, BREED_HOOKS, BREED_SAVINGS
 
-# ─── DOGS ────────────────────────────────────────────────
-
-DOG_BREEDS = {
-    'French Bulldog': ['small','short',1.7,1.7,1,.9,'Breathing & spine issues'],
-    'Labrador Retriever': ['large','short',1.2,1.2,1.1,1,'Hip dysplasia & obesity risk'],
-    'Golden Retriever': ['large','long',1.25,1.3,1.1,1.2,'High cancer risk'],
-    'German Shepherd': ['large','long',1.3,1.3,1.1,1.1,'Hip dysplasia common'],
-    'Poodle': ['medium','wire',1.1,1.1,1,1.5,"Addison's disease risk"],
-    'Rottweiler': ['large','short',1.35,1.35,1.1,.9,'Hip & high cancer rate'],
-}
-
+# ─── COST TABLES (synced with index.html PET_DATA) ───────
 
 DOG_COSTS = {
     'food': {'small': [360,600], 'medium': [600,1000], 'large': [900,1500], 'giant': [1200,2000]},
@@ -36,17 +27,6 @@ DOG_COSTS = {
 
 # ─── CATS ────────────────────────────────────────────────
 
-CAT_BREEDS = {
-    'Maine Coon': ['large','long',1.25,1.3,1.2,1.4,'HCM heart condition risk'],
-    'Persian': ['medium','long',1.4,1.4,1,1.6,'Brachycephalic; daily grooming'],
-    'Ragdoll': ['large','long',1.2,1.25,1.1,1.3,'HCM & UTI risk; very affectionate'],
-    'Bengal': ['medium','short',1.15,1.15,1.1,.9,'High energy; HCM risk'],
-    'Sphynx': ['medium','short',1.4,1.4,1.0,1.8,'HCM heart condition & skin issues'],
-    'British Shorthair': ['medium','short',1.1,1.1,1.1,1.0,'HCM & kidney cyst risk'],
-    'Siamese': ['medium','short',1.0,1.0,1.1,1.2,'Amyloidosis & dental disease risk'],
-}
-
-
 CAT_COSTS = {
     'food': {'small': [240,420], 'medium': [300,600], 'large': [420,720]},
     'vet': {'small': [180,400], 'medium': [220,500], 'large': [300,650]},
@@ -58,11 +38,135 @@ CAT_COSTS = {
     'supplies': {'small': [120,240], 'medium': [150,300], 'large': [200,380]},
 }
 
-CAT_PRIORITY = list(CAT_BREEDS.keys())
-
-DOG_PRIORITY = list(DOG_BREEDS.keys())
+CAT_PRIORITY = sorted(CAT_BREEDS.keys())
+DOG_PRIORITY = sorted(DOG_BREEDS.keys())
 
 # ══════════════════════════════════════════════════════════
+
+def _variant_index(name, n):
+    return sum(ord(c) for c in name) % n
+
+def get_intro_hook(name, bp, species, sd, health_note, cl, ch):
+    if name in BREED_HOOKS:
+        return BREED_HOOKS[name]
+    species_word = 'cat' if species == 'cat' else 'dog'
+    templates = [
+        f'Before you fall for a {name} puppy photo, run the annual math. Most owners underestimate {species_word} costs by 30–40% in the first year alone.',
+        f'{bp} sit in the {sd} category for {species_word} ownership costs. Health profile ({health_note.lower()}) is the variable that swings your budget most.',
+        f'Planning a {name} budget? The range ${cl:,}–${ch:,}/year covers a healthy adult in a mid-cost US city — but breed-specific vet issues can push you toward the top of that range fast.',
+        f'Unlike generic pet cost guides, this breakdown is tuned to {bp}: size, coat type, and known health risks all change the line items below.',
+    ]
+    return templates[_variant_index(name, len(templates))]
+
+def get_food_text(name, bp, species_title, species, fl, fh, food_extra, coat):
+    young = 'kittens' if species == 'cat' else 'puppies'
+    variants = [
+        f'Food is usually the biggest recurring line item for {bp}. Budget ${fl:,}–${fh:,}/year for quality {species_title.lower()} food. Sensitive stomachs or grain-free formulas can add {food_extra}.',
+        f'Expect ${fl:,}–${fh:,}/year on food alone. {bp} with allergies or weight issues often need prescription diets that sit at the top of this range.',
+        f'Annual food for {bp} runs ${fl:,}–${fh:,}. {young.capitalize()} cost more per month; seniors may need joint or kidney support formulas that push food spending {food_extra} above baseline.',
+    ]
+    if coat == 'long':
+        variants.append(f'Nutrition affects coat quality too — {bp} on omega-rich diets may spend ${fl:,}–${fh:,}/year, with premium kibble or fresh food at the higher end.')
+    return variants[_variant_index(name, len(variants))]
+
+def get_supplies_text(species, bp, sl, sh):
+    if species == 'cat':
+        items = [
+            f'Annual supplies — litter, litter box, scratching post, carrier, bed, bowls, toys — typically run ${sl:,}–${sh:,}. Litter alone can be $150–$400/year depending on clumping vs. natural formulas.',
+            f'Budget ${sl:,}–${sh:,}/year for cat essentials: litter subscriptions, replacement scratchers, and occasional carrier upgrades. First-year setup costs more because you buy the litter box and tree once.',
+            f'Cat supplies (${sl:,}–${sh:,}/year) break down to litter (~40%), enrichment toys (~25%), and replaceable items like beds and bowls. Smart litter boxes raise the top end but cut daily chore time.',
+        ]
+    else:
+        items = [
+            f'Annual supplies — leash, collar, harness, bed, bowls, crate, toys, waste bags — run ${sl:,}–${sh:,}. Chew-heavy breeds burn through toys faster, pushing costs toward the top of the range.',
+            f'Dog gear costs ${sl:,}–${sh:,}/year after the first-year crate-and-collar splurge. Durable harnesses and orthopedic beds last longer but cost more upfront.',
+            f'Plan ${sl:,}–${sh:,}/year for supplies. Active {bp.lower()} need replaced toys, grooming tools, and weather gear more often than couch-potato breeds.',
+        ]
+    return items[_variant_index(bp, len(items))]
+
+def get_savings_html(name, species, species_plural, il, health_note):
+    if name in BREED_SAVINGS:
+        tips = BREED_SAVINGS[name]
+        lines = ['      <ul>']
+        for title, body in tips:
+            lines.append(f'        <li><strong>{title}.</strong> {body}</li>')
+        lines.append('      </ul>')
+        return '\n'.join(lines)
+
+    hi = health_note.lower()
+    sets = [
+        [
+            ('Shop pet insurance before age 2', f'Premiums jump after the first birthday. Accident-only plans start around ${il}/year — compare at least three carriers.'),
+            ('Batch-buy food on auto-ship', f'Subscribe-and-save cuts {species_plural} food costs 10–15%. Store bulk bags in airtight bins to keep kibble fresh.'),
+            ('Don\'t skip the annual wellness exam', 'One $50–$80 checkup catches $2,000 problems early. Vaccine clinics at shelters are cheaper than emergency rooms.'),
+            ('Brush teeth at home', f'Dental cleanings under anesthesia cost $300–$800. Daily dental chews or brushing adds years of cheap prevention for most {species_plural}.'),
+            ('Buy durable, not cute', 'A $40 chew toy that lasts six months beats four $12 toys destroyed in a week.'),
+        ],
+        [
+            ('Use a pet-specific HSA mindset', 'Set aside $50/month in a dedicated savings account. When the emergency hits, you pay cash instead of credit-card interest.'),
+            ('Negotiate vet bills', 'Many clinics offer payment plans or 5–10% discounts for cash pay. Ask before the procedure, not after.'),
+            ('Generic preventatives work', 'Ask your vet about generic flea, tick, and heartworm options — same active ingredient, lower price.'),
+            ('Groom at home between pro visits', f'YouTube tutorials plus a $30 tool kit can halve grooming spend for {species_plural} that need regular coat care.'),
+            ('Price-check prescriptions online', 'Vet markup on medications runs 100–200%. Chewy, Costco, and 1800PetMeds often beat in-clinic pricing.'),
+        ],
+        [
+            ('Adopt from a rescue with known history', 'Shelter dogs and cats often come vaccinated, spayed, and microchipped — saving $500–$1,200 in first-year costs.'),
+            ('Weight management is free medicine', f'Obesity adds $500+/year in joint, diabetes, and heart costs. Measuring food portions costs nothing.'),
+            ('Community clinics for basics', 'Low-cost vaccine and microchip events run in most US cities every month. Check your local humane society calendar.'),
+            ('Pet insurance only if the math works', f'For healthy {species_plural}, a dedicated savings fund may beat insurance. For breeds prone to {hi}, insurance often pays off by year three.'),
+            ('Buy once, cry once on gear', 'A steel crate, ceramic bowls, and a washable bed outlast five rounds of cheap replacements.'),
+        ],
+        [
+            ('Track spending for 90 days', 'Most owners guess wrong on where money goes. Log every vet, food, and supply purchase — food is usually 30% higher than expected.'),
+            ('Seasonal sales on food and litter', 'Black Friday and Amazon Prime Day drop premium pet food 20–30%. Stock up with a six-month supply if you have storage space.'),
+            ('Learn basic first aid', f'A pet first-aid course ($40–$80) helps you decide what needs an ER visit vs. a wait-and-see call — saving hundreds in unnecessary trips.'),
+            ('Spay/neuter early', 'Unplanned litter costs dwarf the one-time surgery fee. Many shelters offer $50–$150 spay/neuter vouchers.'),
+            ('Share pet-sitting instead of boarding', f'Boarding runs $30–$60/night. A trusted neighbor swap costs a thank-you bottle of wine.'),
+        ],
+        [
+            ('Choose your vet by transparency', 'Clinics that publish price lists upfront tend to cost less than "boutique" vets with hidden fees.'),
+            ('DIY enrichment beats store-bought', f'Cardboard boxes, frozen Kongs, and sniff walks cost $0 but cut destructive behavior that leads to replacement furniture.'),
+            ('Review insurance annually', 'Premiums creep up 10–15%/year. Switching carriers at renewal can save $200+ without losing coverage.'),
+            ('Prevent breed-specific problems early', f'For {name}, addressing {hi} in the first year costs a fraction of treating it in an emergency.'),
+            ('Tax deductions for working animals', 'Service and farm dogs may qualify for business expense deductions. Ask your accountant if your situation applies.'),
+        ],
+    ]
+    tips = sets[_variant_index(name, len(sets))]
+    lines = ['      <ul>']
+    for title, body in tips:
+        lines.append(f'        <li><strong>{title}.</strong> {body}</li>')
+    lines.append('      </ul>')
+    return '\n'.join(lines)
+
+def get_first_year_items(species, name):
+    if species == 'cat':
+        sets = [
+            ['Initial vet exam, FVRCP vaccines, and microchip', 'Spay/neuter surgery ($150–$500)', 'Litter box, carrier, scratching post, bed, bowls, starter litter'],
+            ['Kitten wellness package at a local clinic', 'FeLV/FIV test and deworming', 'Tall scratching tree, enclosed litter box, food/water fountains'],
+            ['First-year vaccinations and rabies shot', 'Neuter/spay plus post-op cone and meds', 'Carrier for vet trips, window perch, interactive toys'],
+        ]
+    else:
+        sets = [
+            ['Puppy wellness exam, DHPP vaccines, and microchip', 'Spay/neuter surgery ($200–$600)', 'Crate, bed, leash, harness, bowls, chew toys, training treats'],
+            ['Initial vet package plus flea/tick prevention', 'Spay/neuter and recovery supplies', 'Puppy training classes ($100–$300), crate, gates, enrichment toys'],
+            ['Vaccination series and deworming rounds', 'Neuter/spay surgery and cone', 'Size-appropriate crate, collar, ID tag, bed, starter food supply'],
+        ]
+    items = sets[_variant_index(name, len(sets))]
+    return '\n'.join(f'        <li>{item}</li>' for item in items)
+
+def get_page_title(name, species):
+    if species == 'cat' and name in ('Sphynx', 'Maine Coon', 'Siamese', 'British Shorthair', 'Persian', 'Ragdoll', 'Bengal'):
+        return f'How Much Does a {name} Cat Cost? (2026 Annual Guide)'
+    if species == 'dog' and name in ('Bulldog', 'Siberian Husky', 'Rottweiler', 'Dachshund', 'Pomeranian', 'Boxer', 'French Bulldog', 'Golden Retriever', 'Labrador Retriever', 'German Shepherd', 'Chihuahua', 'Beagle', 'Boston Terrier'):
+        return f'How Much Does a {name} Cost? (2026 Annual Guide)'
+    return f'{name} Annual Cost (2026) — petexpenses.com'
+
+def get_page_h1(name, species, article):
+    if species == 'cat' and name in ('Sphynx', 'Maine Coon', 'Siamese', 'British Shorthair'):
+        return f'How Much Does a {name} Cat Cost?'
+    if species == 'dog' and name in ('Bulldog', 'Siberian Husky', 'Rottweiler', 'Dachshund', 'Pomeranian', 'Boxer'):
+        return f'How Much Does a {name} Cost?'
+    return f'How Much Does {article} {name} Cost Per Year?'
 
 def make_slug(name):
     slug = name.lower()
@@ -362,8 +466,10 @@ def build_args(name, data, species):
         he = f'{bp} require special skin care due to their unique coat or skin type, which can add to annual grooming and vet costs.'
     elif 'diabetes' in hi_lc:
         he = f'{bp} have a higher risk of developing diabetes, which requires ongoing medication, special diets, and regular veterinary monitoring.'
-    elif 'spine' in hi_lc or 'joint' in hi_lc or 'hip' in hi_lc:
+    elif 'spine' in hi_lc or 'joint' in hi_lc or 'hip' in hi_lc or 'ivdd' in hi_lc or 'back' in hi_lc:
         he = f'{bp} are prone to joint and spinal issues, which may require ongoing supplements, medications, or even surgical intervention.'
+    elif 'lifetime' in hi_lc or 'vet cost' in hi_lc:
+        he = f'{bp} are known for {hi_lc.lower()}, with emergency and specialist visits stacking up faster than most breeds.'
     elif is_healthy_breed:
         he = f'{bp} are generally healthy, hardy, and have low risks of major breed-specific genetic diseases.'
     else:
@@ -473,6 +579,16 @@ def build_args(name, data, species):
 
     offers_html = get_offers_html(species, size, coat, name, bp, health_issues, il, ih)
 
+    food_extra = '$200–$400' if multi > 1.4 else ('$100–$200' if multi > 1.2 else '$0–$100')
+    page_title = get_page_title(name, species)
+    page_h1 = get_page_h1(name, species, h1_article)
+    intro_hook = get_intro_hook(name, bp, species, sd, health_note, cl, ch)
+    food_text = get_food_text(name, bp, species_title, species, fl, fh, food_extra, coat)
+    supplies_text = get_supplies_text(species, bp, sl, sh)
+    savings_html = get_savings_html(name, species, species_plural_lc, il, health_note)
+    first_year_items = get_first_year_items(species, name)
+    compare_label = 'dogs' if species == 'dog' else 'cats'
+
     return {
         'IN_CONTENT_BANNER': in_content_banner,
         'OFFERS_HTML': offers_html,
@@ -531,6 +647,14 @@ def build_args(name, data, species):
         'SPECIES_EMOJI': '🐈' if species == 'cat' else '🐕',
         'AVG_COST': str(avg),
         'COMP_HEADING': comp_heading,
+        'PAGE_TITLE': page_title,
+        'PAGE_H1': page_h1,
+        'INTRO_HOOK': intro_hook,
+        'FOOD_TEXT': food_text,
+        'SUPPLIES_TEXT': supplies_text,
+        'SAVINGS_HTML': savings_html,
+        'FIRST_YEAR_ITEMS': first_year_items,
+        'COMPARE_LABEL': compare_label,
     }
 
 def fill_template(template, args):
@@ -547,8 +671,9 @@ TEMPLATE = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="p:domain_verify" content="dcfb2a50a6d5a6fadb45c1820157944e"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>!BREED! Annual Cost (2026) — petexpenses.com</title>
+<title>!PAGE_TITLE!</title>
 <meta name="description" content="!META_DESC!">
 <script type="application/ld+json">
 {
@@ -720,7 +845,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
   <article>
     <header class="article-header">
       <span class="article-tag">!BREED!</span>
-      <h1 class="article-h1">How Much Does !ARTICLE! !BREED! Cost Per Year?</h1>
+      <h1 class="article-h1">!PAGE_H1!</h1>
       <div class="article-meta">
         <span>Last updated May 2026</span>
         <span>Data: APPA, AVMA, NAPHIA</span>
@@ -738,6 +863,8 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
         <div class="hc-label">Quick Answer</div>
         <p>The average annual cost of owning a !BREED! in the US ranges from <strong>$!COST_LOW! to $!COST_HIGH! per year</strong> ($!MONTHLY_LOW!–$!MONTHLY_HIGH!/month). This includes food, routine vet care, pet insurance, grooming, and supplies. Actual costs depend on your !SPECIES_TITLE!&rsquo;s age, weight, diet, activity level, and location.</p>
       </div>
+
+      <blockquote>!INTRO_HOOK!</blockquote>
 
       <h2>Annual Cost Breakdown for !BREED_PLURAL!</h2>
       <p>Here&rsquo;s how the average !BREED! owner&rsquo;s annual budget breaks down across five key categories. !BREED_PLURAL! are a <strong>!SIZE_DESC!</strong> !SPECIES_TITLE! breed with a <strong>!COAT_DESC!</strong> coat.</p>
@@ -761,7 +888,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
       !IN_CONTENT_BANNER!
 
       <h3>Food</h3>
-      <p>Food is typically the largest recurring expense for !BREED_PLURAL!. Expect to spend $!FOOD_LOW!–$!FOOD_HIGH! per year on quality !SPECIES_TITLE! food. !BREED_PLURAL! with food sensitivities may need specialized diets, which can add !FOOD_ALLERGY_EXTRA! per year. Larger !BREED_PLURAL! eat more and cost more to feed.</p>
+      <p>!FOOD_TEXT!</p>
 
       <h3>Veterinary Care</h3>
       <p>Routine veterinary care for !BREED_PLURAL! costs $!VET_LOW!–$!VET_HIGH! per year. This covers annual check-ups, vaccinations, and preventative treatments. !HEALTH_NOTE_EXTENDED! Unexpected emergencies can add thousands in a single visit.</p>
@@ -773,26 +900,18 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
       <p>!GROOMING_TEXT!</p>
 
       <h3>Supplies</h3>
-      <p>Annual supplies — litter box, scratching post, bed, bowls, toys — run $!SUPP_LOW!–$!SUPP_HIGH!. Initial setup in the first year costs more due to one-time purchases.</p>
+      <p>!SUPPLIES_TEXT!</p>
 
       <h2>!COMP_HEADING!</h2>
       <p>!HEALTH_FACTORS_SECTION!</p>
 
       <h2>How to Save on !BREED! Ownership</h2>
-      <ul>
-        <li><strong>Preventative care is cheaper than emergency care.</strong> Regular vet visits catch problems early. Budget for annual check-ups and stay up-to-date on vaccinations.</li>
-        <li><strong>Compare pet insurance plans.</strong> Get quotes from at least three providers. Accident-only plans start around $!INS_LOW!/year.</li>
-        <li><strong>Buy food and litter in bulk.</strong> Subscribe to auto-ship for discounts. !SPECIES_TITLE! food and litter are significantly cheaper per unit in larger quantities.</li>
-        <li><strong>Use preventative dental care.</strong> Dental disease is common in !SPECIES_PLURAL! and can lead to expensive health issues. At-home dental treats and regular check-ups save money long-term.</li>
-        <li><strong>Choose high-quality food.</strong> Better nutrition reduces vet visits from urinary issues, obesity, and allergies.</li>
-      </ul>
+!SAVINGS_HTML!
 
       <h2>First-Year vs. Annual Costs</h2>
       <p>Your first year with a !BREED! will be more expensive. Expect to spend an extra !FIRST_YEAR_EXTRA! on:</p>
       <ul>
-        <li>Initial vet visit, vaccinations, and microchipping</li>
-        <li>Spay/neuter surgery</li>
-        <li>Litter box, bed, bowls, scratching post, toys</li>
+!FIRST_YEAR_ITEMS!
       </ul>
 
       <h2>FAQ About !BREED! Costs</h2>
@@ -805,7 +924,7 @@ a{color:var(--coral);font-weight:600}a:hover{text-decoration:underline}
       </details>
 
       <details>
-        <summary>Is a !BREED! expensive to own compared to other cats?</summary>
+        <summary>Is a !BREED! expensive to own compared to other !COMPARE_LABEL!?</summary>
         <div class="faq-a">
           <p>!COMPARISON_SENTENCE!</p>
         </div>
