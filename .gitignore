@@ -40,3 +40,6 @@ hero-image.png
 
 # Research artifacts (local semantic-core runs, analysis)
 research/
+
+# Content QA reports (generated)
+scripts/qa/reports/
