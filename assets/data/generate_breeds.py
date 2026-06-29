@@ -154,12 +154,8 @@ def get_first_year_items(species, name):
     items = sets[_variant_index(name, len(sets))]
     return '\n'.join(f'        <li>{item}</li>' for item in items)
 
-def get_page_title(name, species):
-    if species == 'cat' and name in ('Sphynx', 'Maine Coon', 'Siamese', 'British Shorthair', 'Persian', 'Ragdoll', 'Bengal'):
-        return f'How Much Does a {name} Cat Cost? (2026 Annual Guide)'
-    if species == 'dog' and name in ('Bulldog', 'Siberian Husky', 'Rottweiler', 'Dachshund', 'Pomeranian', 'Boxer', 'French Bulldog', 'Golden Retriever', 'Labrador Retriever', 'German Shepherd', 'Chihuahua', 'Beagle', 'Boston Terrier'):
-        return f'How Much Does a {name} Cost? (2026 Annual Guide)'
-    return f'{name} Annual Cost (2026) — petexpenses.com'
+def get_page_title(name, species, cl, ch):
+    return f'{name} Cost in 2026: Purchase Price + ${cl:,}–${ch:,}/Year Ownership'
 
 def get_page_h1(name, species, article):
     if species == 'cat' and name in ('Sphynx', 'Maine Coon', 'Siamese', 'British Shorthair'):
@@ -525,7 +521,7 @@ def build_args(name, data, species):
         ss = make_slug(sib)
         sim_links += f'<a href="/breeds/{ss}">🐾 {sib}</a>\n    '
 
-    md = f'See the real annual cost of owning a {name} in 2026. Food, vet, insurance, grooming & supplies: ${cl:,}–${ch:,}/year. Free breed-specific calculator.'[:160]
+    md = f'What a {name} really costs in 2026 — purchase price, annual food & vet bills (${cl:,}–${ch:,}/yr), insurance, and hidden expenses. Free calculator with real data.'[:160]
 
     # Article (H1)
     h1_article = art
@@ -580,7 +576,7 @@ def build_args(name, data, species):
     offers_html = get_offers_html(species, size, coat, name, bp, health_issues, il, ih)
 
     food_extra = '$200–$400' if multi > 1.4 else ('$100–$200' if multi > 1.2 else '$0–$100')
-    page_title = get_page_title(name, species)
+    page_title = get_page_title(name, species, cl, ch)
     page_h1 = get_page_h1(name, species, h1_article)
     intro_hook = get_intro_hook(name, bp, species, sd, health_note, cl, ch)
     food_text = get_food_text(name, bp, species_title, species, fl, fh, food_extra, coat)
@@ -742,7 +738,7 @@ TEMPLATE = r'''<!DOCTYPE html>
   ]
 }
 </script>
-<meta property="og:title" content="!BREED! Annual Cost (2026) — petexpenses.com">
+<meta property="og:title" content="!BREED! Cost in 2026: Purchase Price + $!COST_LOW!–$!COST_HIGH!/Year">
 <meta property="og:description" content="See the real annual cost of owning a !BREED! in 2026. Food, vet, insurance, grooming & supplies breakdown. Free calculator included.">
 <meta property="og:image" content="https://petexpenses.com/og-!SPECIES!.jpg">
 <meta property="og:url" content="https://petexpenses.com/breeds/!SLUG!">
