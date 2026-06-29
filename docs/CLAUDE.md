@@ -1,14 +1,34 @@
 # petexpenses.com Memory & Context
 
+## DEPLOYMENT GUARDRAILS (READ BEFORE ANY COMMIT)
+
+**CRITICAL — SEO SAFETY RULES:**
+1. **Git push to main = immediate production deploy.** There is NO staging. CF Pages auto-deploys on push.
+2. **Never delete or redirect breed pages** without explicit owner approval. The June 2026 breed page purge killed 80% of GSC impressions.
+3. **After ANY change to breed pages, verify sitemap:**
+   ```bash
+   grep -c '<url>' sitemap.xml  # Must be 90+ (all pages)
+   ```
+4. **After ANY change to breed pages, verify titles:**
+   ```bash
+   grep -L 'Purchase Price' breeds/*.html | wc -l  # Must be 0
+   ```
+5. **After ANY change to breeds/ or blog/, verify _redirects** doesn't accidentally redirect active pages.
+6. **Never regenerate breed pages from `generate_breeds.py`** without first checking the generator has the correct title format (no "Annual Guide" hardcode).
+7. **IndexNow ping after every deploy:** `curl -s "https://www.bing.com/indexnow?url=https://petexpenses.com/sitemap.xml&key=763CFC8CA4F13B4D2C8A131618CB3670"`
+
+**TITLE FORMAT (current — do NOT revert):**
+`[Breed] Cost in 2026: Purchase Price + $X–$Y/Year Ownership`
+
+**META DESCRIPTION FORMAT (current — do NOT revert):**
+`What a [Breed] really costs in 2026 — puppy/kitten price, annual food & vet bills ($X–$Y/yr), insurance, and hidden expenses. Free calculator with real data.`
+
 ## Active Priorities & Campaign State
 - **Pinterest Integration:** Sandbox setup completed (June 2026). First commercial Pin (ID: `1109855901953667024`, Topic: "Is Pet Insurance Worth It?") successfully published on "Pet Insurance & Vet Bills" board.
 - **Monetisation:** CPA placeholder links (`Partner #1 / #2 / #3`) ready to be replaced with real affiliate programs (Raw Paws, Petcube, MeoWant).
 
 ## App Credentials & Secret Tokens
-- **Pinterest API (Sandbox):**
-  - **App ID:** `1579094`
-  - **App Secret:** `828a3672b9fe5db37ebd394204cd490a46b56b85`
-  - **Access Token:** Saved in `.env` (`PINTEREST_ACCESS_TOKEN`)
+- **Pinterest API (Sandbox):** credentials in `.env` (`PINTEREST_APP_ID`, `PINTEREST_APP_SECRET`, `PINTEREST_ACCESS_TOKEN`). Never commit or paste secrets into docs.
   - **Boards:**
     - `Dog Cost Calculator & Expenses` (ID: `1109855970611401481`)
     - `Cat Cost Calculator & Budgets` (ID: `1109855970611401482`)
@@ -18,7 +38,7 @@
 
 ## Technology Stack & Infrastructure
 - **UI:** Vanilla JS (no React despite prior config — React CDN not loaded).
-- **Hosting & DNS:** Cloudflare Pages (deploy via `wrangler pages deploy . --project-name=pet-expenses`).
+- **Hosting & DNS:** Cloudflare Pages (auto-deploy on git push to main — NO manual wrangler deploy needed).
 - **Analytics:** PostHog (self-hosted EU).
 - **Core Files:**
   - [index.html](file:///Users/aleksejs/Desktop/dog-cost-tool/index.html) — Main calculator entrypoint (inline CSS + JS).
